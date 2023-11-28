@@ -45,6 +45,10 @@ export class AdminService {
     return this.http.post<Admin>(`${this.apiUrl}/Admin/ChangePassword`, admin);
   }
 
+  changeUsernameAdmin(admin: Admin): Observable<Admin> {
+    return this.http.post<Admin>(`${this.apiUrl}/Admin/ChangeUsername`, admin);
+  }
+
   getId(){
     return this.id;
   }

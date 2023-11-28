@@ -1,4 +1,13 @@
 <!-- update-scheme.component.html -->
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+  <app-employee-navbar></app-employee-navbar>
+</div>
 <div class="update-scheme-container">
     <h2>Update Insurance Scheme</h2>
     <form [formGroup]="schemeForm" (ngSubmit)="updateScheme()">

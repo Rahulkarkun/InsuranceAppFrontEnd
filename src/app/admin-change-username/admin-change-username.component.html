@@ -1,29 +1,29 @@
 <div *ngIf="userRole=='Admin'">
-  <app-admin-navbar></app-admin-navbar>
+    <app-admin-navbar></app-admin-navbar>
 </div>
 <div *ngIf="userRole=='Agent'">
-  <app-agent-navbar></app-agent-navbar>
+    <app-agent-navbar></app-agent-navbar>
 </div>
 <div *ngIf="userRole=='Employee'">
-  <app-employee-navbar></app-employee-navbar>
+    <app-employee-navbar></app-employee-navbar>
 </div>
 <div class="login-container">
-    <h1>Change Password</h1>
+    <h1>Change Username</h1>
     <!-- <div class="form-group" (change)="selectedId($event)" *ngFor="let agent of agentData  " >
         <input type="text" value="{{agent.firstName}}">
     </div> -->
     <!-- -->
     
-    <form [formGroup]="changePasswordAdmin" (ngSubmit)="changeAdminPassword(changePasswordAdmin.value) ">
+    <form [formGroup]="changeUsernameAdmin" (ngSubmit)="changeAdminUsername(changeUsernameAdmin.value) ">
       <!-- <p>Kindly enter the credentials</p> -->
       <div class="form-group">
-        <label for=""> Old Password</label>
+        <label for=""> Old Username</label>
         <input type="hidden" formControlName="id" [(ngModel)]="adminId" >
-        <input type="password" id="oldPassword" name="oldPassword" formControlName="oldPassword" >
+        <input type="text" id="oldUsername" name="oldUsername" placeholder="Enter your Old Username"formControlName="oldUsername" >
       </div>
       <div class="form-group">
-        <label for="">New Password</label>
-        <input type="password" id="lastName" name="username" placeholder="Enter your LastName" formControlName="newPassword" >
+        <label for="">New Username</label>
+        <input type="text" id="newUsername" name="newUsername" placeholder="Enter your New Username" formControlName="newUsername" >
       </div>
       
       

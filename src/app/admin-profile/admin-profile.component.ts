@@ -30,7 +30,7 @@ export class AdminProfileComponent {
   ) {
     // console.log("UserId"+dataService.userId)
     this.userRole = temporaryData.getRole();
-    
+    console.log(this.userRole)
     // adminService.getByuserId(dataService.userId).subscribe(
     //   {
     //     next:(result) => {

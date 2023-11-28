@@ -13,8 +13,10 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './admin-change-password.component.css'
 })
 
+
 export class AdminChangePasswordComponent {
   adminData:any
+  userRole:string='';
   changePasswordAdmin = new FormGroup({
     id:new FormControl(''),
     oldPassword: new FormControl(''),
@@ -24,12 +26,15 @@ export class AdminChangePasswordComponent {
   adminId:number=0;
 
   constructor(
+    
     private adminService:AdminService,
     private dataService: DataService,
+    private temporaryData:TemporaryDataService,
     private router:Router
     ){
+      this.userRole=temporaryData.getRole()
+      console.log(this.userRole)
       this.adminId=dataService.userId;
-
     }
 
     // ngOnInit():void{

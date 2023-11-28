@@ -49,6 +49,7 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { EmployeeNavbarComponent } from './employee-navbar/employee-navbar.component';
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { AdminChangePasswordComponent } from './admin-change-password/admin-change-password.component';
+import { AdminChangeUsernameComponent } from './admin-change-username/admin-change-username.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -100,6 +101,7 @@ const routes: Routes = [
   {path:'employee-navbar',component:EmployeeNavbarComponent},
   {path:'employee-dashboard',component:EmployeeDashboardComponent},
   {path:'admin-change-password',component: AdminChangePasswordComponent},
+  {path:'admin-change-username',component: AdminChangeUsernameComponent},
   {
     path:"weather",
     component:WeatherInfoComponent
