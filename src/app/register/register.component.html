@@ -1,0 +1,38 @@
+<!-- register.component.html -->
+<app-navbar></app-navbar>
+<div class="login-register-page">
+  <div class="form-container">
+    <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+      <label for="newUsername">New Username:</label>
+      <input type="text" id="newUsername" formControlName="newUsername" required>
+      <div *ngIf="registerForm.get('newUsername')?.hasError('required') && registerForm.get('newUsername')?.touched">
+        Username is required.
+      </div>
+      <div *ngIf="registerForm.get('newUsername')?.hasError('minlength') && registerForm.get('newUsername')?.touched">
+        Username must be at least {{ registerForm.get('newUsername')?.getError('minlength').requiredLength }} characters.
+      </div>
+
+      <label for="newPassword">New Password:</label>
+      <input type="password" id="newPassword" formControlName="newPassword" required>
+      <div *ngIf="registerForm.get('newPassword')?.hasError('required') && registerForm.get('newPassword')?.touched">
+        Password is required.
+      </div>
+      <div *ngIf="registerForm.get('newPassword')?.hasError('minlength') && registerForm.get('newPassword')?.touched">
+        Password must be at least {{ registerForm.get('newPassword')?.getError('minlength').requiredLength }} characters.
+      </div>
+
+      <label for="confirmPassword">Confirm Password:</label>
+      <input type="password" id="confirmPassword" formControlName="confirmPassword" required>
+      <div *ngIf="registerForm.get('confirmPassword')?.hasError('required') && registerForm.get('confirmPassword')?.touched">
+        Confirm Password is required.
+      </div>
+      <div *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched">
+        Passwords do not match.
+      </div>
+
+      <button type="submit" [ngClass]="buttonColorClass" [disabled]="registerForm.pristine || registerForm.invalid">Register</button>
+    </form>
+    <p class="login-link" (click)="navigateToLogin()">Already a user? Login here.</p>
+  </div>
+</div>

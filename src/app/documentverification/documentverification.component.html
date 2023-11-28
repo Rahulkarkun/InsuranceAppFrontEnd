@@ -1,0 +1,21 @@
+<!-- document-list.component.html -->
+<!-- <div *ngIf="userRole=='Employee'">
+  <app-employee-navbar></app-employee-navbar>
+</div> -->
+<div class="document-list-container">
+    <h2 class="section-title">Unverified Documents</h2>
+  
+    <div *ngIf="inactiveDocuments.length > 0; else noDocuments">
+      <div *ngFor="let document of inactiveDocuments" class="document-item">
+        <p class="document-info">
+          <span>{{ document.DocumentType }}</span> - <span>{{ document.DocumentName }}</span>
+        </p>
+        <button (click)="navigateToUpdate(document.DocumentId)" class="update-button">Update</button>
+      </div>
+    </div>
+  
+    <ng-template #noDocuments>
+      <p class="no-documents-message">No inactive documents found.</p>
+    </ng-template>
+  </div>
+  

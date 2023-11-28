@@ -1,0 +1,35 @@
+<!-- src/app/add-agent/add-agent.component.html -->
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+<div class="add-insurance-scheme-container">
+    <h2>Add Insurance Scheme</h2>
+    <form [formGroup]="insuranceSchemeForm" (ngSubmit)="addInsuranceScheme()">
+
+      <label >insurance Type</label>
+      <div class="form-group">
+      <select  id="account-plan" name="account-plan" aria-placeholder="Insurance Plan" formControlName="insurancePlanId" *ngIf="insurancePlanData">
+        
+        <option value="" disabled selected>Choose Insurance Plan</option>
+        <!-- <option>null</option> -->
+        <option *ngFor="let insurancePlan of insurancePlanData" [value]="insurancePlan?.planId">{{insurancePlan?.planName}}</option>
+      </select>
+        <label for="schemeName">Scheme Name:</label>
+        <input id="schemeName"  formControlName="schemeName" required>
+  
+        <!-- <label for="detailId">Detail Id:</label>
+        <input id="detailId" formControlName="detailId"  required> -->
+
+        <!-- <label for="planId">Plan Id:</label> -->
+        <input id="planId" [(ngModel)]="insuranceSchemeForm.value.insurancePlanId" formControlName="planId" type="hidden">
+  
+        <button type="submit">Add Insurance Scheme</button>
+        </div>
+    </form>
+  </div>

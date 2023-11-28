@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div class="login-register-page">
+  <div class="form-container">
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+          <label for="username">Username:</label>
+          <input type="text" id="username" formControlName="username" required>
+          <div *ngIf="loginForm.get('username')?.hasError('required') && loginForm.get('username')?.touched">
+              Username is required.
+          </div>
+          <div *ngIf="loginForm.get('username')?.hasError('minlength') && loginForm.get('username')?.touched">
+              Username must be at least 3 characters long.
+          </div>
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" formControlName="password" required>
+          <div *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+              Password is required.
+          </div>
+          <div *ngIf="loginForm.get('password')?.hasError('minlength') && loginForm.get('password')?.touched">
+              Password must be at least 6 characters long.
+          </div>
+
+          <button type="submit">Login</button>
+      </form>
+      <p class="register-link" (click)="navigateToRegister()">Not yet registered? Register here.</p>
+  </div>
+</div>

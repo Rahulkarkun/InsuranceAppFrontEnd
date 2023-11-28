@@ -1,0 +1,87 @@
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div class="add-insurance-policy-container">
+    <h2>Add Insurance Policy</h2>
+<form [formGroup]="insurancePolicyForm" (ngSubmit)="addInsurancePolicy()">
+  <div class="form-group">
+    <label for="issueDate">Issue Date:</label>
+    <div class="input-group">
+      <input
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dpIssueDate"
+        [(ngModel)]="modelIssueDate"
+        ngbDatepicker
+        #dIssueDate="ngbDatepicker"
+      />
+      <button
+        class="btn btn-outline-secondary bi bi-calendar3"
+        (click)="dIssueDate.toggle()"
+        type="button"
+      ></button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="maturityDate">Maturity Date:</label>
+    <div class="input-group">
+      <input
+        class="form-control"
+        placeholder="yyyy-mm-dd"
+        name="dpMaturityDate"
+        [(ngModel)]="modelMaturityDate"
+        ngbDatepicker
+        #dMaturityDate="ngbDatepicker"
+      />
+      <button
+        class="btn btn-outline-secondary bi bi-calendar3"
+        (click)="dMaturityDate.toggle()"
+        type="button"
+      ></button>
+    </div>
+  </div>
+  
+    <div>
+      <label for="premiumType">Premium Type:</label>
+      <input type="text" id="premiumType" formControlName="premiumType" />
+    </div>
+  
+    <div>
+      <label for="premiumAmount">Premium Amount:</label>
+      <input type="number" id="premiumAmount" formControlName="premiumAmount" />
+    </div>
+  
+    <div>
+      <label for="sumAssured">Sum Assured:</label>
+      <input type="number" id="sumAssured" formControlName="sumAssured" />
+    </div>
+  
+    <div>
+      <label for="status">Status:</label>
+      <input type="text" id="status" formControlName="status" />
+    </div>
+  
+    <div>
+      <label for="planId">Plan ID:</label>
+      <input type="number" id="planId" formControlName="planId" />
+    </div>
+  
+    <div>
+      <label for="paymentId">Payment ID:</label>
+      <input type="number" id="paymentId" formControlName="paymentId" />
+    </div>
+  
+    <div>
+      <label for="customerId">Customer ID:</label>
+      <input type="number" id="customerId" formControlName="customerId" />
+    </div>
+  
+    <button type="submit">Add Insurance Policy</button>
+  </form>
+  
+  </div>
+

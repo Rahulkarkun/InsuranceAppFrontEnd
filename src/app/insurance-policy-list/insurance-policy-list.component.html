@@ -1,0 +1,45 @@
+<!-- agent-list.component.html -->
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div class="agent-list-container">
+    <h2>Agent List</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Policy No</th>
+          <th>Issue Date</th>
+          <th>Maturity Date</th>
+          <th>Premium Type</th>
+          <th>Premium Amount</th>
+          <th>SumAssured</th>
+          <th>Status</th>
+          <th>Plan Id</th>
+          <th>Customer Id</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let policy of policies">
+          <td>{{ policy.policyNo }}</td>
+          <td>{{ policy.issueDate }}</td>
+          <td>{{ policy.maturityDate }}</td>
+          <td>{{ policy.premiumType}}</td>
+          <td>{{ policy.premiumAmount }}</td>
+          <td>{{ policy.sumAssured }}</td>
+          <td>{{ policy.status }}</td>
+          <td>{{ policy.planId }}</td>
+          <td>{{ policy.paymentId }}</td>
+          <td>{{ policy.customerId }}</td>
+          <td>
+            <button (click)="editInsurancePolicy(policy.PolicyNo)">Edit</button>
+            <button (click)="deleteInsurancePolicy(policy.PolicyNo)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

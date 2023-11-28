@@ -1,0 +1,46 @@
+<!-- update-scheme.component.html -->
+<div class="update-scheme-container">
+    <h2>Update Insurance Scheme</h2>
+    <form [formGroup]="schemeForm" (ngSubmit)="updateScheme()">
+      <div>
+        <label for="schemeId">Scheme ID:</label>
+        <input type="text" id="schemeId" formControlName="schemeId" readonly>
+      </div>
+      <div>
+        <label for="schemeName">Scheme Name:</label>
+        <input type="text" id="schemeName" formControlName="schemeName" required>
+      </div>
+      <div>
+        <!-- <label for="planId">Plan ID:</label> -->
+        <input type="text" id="planId" formControlName="planId" type="hidden">
+      </div>
+      <!-- <div>
+        <label for="isActive">Active:</label>
+        <input type="checkbox" id="isActive" formControlName="isActive">
+      </div> -->
+      <!-- <div>
+        <label for="detailId">Detail ID:</label>
+        <input type="text" id="detailId" formControlName="detailId" readonly>
+      </div> -->
+      <!-- Assuming SchemeDetails has properties like name, description, etc. -->
+      <!-- <div>
+        <label for="detailsName">Details Name:</label>
+        <input type="text" id="detailsName" formControlName="detailsName" required>
+      </div>
+      <div>
+        <label for="detailsDescription">Details Description:</label>
+        <input type="text" id="detailsDescription" formControlName="detailsDescription" required>
+      </div> -->
+      <!-- Assuming InsurancePlan has properties like name, coverage, etc. -->
+      <!-- <div>
+        <label for="planName">Plan Name:</label>
+        <input type="text" id="planName" formControlName="planName" required>
+      </div>
+      <div>
+        <label for="planCoverage">Plan Coverage:</label>
+        <input type="text" id="planCoverage" formControlName="planCoverage" required>
+      </div> -->
+  
+      <button type="submit">Update Scheme</button>
+    </form>
+  </div>

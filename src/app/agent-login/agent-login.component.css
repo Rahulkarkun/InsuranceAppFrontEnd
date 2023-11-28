@@ -1,0 +1,139 @@
+/* marketing.component.css */
+
+/* .landing-background {
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+  } */
+
+.landing-background {
+    padding: 0px 0px 0px;
+    /* min-height: calc(100vh - 80px); Adjust the value based on your footer's height */
+    /* display: flex;
+    flex-direction: column; */
+}
+
+.container
+{
+    overflow: hidden;
+    background-size: cover;
+}
+  /* .landing-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* Set a lower z-index to move it behind other elements */
+/* }  */
+
+  /* .landing-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    opacity: 10;
+  } */
+
+  .landing-page {
+    position: cover;
+    z-index: 0; /* Ensure content is on top of the background */
+    text-align: left;
+    padding: 120px 70px;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    /* background-size: cover;
+    background-position: center; */
+    color: #fff;
+  }
+
+  /* ... rest of your styles ... */
+
+.profile-icon{
+    max-width: 100px;
+    max-height: 100px;
+    /* object-fit: cover; */
+}
+
+.marketing-icon{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.view-customers-icon{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.insurance-account-icon{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.policy-payment-icon{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.policy-claim-icon{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.view-commission-icon{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.view-commission-withdrawal-icon{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.withdrawal-amount-icon{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.custom-column {
+    margin-right: 100px; /* Adjust the margin as needed */
+    margin-left: 80px;
+}
+
+.icon-text {
+    font-size: 18px; /* Adjust the font size as needed */
+}
+
+/* .landing-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} */
+
+/* .landing-background {
+    flex: -1;
+} */
+
+.agent-login {
+    min-height: calc(100vh - 80px); /* Adjust the value based on your footer's height */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer {
+    margin-top: auto;
+  }
+
+
+
+
+
+
+
+
+
+
+
+  /* Add this to your component's CSS file, e.g., navbar.component.css */
+
+

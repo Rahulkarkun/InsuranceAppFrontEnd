@@ -1,0 +1,34 @@
+/* about-us.css */
+.about-page {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: rgb(3, 3, 126);
+    font-weight: 500;
+  }
+  
+  .app-about-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+  
+  .app-about-section img {
+    padding-left: 50px;
+    width: 30%;
+    /* border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .app-about-section .content {
+    padding-left: 30px;
+    width: 70%;
+    text-align: left;
+    justify-content: center;
+  }
+  

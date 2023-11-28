@@ -1,0 +1,78 @@
+
+.icon-image {
+    max-width: 100px; /* Set the desired width */
+    max-height: 100px; /* Set the desired height */
+}
+
+
+.navbar {
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(9, 9, 121, 1) 35%,
+      rgba(0, 212, 255, 1) 100%
+    );
+    height: 80px;
+    width: auto;
+    }
+  
+  .navbar-brand, .nav-link {
+    color: #fff !important;
+  }
+  
+  .navbar-toggler-icon {
+    background-color: #fff;
+  }
+  
+.logo-img{
+    height: 130px;
+    width: 250px;
+
+}  
+/* .nav-item {
+ text-align: right;
+ float: right;
+} */
+/* Add this to your styles.css or styles.scss */
+.navbar-nav {
+    margin-left: auto;
+}
+  
+  .navbar-nav .nav-item {
+    margin-left: 10px; /* Optional: Add some spacing between navigation items */
+}
+  /* Add this to your component's CSS file, e.g., navbar.component.css */
+.navbar-nav .nav-item a.nav-link {
+    color: yellow; /* Set the default text color */
+    transition: color 1s ease-in-out; /* Add smooth transition effect */
+  
+    /* Optional: Customize other styles for the link */
+    text-decoration: none;
+}
+  
+.navbar-nav .nav-item a.nav-link:hover {
+    color: #ffd700; /* Set the text color on hover */
+    font-weight: bold;
+    /* Optional: Add other styles for the hover effect */
+}
+
+.icon-text {
+    font-size: 18px; /* Adjust the font size as needed */
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+
+
+
+
+
+
+
+  /* Add this to your component's CSS file, e.g., navbar.component.css */
+
+
+  

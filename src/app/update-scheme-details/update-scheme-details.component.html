@@ -1,0 +1,73 @@
+<!-- update-scheme-details.component.html -->
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+<div class="update-scheme-details-container">
+    <h2>Update Scheme Details</h2>
+    <form [formGroup]="schemeDetailsForm" (ngSubmit)="updateSchemeDetails()">
+        <div>
+            <label for="detailId">Details ID:</label>
+            <input type="text" id="detailId" formControlName="detailId" readonly>
+        </div>
+        <div>
+            <label for="schemeImage">Scheme Image:</label>
+            <input type="text" id="schemeImage" formControlName="schemeImage" required>
+        </div>
+        <div>
+            <label for="description">Description:</label>
+            <textarea id="description" formControlName="description" rows="4" required></textarea>
+        </div>
+        <div>
+            <label for="minAmount">Minimum Amount:</label>
+            <input type="number" id="minAmount" formControlName="minAmount" min="0" required>
+        </div>
+        <div>
+            <label for="maxAmount">Maximum Amount:</label>
+            <input type="number" id="maxAmount" formControlName="maxAmount" min="0" required>
+        </div>
+        <div>
+            <label for="minInvestmentTime">Minimum Investment Time:</label>
+            <input type="number" id="minInvestmentTime" formControlName="minInvestmentTime" min="0" required>
+        </div>
+        <div>
+            <label for="maxInvestmentTime">Maximum Investment Time:</label>
+            <input type="number" id="maxInvestmentTime" formControlName="maxInvestmentTime" min="0" required>
+        </div>
+        <div>
+            <label for="minAge">Minimum Age:</label>
+            <input type="number" id="minAge" formControlName="minAge" min="0" required>
+        </div>
+        <div>
+            <label for="maxAge">Maximum Age:</label>
+            <input type="number" id="maxAge" formControlName="maxAge" min="0" required>
+        </div>
+        <div>
+            <label for="profitRatio">Profit Ratio:</label>
+            <input type="number" id="profitRatio" formControlName="profitRatio" min="0" required>
+        </div>
+        <div>
+            <label for="registrationCommRatio">Registration Commission Ratio:</label>
+            <input type="number" id="registrationCommRatio" formControlName="registrationCommRatio" min="0" required>
+        </div>
+        <div>
+            <label for="installmentCommRatio">Installment Commission Ratio:</label>
+            <input type="number" id="installmentCommRatio" formControlName="installmentCommRatio" min="0" required>
+        </div>
+        <!-- <div>
+            <label for="isActive">Active:</label>
+            <input type="checkbox" id="isActive" formControlName="isActive">
+        </div> -->
+        <div>
+            <!-- Hidden input for schemeId -->
+            <input type="hidden" id="schemeId" formControlName="schemeId">
+        </div>
+
+        <button type="submit">Update Scheme Details</button>
+    </form>
+</div>

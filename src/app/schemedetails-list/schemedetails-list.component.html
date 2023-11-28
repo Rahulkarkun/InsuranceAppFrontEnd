@@ -1,0 +1,59 @@
+<!-- agent-list.component.html -->
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+  <app-employee-navbar></app-employee-navbar>
+</div>
+<div class="schemedetails-list-container">
+    <h2>Scheme Details List</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Detail Id</th>
+          <th>SchemeImage</th>
+          <th> Description</th>
+          <th>MinAmount</th>
+          <th>MaxAmount</th>
+          <th>MinInvestmentTime</th>
+          <th>MaxInvestmentTime</th>
+          <th>MinAge</th>
+          <th>MaxAge</th>
+          <th>ProfitRatio</th>
+          <!-- <th>Date</th>
+          <th>Tax</th> 
+          <th>TotalPayment</th>-->
+          <th>RegistrationCommRatio</th>
+          <th>InstallmentCommRatio</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detail of details">
+          <td>{{ detail.detailId }}</td>
+          <td>{{ detail.schemeImage }}</td>
+          <td>{{ detail.description }}</td>
+          <td>{{detail.minAmount}}</td>
+          <td>{{ detail.maxAmount }}</td>
+          <td>{{ detail.minInvestmentTime }}</td>
+          <td>{{ detail.maxInvestmentTime }}</td>
+          <td>{{ detail.minAge }}</td>
+          <td>{{ detail.maxAge }}</td>
+          <td>{{ detail.profitRatio }}</td>
+          <!-- <td>{{ detail.date}}</td>
+          <td>{{ detail.tax}}</td>
+          <td>{{ detail.totalPayment}}</td> -->
+          <td>{{ detail.registrationCommRatio }}</td>
+          <td>{{ detail.installmentCommRatio }}</td>
+          <td>
+            <button (click)="editSchemeDetails(detail.detailId)">Edit</button>
+            <button (click)="deleteSchemeDetails(detail.detailId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

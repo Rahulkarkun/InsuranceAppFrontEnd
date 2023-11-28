@@ -1,0 +1,12 @@
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div class="center-container">
+  <button (click)="viewClaim()">View Claim List</button>
+    <!-- <button (click)="redirectTo('add-customer')">Add Customer</button>
+    <button (click)="redirectTo('customer-list')">View Customer List</button> -->
+  </div>
+  

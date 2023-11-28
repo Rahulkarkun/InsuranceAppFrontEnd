@@ -1,0 +1,47 @@
+<!-- navbar.component.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" routerLink="/">
+        <img src="assets/insuranceLogo.png" alt="Logo" class="logo-img">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/register">Register</a>
+          </li>
+          <!-- Dropdown Menu for Insurance Plans -->
+          <li ngbDropdown class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" routerLink="/insurance-plans" id="insuranceDropdown" role="button"
+               ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+              Insurance Plans
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="insuranceDropdown">
+              <a ngbDropdownItem class="dropdown-item" routerLink="/insurance-plans/protection-plan">Protection Plan</a>
+              <a ngbDropdownItem class="dropdown-item" href="#">Child Plan</a>
+              <a ngbDropdownItem class="dropdown-item" href="#">Saving Plan</a>
+              <a ngbDropdownItem class="dropdown-item" href="#">Growth Plan</a>
+              <a ngbDropdownItem class="dropdown-item" href="#">Group Plan</a>
+            </div>
+          </li>
+          <!-- End Dropdown Menu -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact-us">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  

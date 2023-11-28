@@ -1,0 +1,36 @@
+<!-- src/app/add-agent/add-agent.component.html -->
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+<div class="add-employee-container">
+    <h2>Add Employee</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="addEmployee()">
+        <label for="firstName">First Name:</label>
+        <input id="firstName"  formControlName="firstName" required>
+  
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" formControlName="lastName" required>
+  
+        <label for="mobileNo">Mobile Number:</label>
+        <input id="mobileNo" formControlName="mobileNo" required>
+
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="email" required>
+  
+        <label for="salary">Salary:</label>
+        <input id="salary" formControlName="salary" required>
+  
+        <!-- <label for="userId">UserId:</label>
+        <input id="userId" formControlName="userId" required> -->
+        <label for="userName">UserName:</label>
+        <input id="userName" formControlName="userName" required>
+
+        <label for="password">Password:</label>
+        <input id="password" formControlName="password" type="password" required>
+  
+        <button type="submit">Add Employee</button>
+    </form>
+  </div>

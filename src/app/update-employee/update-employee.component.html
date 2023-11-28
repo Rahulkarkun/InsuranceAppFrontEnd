@@ -1,0 +1,61 @@
+<!-- src/app/add-agent/add-agent.component.html -->
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+<div class="update-employee-container">
+    <h2>Update Employee</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
+        <div>
+            <label for="employeeId">Employee ID:</label>
+            <input type="text" id="employeeId" formControlName="employeeId">
+          </div>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input id="firstName"  formControlName="firstName" required>
+        </div>
+        
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" formControlName="lastName" required>
+        </div>
+        <div>
+            <label for="mobileNo">Mobile Number:</label>
+            <input id="mobileNo" formControlName="mobileNo" required>
+        </div>
+  
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" formControlName="email" type="email" required>
+        </div>
+
+        
+        <div>
+            <label for="salary">Salary:</label>
+            <input id="salary" formControlName="salary" required>
+        </div>
+        
+        <div>
+            <!-- <label for="userId">UserId:</label> -->
+            <input id="userId" formControlName="userId" type="hidden">
+        </div>
+        
+        <div>
+            <!-- <label for="userName">UserName:</label> -->
+            <input id="userName" formControlName="userName" type="hidden">
+        </div>
+        <div>
+            <!-- <label for="password">Password:</label> -->
+        <input id="password" formControlName="password" type="hidden">
+
+        </div>
+        
+
+        
+  
+        <button type="submit">Update Employee</button>
+    </form>
+  </div>
+

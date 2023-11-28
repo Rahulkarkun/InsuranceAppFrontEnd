@@ -1,0 +1,38 @@
+<!-- agent-list.component.html -->
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+  <app-employee-navbar></app-employee-navbar>
+</div>
+<div class="insurance-scheme-list-container">
+    <h2>Insurance Scheme List</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Scheme Id</th>
+          <th>Scheme Name</th>
+          <!-- <th>Detail Id</th> -->
+          <th>Plan Id</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let scheme of schemes">
+          <td>{{ scheme.schemeId }}</td>
+          <td>{{ scheme.schemeName }}</td>
+          <!-- <td>{{ scheme.detailId }}</td> -->
+          <td>{{ scheme.planId }}</td>
+          <!-- <td>{{ scheme.isActive}}</td> -->
+          <td>
+            <button (click)="editInsuranceScheme(scheme.schemeId)">Edit</button>
+            <button (click)="deleteInsuranceScheme(scheme.schemeId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

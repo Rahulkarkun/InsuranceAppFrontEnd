@@ -1,0 +1,78 @@
+<body (click)="setRole()">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container">
+            <a class="navbar-brand" routerLink="/">
+                <img src="assets/insuranceLogo.png" alt="Logo" class="logo-img">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/employee-dashboard">Dashboard</a>
+                    </li>
+                    <li ngbDropdown class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownAccount" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+                            Agent
+                        </a>
+                        <div ngbDropdownMenu aria-labelledby="navbarDropdownAccount" class="dropdown-menu">
+                            <a ngbDropdownItem routerLink="/add-agent" class="dropdown-item">Add Agent</a>
+                            <a ngbDropdownItem routerLink="/agent-list" class="dropdown-item">View Agent</a>
+                        </div>
+                    </li>
+                    <li ngbDropdown class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownInsurance" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+                            Customer
+                        </a>
+                        <ul ngbDropdownMenu aria-labelledby="navbarDropdownInsurance" class="dropdown-menu">
+                            <li><a ngbDropdownItem routerLink = "/add-customer" class="dropdown-item">Add Customers</a></li>
+                            <li><a ngbDropdownItem routerLink = "/customer-list" class="dropdown-item">View Customers</a></li>
+                            <li><a ngbDropdownItem routerLink = "/documentverification" class="dropdown-item">Document Verification</a></li>
+                        </ul>
+                    </li>
+                    <li ngbDropdown class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownInsurance" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+                            Insurance Plan
+                        </a>
+                        <ul ngbDropdownMenu aria-labelledby="navbarDropdownInsurance" class="dropdown-menu">
+                            <li><a ngbDropdownItem routerLink = "/add-insurance-plan"class="dropdown-item">Add Insurance Plan</a></li>
+                            <li><a ngbDropdownItem routerLink = "/insurance-plan-list"class="dropdown-item">View Insurance Plan</a></li>
+                            <li><a ngbDropdownItem routerLink="/view-payments" class="dropdown-item">View Policy Payment</a></li>
+                            <li><a ngbDropdownItem routerLink="/claim" class="dropdown-item">View Policy Claim</a></li>
+                        </ul>
+                    </li>                
+                    <li ngbDropdown class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownInsurance" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+                            Insurance Type
+                        </a>
+                        <ul ngbDropdownMenu aria-labelledby="navbarDropdownInsurance" class="dropdown-menu">
+                            <li><a ngbDropdownItem routerLink="/add-insurance-scheme" class="dropdown-item">Add Insurance Scheme</a></li>
+                            <li><a ngbDropdownItem routerLink="/insurance-scheme-list" class="dropdown-item">View Insurance Scheme</a></li>
+                            <li><a ngbDropdownItem routerLink="/add-insurance-scheme" class="dropdown-item">Add Insurance SchemeDetails</a></li>
+                            <li><a ngbDropdownItem routerLink="/schemedetails-list" class="dropdown-item">View Insurance SchemeDetails</a></li>
+                            <li><a ngbDropdownItem routerLink="/add-insurance-policy" class="dropdown-item">Add Insurance Policy</a></li>
+                            <li><a ngbDropdownItem routerLink="/insurance-policy-list" class="dropdown-item">View Insurance Policy</a></li>
+                        </ul>
+                    </li>
+                    <li ngbDropdown class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownCommission" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul ngbDropdownMenu aria-labelledby="navbarDropdownCommission" class="dropdown-menu">
+                            <li><a ngbDropdownItem routerLink = "#" class="dropdown-item" href="#">Profile</a></li>
+                            <li><a ngbDropdownItem routerLink = "#" class="dropdown-item">Change Password</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" (click)="deleteToken()">Logout</button>
+                        <!-- <a class="nav-link" (click)="deleteToken()">Logout</a> -->
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </nav>
+</body>

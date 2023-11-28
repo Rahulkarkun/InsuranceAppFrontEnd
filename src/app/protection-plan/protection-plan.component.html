@@ -1,0 +1,93 @@
+<!-- protection-plan.component.html -->
+<app-navbar></app-navbar>
+<div class="protection-plan-container">
+    <h1 class="main-title">Protection Plans</h1>
+  
+    <div class="plan-section">
+      <h2 class="sub-title">Cancer Protection Plan</h2>
+      <img src="assets/cancer.jpg" alt="Cancer Protection Plan Image" class="plan-image">
+      <p>
+        <strong>Comprehensive plan:</strong> Add details according to your knowledge
+      </p>
+      <p>
+        <strong>Waiver of all future premiums:</strong> Add details according to your knowledge
+      </p>
+      <p>
+        <strong>Documents required:</strong> Aadhar card, Health Certificates
+      </p>
+    </div>
+  
+    <div class="plan-details-section">
+      <h2 class="sub-title">Plan Details</h2>
+      <table class="table table-bordered">
+        <tr>
+          <td>Policy term - Minimum</td>
+          <td>2 years</td>
+        </tr>
+        <tr>
+          <td>Policy term - Maximum</td>
+          <td>8 years</td>
+        </tr>
+        <tr>
+          <td>Minimum Age</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>Maximum Age</td>
+          <td>60</td>
+        </tr>
+        <tr>
+          <td>Minimum Investment Amount</td>
+          <td>Rs. 110000.00</td>
+        </tr>
+        <tr>
+          <td>Maximum Investment Amount</td>
+          <td>150000.00</td>
+        </tr>
+        <tr>
+          <td>Profit Ratio</td>
+          <td>6%</td>
+        </tr>
+      </table>
+    </div>
+  
+    <div class="interest-calculator-section">
+      <h2 class="sub-title">Interest Calculator</h2>
+      <form>
+        <div class="form-group">
+          <label for="years">No of years:</label>
+          <input type="number" id="years" name="years" class="form-control" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="investmentAmount">Total Investment Amount:</label>
+          <input type="number" id="investmentAmount" name="investmentAmount" class="form-control" required>
+        </div>
+  
+        <div class="form-group">
+          <label for="months">Months:</label>
+          <input type="number" id="months" name="months" class="form-control" required>
+        </div>
+  
+        <button type="button" class="btn btn-primary" (click)="calculateInterest()">Calculate</button>
+      </form>
+  
+      <div *ngIf="installmentAmount !== null">
+        <h3 class="result-title">Calculated Results</h3>
+        <table class="table table-bordered">
+          <tr>
+            <td>Installment Amount</td>
+            <td>{{ installmentAmount | currency: 'INR' }}</td>
+          </tr>
+          <tr>
+            <td>Interest Amount</td>
+            <td>{{ interestAmount | currency: 'INR' }}</td>
+          </tr>
+          <tr>
+            <td>Total Amount</td>
+            <td>{{ totalAmount | currency: 'INR' }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>

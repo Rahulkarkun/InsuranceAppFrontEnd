@@ -1,0 +1,58 @@
+/* protection-plan.component.css */
+.protection-plan-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.main-title {
+    color: #007bff;
+}
+
+.sub-title {
+    color: #28a745;
+}
+
+.plan-section {
+    margin-top: 20px;
+}
+
+.plan-image {
+    max-width: 50%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.plan-details-section {
+    margin-top: 20px;
+}
+
+.interest-calculator-section {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.result-title {
+    margin-top: 20px;
+    color: #dc3545;
+}
+/* protection-plan.component.css */
+.plan-details-section {
+    margin-top: 20px;
+}
+
+.table-bordered th,
+.table-bordered td {
+    border: 1px solid #dee2e6;
+}
+
+.table-bordered tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.table-bordered tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+

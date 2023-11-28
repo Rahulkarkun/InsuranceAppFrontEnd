@@ -1,0 +1,145 @@
+<!-- src/app/add-agent/add-agent.component.html
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <div class="update-agent-container">
+    <h2>Update Agent</h2>
+    <form [formGroup]="agentForm" (ngSubmit)="updateAgent()">
+      <label for="firstName">First Name:</label>
+      <input id="firstName" formControlName="firstName" required>
+  
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" formControlName="lastName" required>
+  
+      <label for="qualification">Qualification:</label>
+      <input id="qualification" formControlName="qualification" required>
+  
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" required>
+  
+      <label for="mobileNo">Mobile Number:</label>
+      <input id="mobileNo" formControlName="mobileNo" required>
+  
+      <!-- <label for="userId">User ID:</label> -->
+      <!-- <input id="userId" formControlName="userId" type="number" [hidden]> -->
+  
+      <!-- <label for="userName">UserName:</label> -->
+      <!-- <input id="userName" formControlName="userName" type="hidden">
+  
+      <!-- <label for="password">Password:</label> -->
+      <!-- <input id="password" formControlName="password" type="hidden" > -->
+  
+      <!-- <input id="commissionEarned" formControlName="commissionEarned" type="hidden" > -->
+      <!-- <button type="submit">Update Agent</button> -->
+    <!-- </form> -->
+  <!-- </div> --> --> -->
+
+
+
+  <div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+  <app-employee-navbar></app-employee-navbar>
+</div>
+<div class="update-agent-container">
+    <h2>Update Agent</h2>
+    <form [formGroup]="agentForm" (ngSubmit)="updateAgent()">
+        <div>
+            <label for="agentId">Agent ID:</label>
+            <input type="text" id="agentId" formControlName="agentId">
+        </div>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input id="firstName" formControlName="firstName" required>
+        </div>
+
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" formControlName="lastName" required>
+        </div>
+        <div>
+            <label for="mobileNo">Mobile Number:</label>
+            <input id="mobileNo" formControlName="mobileNo" required>
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" formControlName="email" type="email" required>
+        </div>
+
+        <div>
+            <label for="commissionEarned">Commission Earned:</label>
+            <input id="commissionEarned" formControlName="commissionEarned" required>
+        </div>
+
+        <div>
+           <!-- <label for="userId">UserId:</label>-->
+            <input id="userId" formControlName="userId" type="hidden">
+        </div>
+
+        <div>
+            <input id="userName" formControlName="userName" type="hidden">
+        </div>
+        <div>
+            <input id="password" formControlName="password" type="hidden">
+        </div>
+
+        <button type="submit">Update Agent</button>
+    </form>
+</div> 
+<!-- 
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div class="update-agent-container">
+  <h2>Update Agent</h2>
+  <form [formGroup]="agentForm" (ngSubmit)="updateAgent()">
+    <div>
+      <label for="agentId">Agent ID:</label>
+      <input type="text" id="agentId" formControlName="agentId">
+    </div>
+    <div>
+      <label for="firstName">First Name:</label>
+      <input id="firstName" formControlName="firstName" required>
+    </div>
+    <div>
+      <label for="lastName">Last Name:</label>
+      <input id="lastName" formControlName="lastName" required>
+    </div>
+    <div>
+      <label for="mobileNo">Mobile Number:</label>
+      <input id="mobileNo" formControlName="mobileNo" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" type="email" required>
+    </div>
+    <div>
+      <label for="commissionEarned">Commission Earned:</label>
+      <input id="commissionEarned" formControlName="commissionEarned" required>
+    </div>
+    <div>
+      <label for="userId">UserId:</label>
+      <input id="userId" formControlName="userId" type="hidden">
+    </div>
+    <div>
+      <label for="userName">UserName:</label>
+      <input id="userName" formControlName="userName" type="hidden">
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="hidden">
+    </div>
+    <button type="submit">Update Agent</button>
+  </form>
+</div> -->

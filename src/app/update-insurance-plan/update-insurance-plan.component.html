@@ -1,0 +1,26 @@
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+  <div class="update-insurance-plan-container">
+    <h2>Update Insurance Plan</h2>
+    <form [formGroup]="insurancePlanForm" (ngSubmit)="updateInsurancePlan()">
+      <!-- <div>
+        <label for="planId">Plan ID:</label>
+        <input type="text" id="planId" name="planId" formControlName="planId" > 
+      </div> -->
+      <div>
+        <label for="planName">Plan Name:</label>
+        <input type="text" id="planName" name="planName" formControlName="planName" required>
+      </div>
+      <!-- Add other form fields as needed -->
+  
+      <button type="submit">Update Plan</button>
+    </form>
+  </div>
+

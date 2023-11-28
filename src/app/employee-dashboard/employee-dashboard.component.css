@@ -1,0 +1,33 @@
+.dashboard-background {
+    padding: 0px 0px 0px;
+}
+
+.dashboard-page {
+    position: relative;
+    z-index: 0;
+    text-align: left;
+    padding: 120px 70px;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    color: #fff;
+}
+
+/* Adjust column size for a total of 4 columns in a row */
+.custom-column {
+    width: calc(25% - 40px); /* Adjust the width and margin as needed */
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.add-agent-icon, .view-agents-icon, .add-employee-icon, .view-employees-icon, .add-customer-icon, .view-customers-icon, .add-insurance-plan-icon, .view-insurance-plans-icon,
+.add-insurance-scheme-icon, .view-insurance-schemes-icon, .view-payments-icon, .view-claims-icon, .add-scheme-details-icon, .view-scheme-details-icon,.add-insurance-policy-icon,.view-insurance-policies-icon {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.icon-text {
+    font-size: 18px; /* Adjust the font size as needed */
+}
+
+.footer {
+    margin-top: auto;
+}

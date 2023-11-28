@@ -1,0 +1,42 @@
+<!-- update-claim.component.html -->
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div class="update-claim-container">
+    <h2>Update Claim</h2>
+    <form [formGroup]="claimForm" (ngSubmit)="updateClaim()">
+      <div>
+        <label for="claimId">Claim ID:</label>
+        <input type="text" id="claimId" formControlName="claimId">
+      </div>
+      <div>
+        <label for="claimAmount">Claim Amount:</label>
+        <input type="text" id="claimAmount" formControlName="claimAmount" required>
+      </div>
+      <div>
+        <label for="bankAccountNumber">Bank Account Number:</label>
+        <input type="text" id="bankAccountNumber" formControlName="bankAccountNumber" required>
+      </div>
+      <div>
+        <label for="bankIfscCode">Bank IFSC Code:</label>
+        <input type="text" id="bankIfscCode" formControlName="bankIfscCode" required>
+      </div>
+      <div>
+        <label for="date">Date:</label>
+        <input type="text" id="date" formControlName="date" required>
+      </div>
+      <div>
+        <label for="status">Status:</label>
+        <input type="text" id="status" formControlName="status" required>
+      </div>
+      <div>
+        <label for="policyNo">Policy No:</label>
+        <input type="text" id="policyNo" formControlName="policyNo" required>
+      </div>
+  
+      <button type="submit">Update Claim</button>
+    </form>
+  </div>
