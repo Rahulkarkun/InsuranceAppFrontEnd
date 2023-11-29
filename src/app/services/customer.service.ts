@@ -59,7 +59,11 @@ export class CustomerService {
   getCustomerById(customerId: number): Observable<Customer> {
     return this.http.get<Customer>(`${this.apiUrl}/Customer?Id=${customerId}`);
   }
-
+  getByuserId(userId: number): Observable<Customer> {
+    // console.log(this.http.get<Admin>(`${this.apiUrl}/Admin/getByUserId/${userId}`))
+    return this.http.get<Customer>(`${this.apiUrl}/Customer/getByUserId?id=${userId}`);
+    
+  }
   addCustomer(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(`${this.apiUrl}/Customer`, customer);
   }
@@ -73,6 +77,13 @@ export class CustomerService {
   }
   getCustomersByAgentId(agentId: number): Observable<Customer[]> {
     return this.http.get<Customer[]>(`${this.apiUrl}/Customer/getByAgentId/${agentId}`);
+  }
+  changePasswordCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(`${this.apiUrl}/Customer/ChangePassword`, customer);
+  }
+
+  changeUsernameCustomer(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(`${this.apiUrl}/Customer/ChangeUsername`, customer);
   }
   
   // addUser(data:any){    return this.http.post(this.apiUrl+"/User/Register",data)}

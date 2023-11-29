@@ -50,6 +50,10 @@ import { EmployeeNavbarComponent } from './employee-navbar/employee-navbar.compo
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { AdminChangePasswordComponent } from './admin-change-password/admin-change-password.component';
 import { AdminChangeUsernameComponent } from './admin-change-username/admin-change-username.component';
+import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
+import { CustomerProfileComponent } from './customer-profile/customer-profile.component';
+import { CustomerChangePasswordComponent } from './customer-change-password/customer-change-password.component';
+import { CustomerChangeUsernameComponent } from './customer-change-username/customer-change-username.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -102,6 +106,10 @@ const routes: Routes = [
   {path:'employee-dashboard',component:EmployeeDashboardComponent},
   {path:'admin-change-password',component: AdminChangePasswordComponent},
   {path:'admin-change-username',component: AdminChangeUsernameComponent},
+  {path:'customer-dashboard',component:CustomerDashboardComponent},
+  {path:'customer-profile',component:CustomerProfileComponent},
+  {path:'customer-change-password',component: CustomerChangePasswordComponent},
+  {path:'customer-change-username',component: CustomerChangeUsernameComponent},
   {
     path:"weather",
     component:WeatherInfoComponent
