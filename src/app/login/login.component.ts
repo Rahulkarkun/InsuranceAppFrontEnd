@@ -57,7 +57,7 @@ export class LoginComponent {
             this.router.navigateByUrl('/agent');
           }
            else {
-            this.router.navigateByUrl('/customer');
+            this.router.navigateByUrl('/customer-dashboard');
           }
         },
         

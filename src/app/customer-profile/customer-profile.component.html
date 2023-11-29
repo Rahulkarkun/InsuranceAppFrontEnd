@@ -1,0 +1,56 @@
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+</div>
+<div class="update-customer-container">
+    <h2>Customer Profile</h2>
+    <form [formGroup]="customerForm" (ngSubmit)="updateCustomer()">
+        <div>
+            <label for="customerId">Customer ID:</label>
+            <!-- <input type="text" id="admintId" formControlName="adminId" [disabled]="true" > -->
+            <input type="text" id="customerId" formControlName="customerId" readonly>
+        </div>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input id="firstName" formControlName="firstName" >
+        </div>
+
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" formControlName="lastName" >
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" formControlName="email" >
+        </div>
+        <div>
+            <label for="mobileNo">Mobile No:</label>
+            <input id="mobileNo" formControlName="mobileNo" >
+        </div>
+        <div>
+            <label for="state">State</label>
+            <input id="state" formControlName="state" >
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input id="city" formControlName="city" >
+        </div>
+
+        <!-- <div>
+            <label for="userId">Last Name:</label> -->
+            <input id="nominee" formControlName="nominee" type="hidden">
+            <input id="nomineeRelation" formControlName="nomineeRelation" type="hidden">
+            <input id="insurancePolicies" formControlName="insurancePolicies" type="hidden">
+            <input id="document" formControlName="document" type="hidden">
+            <input id="agentId" formControlName="agentId" type="hidden">
+            <input id="userId" formControlName="userId" type="hidden">
+        <!-- </div> -->
+
+        <button type="submit">Update Customer</button>
+    </form>
+</div> 

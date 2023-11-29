@@ -1,0 +1,62 @@
+<app-customer-navbar></app-customer-navbar>
+<div class="dashboard-background">
+    <div class="dashboard-page">
+        <div class="container mt-5">
+            <!-- First row of icons -->
+            <div class="row">
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="updateProfile()">
+                        <img src="assets/profile.png" alt="Add Agent Icon" class="icon-image add-agent-icon"><br><br>
+                        <div class="icon-text">Profile</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="agentList()">
+                        <img src="assets/view-agents.png" alt="View Agents Icon" class="icon-image view-agents-icon"><br><br>
+                        <div class="icon-text">Documents</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="addEmployee()">
+                        <img src="assets/add-employee.png" alt="Add Employee Icon" class="icon-image add-employee-icon"><br><br>
+                        <div class="icon-text">Insurance Account</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="employeeList()">
+                        <img src="assets/view-employees.png" alt="View Employees Icon" class="icon-image view-employees-icon"><br><br>
+                        <div class="icon-text">Query or feedback</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Second row of icons -->
+            <div class="row mt-5">
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="addCustomer()">
+                        <img src="assets/add-customer.png" alt="Add Customer Icon" class="icon-image add-customer-icon"><br><br>
+                        <div class="icon-text">View Feedback</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="changePassword()">
+                        <img src="assets/view-customers.png" alt="View Customers Icon" class="icon-image view-customers-icon"><br><br>
+                        <div class="icon-text">Change Password</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="changeUsername()">
+                        <img src="assets/add-insurance-plan.png" alt="Add Insurance Plan Icon" class="icon-image add-insurance-plan-icon"><br><br>
+                        <div class="icon-text">Change Username</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="insurancePlanList()">
+                        <img src="assets/view-insurance-plans.png" alt="View Insurance Plans Icon" class="icon-image view-insurance-plans-icon"><br><br>
+                        <div class="icon-text">View Insurance Plans</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
