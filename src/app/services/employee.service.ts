@@ -30,6 +30,13 @@ export class EmployeeService {
   deleteEmployee(employeeId: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/Employee/${employeeId}`);
   }
+
+  getByuserId(userId: number): Observable<Employee> {
+    // console.log(this.http.get<Admin>(`${this.apiUrl}/Admin/getByUserId/${userId}`))
+    return this.http.get<Employee>(`${this.apiUrl}/Employee/getByUserId?id=${userId}`);
+    
+  }
+
   getId(){
     return this.id
   }

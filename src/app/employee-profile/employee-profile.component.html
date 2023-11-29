@@ -1,0 +1,50 @@
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+</div>
+<div class="update-agent-container">
+    <h2>Employee Profile</h2>
+    <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
+        <div>
+            <label for="employeeId">Admin ID:</label>
+            <!-- <input type="text" id="admintId" formControlName="adminId" [disabled]="true" > -->
+            <input type="text" id="employeeId" formControlName="employeeId" readonly>
+        </div>
+        <div>
+            <label for="firstName">First Name:</label>
+            <input id="firstName" formControlName="firstName" >
+        </div>
+
+        <div>
+            <label for="lastName">Last Name:</label>
+            <input id="lastName" formControlName="lastName" >
+        </div>
+
+        <div>
+            <label for="mobileNo">Mobile No:</label>
+            <input id="mobileNo" formControlName="mobileNo" >
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input id="email" formControlName="email" >
+        </div>
+
+        <div>
+            <label for="salary">Salary:</label>
+            <input id="salary" formControlName="salary" readonly>
+        </div>
+
+        <!-- <div>
+            <label for="userId">Last Name:</label> -->
+            <input id="userId" formControlName="userId" type="hidden">
+        <!-- </div> -->
+
+        <button type="submit">Update Admin</button>
+    </form>
+</div> 

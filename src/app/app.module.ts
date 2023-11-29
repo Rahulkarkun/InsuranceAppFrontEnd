@@ -55,6 +55,7 @@ import { EmployeeNavbarComponent } from './employee-navbar/employee-navbar.compo
 import { EmployeeDashboardComponent } from './employee-dashboard/employee-dashboard.component';
 import { AdminChangePasswordComponent } from './admin-change-password/admin-change-password.component';
 import { AdminChangeUsernameComponent } from './admin-change-username/admin-change-username.component';
+import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -108,7 +109,8 @@ import { AdminChangeUsernameComponent } from './admin-change-username/admin-chan
     EmployeeNavbarComponent,
     EmployeeDashboardComponent,
     AdminChangePasswordComponent,
-    AdminChangeUsernameComponent
+    AdminChangeUsernameComponent,
+    EmployeeProfileComponent
   ],
   imports: [
     BrowserModule,

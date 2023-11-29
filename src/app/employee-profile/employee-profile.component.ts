@@ -4,22 +4,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TemporaryDataService } from '../services/temporary-data.service';
-import { AdminService } from '../services/admin.service';
 import { DataService } from '../services/data.service';
+import { AdminService } from '../services/admin.service';
+import { EmployeeService } from '../services/employee.service';
 import { lastValueFrom } from 'rxjs';
-import { Admin } from '../models/Admin';
 
 @Component({
-  selector: 'app-admin-profile',
-  templateUrl: './admin-profile.component.html',
-  styleUrl: './admin-profile.component.css'
+  selector: 'app-employee-profile',
+  templateUrl: './employee-profile.component.html',
+  styleUrl: './employee-profile.component.css'
 })
-export class AdminProfileComponent {
-  adminForm!: FormGroup;
+export class EmployeeProfileComponent {
+  employeeForm!: FormGroup;
   customerId: number = 0;
   userRole: string = '';
   loginId: number = 0;
-  adminData:any
+  employeeData:any
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -27,7 +27,7 @@ export class AdminProfileComponent {
     private route: ActivatedRoute,
     private temporaryData: TemporaryDataService,
     private dataService: DataService,
-    private adminService: AdminService
+    private employeeService: EmployeeService
   ) {
     // console.log("UserId"+dataService.userId)
     this.userRole = temporaryData.getRole();
@@ -45,30 +45,17 @@ export class AdminProfileComponent {
   }
 
   ngOnInit(): void {
-    this.adminForm = this.fb.group({
-      adminId: ['', Validators.required],
+    this.employeeForm = this.fb.group({
+      employeeId: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      mobileNo: ['', Validators.required],
+      email: ['', Validators.required],
+      salary: ['', Validators.required],
       userId: [0]
     });
 
-    this.fetchAdminDetails()
-    // Extract the customer ID from the route params
-    
-    // this.route.params.subscribe(params => {
-    //   const idParam = this.adminData.AdminId;
-    //   if (idParam) {
-    //     const id = +idParam;
-    //     if (!isNaN(id)) {
-    //       console.log(id)
-    //       this.fetchAdminDetails(id);
-    //     } else {
-    //       console.error('Invalid admin ID parameter:', idParam);
-    //     }
-    //   } else {
-    //     console.error('No admin ID parameter provided');
-    //   }
-    // });
+    this.fetchEmployeeDetails()
   }
 
   // async updateInsurancePlan(): Promise<void> {
@@ -88,17 +75,18 @@ export class AdminProfileComponent {
   //   }
   // }
 
-  async updateAdmin(): Promise<void> {
+  async updateEmployee(): Promise<void> {
     try {
       // Ensure all form fields are correctly mapped to the API request body
       // const requestBody = { ...this.adminForm.value};
       debugger
-      const updatedAdmin = await lastValueFrom(this.adminService.updateAdmin(this.adminForm.value));
-      console.log('Admin updated:', updatedAdmin);
+      const updatedEmployee = await lastValueFrom(this.employeeService.updateEmployee(this.employeeForm.value));
+      console.log('Employee updated:', updatedEmployee);
 
       // Display an alert to the user
-      alert('Admin updated successfully!');
-      this.router.navigateByUrl('/admin-dashboard')
+      alert('Employee updated successfully!');
+      this.router.navigateByUrl('/employee-dashboard')
+
 
       // Optionally, you can reset the form or perform any other actions here
       // this.customerForm.reset();
@@ -106,15 +94,15 @@ export class AdminProfileComponent {
       console.error('Error updating admin:', error);
 
       // Display an error alert to the user
-      alert('Error updating customer. Please try again.');
+      alert('Error updating Employee. Please try again.');
     }
   }
 
-  private fetchAdminDetails(): void {
-    this.adminService.getByuserId(this.dataService.userId).subscribe(
+  private fetchEmployeeDetails(): void {
+    this.employeeService.getByuserId(this.dataService.userId).subscribe(
       (data) => {
         // Populate the form with customer details
-        this.adminForm.patchValue(data);
+        this.employeeForm.patchValue(data);
       },
       (error) => {
         console.error('Error fetching customer details:', error);
