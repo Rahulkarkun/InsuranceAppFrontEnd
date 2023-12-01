@@ -8,31 +8,60 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<body>
 <div class="insurance-scheme-list-container">
     <h2>Insurance Scheme List</h2>
+    <button (click)="addInsuranceScheme()">Add Insurance Scheme</button>
     <table class="table table-bordered">
       <thead>
         <tr>
           <th>Scheme Id</th>
+          <th>Plan Name</th>
           <th>Scheme Name</th>
           <!-- <th>Detail Id</th> -->
-          <th>Plan Id</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let scheme of schemes">
+        <tr *ngFor="let scheme of schemes
+        | paginate:{
+          id:'listing_pagination',
+          itemsPerPage:selectedItemsPerPage,
+          currentPage:page,
+          totalItems:totalRecords
+        };index as i">
           <td>{{ scheme.schemeId }}</td>
+          <td>{{ getInsurancePlanName(scheme.planId) }}</td>
           <td>{{ scheme.schemeName }}</td>
           <!-- <td>{{ scheme.detailId }}</td> -->
-          <td>{{ scheme.planId }}</td>
           <!-- <td>{{ scheme.isActive}}</td> -->
           <td>
             <button (click)="editInsuranceScheme(scheme.schemeId)">Edit</button>
             <button (click)="deleteInsuranceScheme(scheme.schemeId)">Delete</button>
+            <button (click)="viewInsuranceDetails(scheme.schemeId)">View Insurance Details</button>
           </td>
         </tr>
       </tbody>
     </table>
+    <div class="agent-list-container">
+      <div class="items-per-page-container">
+        <label for="itemsPerPage">Items per page:</label>
+        <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+    <div align="center">
+      <pagination-controls
+        id="listing_pagination"
+        [maxSize]="5"
+        [directionLinks]="true"
+        (pageChange)="page = $event">
+      </pagination-controls>
+    </div>
   </div>
+</div>
+</body>
   

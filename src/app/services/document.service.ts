@@ -9,30 +9,39 @@ import { Document } from '../models/document';
   providedIn: 'root'
 })
 export class DocumentService {
-  private apiUrl = 'your_api_url'; // Replace with your API URL
+  private apiUrl = 'https://localhost:7029/api'; // Replace with your API URL
+  private id:number=0;
 
   constructor(private http: HttpClient) {}
 
-  token = localStorage.getItem('token');
+//   token = localStorage.getItem('token');
 
-  headers = new HttpHeaders({
-   'Content-Type': 'application/json',
-   'Authorization': `Bearer ${this.token}`
- });
+//   headers = new HttpHeaders({
+//    'Content-Type': 'application/json',
+//    'Authorization': `Bearer ${this.token}`
+//  });
 
-  options = { headers: this.headers };
+  // options = { headers: this.headers };
 
-  updateDocumentStatus( document: Document): Observable<any> {
+  updateDocumentStatus( document: Document): Observable<Document> {
     // Implement your API endpoint to update only the 'isActive' field
-    return this.http.put<any>(`${this.apiUrl}/document`, document, this.options);
+    return this.http.put<Document>(`${this.apiUrl}/Document`, document);
   }
-  getDocumentById(documentId: number): Observable<any> {
+  getDocumentById(documentId: number): Observable<Document> {
     // Implement your API endpoint to get document details by ID
-    return this.http.get<any>(`${this.apiUrl}/documents/${documentId}`,this.options);
+    return this.http.get<Document>(`${this.apiUrl}/Document/GetById?id=${documentId}`);
   }
 
   getAllDocuments(): Observable<Document[]> {
-    const url = `${this.apiUrl}/documents`;
-    return this.http.get<Document[]>(url, this.options);
+    // const url = `${this.apiUrl}/documents`;
+    return this.http.get<Document[]>(`${this.apiUrl}/Document/get/`);
+  }
+
+  getId(){
+    return this.id;
+  }
+
+  setId(documentId:number){
+    this.id=documentId;
   }
 }

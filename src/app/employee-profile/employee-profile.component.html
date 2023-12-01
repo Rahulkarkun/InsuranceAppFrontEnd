@@ -7,7 +7,8 @@
 <div *ngIf="userRole=='Employee'">
     <app-employee-navbar></app-employee-navbar>
 </div>
-<div class="update-agent-container">
+<body>
+<div class="update-employee-container">
     <h2>Employee Profile</h2>
     <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
         <div>
@@ -48,3 +49,4 @@
         <button type="submit">Update Admin</button>
     </form>
 </div> 
+</body>

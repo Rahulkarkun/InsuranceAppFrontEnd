@@ -1,7 +1,7 @@
 // update-customer.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { CustomerService } from '../services/customer.service';
 import { TemporaryDataService } from '../services/temporary-data.service';
@@ -20,7 +20,8 @@ export class UpdateCustomerComponent implements OnInit {
     private fb: FormBuilder,
     private customerService: CustomerService,
     private route: ActivatedRoute,
-    private temporaryData: TemporaryDataService
+    private temporaryData: TemporaryDataService,
+    private router: Router
   ) {
     this.userRole = temporaryData.getRole();
   }
@@ -66,6 +67,7 @@ export class UpdateCustomerComponent implements OnInit {
 
       // Display an alert to the user
       alert('Customer updated successfully!');
+      this.router.navigateByUrl("/customer-list")
 
       // Optionally, you can reset the form or perform any other actions here
       this.customerForm.reset();

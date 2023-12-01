@@ -4,6 +4,8 @@ import { InsurancePolicyService } from '../services/insurance-policy.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TemporaryDataService } from '../services/temporary-data.service';
+import { CustomerService } from '../services/customer.service';
+import { Customer } from '../models/customer';
 
 @Component({
   selector: 'app-insurance-policy-list',
@@ -11,14 +13,33 @@ import { TemporaryDataService } from '../services/temporary-data.service';
   styleUrl: './insurance-policy-list.component.css'
 })
 export class InsurancePolicyListComponent {
-  policies: any;
+  policies: Array<any>;
+  page: number = 1;
+  totalRecords:number=0
+  selectedItemsPerPage: number = 5; // Set a default value, or fetch it from user preferences
   userRole:string=''
-  constructor(private insurancePolicyService: InsurancePolicyService, 
-    private router: Router,private temporaryData:TemporaryDataService) 
-  {this.userRole=temporaryData.getRole()
+  // customers: { [key: number]: Customer } = {};
+  customer: Array<any>;
+  constructor(
+    private insurancePolicyService: InsurancePolicyService, 
+    private router: Router,
+    private temporaryData:TemporaryDataService,
+    private customerService: CustomerService) 
+  { this.policies=new Array<any>()
+    this.customer = new Array<any>();
+    this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    this.customerService.getAllCustomers().subscribe({
+      next:(data)=>{
+        this.customer=data
+        this.totalRecords=data.length
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse)
+      }
+    })
     this.fetchInsurancePolicies();
   }
 
@@ -36,9 +57,42 @@ export class InsurancePolicyListComponent {
     );
   }
 
+  // fetchInsurancePolicies(): void {
+  //   this.insurancePolicyService.getAllInsurancePolicy().subscribe(
+  //     {
+
+  //       next: (data) => {
+  //         this.policies = data;
+  //         console.log(this.policies);
+
+  //         // Fetch customer details for each policy
+  //         this.policies.forEach((policy: any) => {
+  //           debugger
+  //           this.getCustomerName(policy.customerId);
+  //         });
+  //       },
+  //       error: (errorResponse: HttpErrorResponse) => {
+  //         console.log(errorResponse);
+  //       }
+  //     }
+  //   );
+  // }
+
+
+
+  getCustomerName(customerId: number): string {
+    if (this.customer) {
+      const customer = this.customer.find((a: any) => a.customerId === customerId);
+      console.log(customer);
+      return customer!=null ? `${customer.firstName} ${customer.lastName}` : 'Customer Not Found';
+    } else {
+      return 'Customer Data Not Loaded';
+    }
+  }
+
   editInsurancePolicy(policyNo: number): void {
     // Navigate to the update agent page with the agent ID
-    this.router.navigate(['/update-insurance-policy', policyNo]);
+    this.router.navigate([`/update-insurance-policy/${policyNo}`]);
   }
 
   deleteInsurancePolicy(policyNo: number): void {
@@ -54,4 +108,10 @@ export class InsurancePolicyListComponent {
       }
     );
   }
+
+  onItemsPerPageChange(): void {
+    this.page = 1; // Reset to the first page when items per page changes
+    this.fetchInsurancePolicies(); // Fetch data with the new items per page
+  }
+
 }

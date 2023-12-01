@@ -11,10 +11,15 @@ import { TemporaryDataService } from '../services/temporary-data.service';
   styleUrl: './view-payments.component.css'
 })
 export class ViewPaymentsComponent {
-  payments: any;
+  payments: Array<any>;
+  page: number = 1;
+  totalRecords:number=0
   userRole:string=''
+  selectedItemsPerPage: number = 5; // Set a default value, or fetch it from user preferences
+
   constructor(private paymentService: PaymentService, private router: Router,private temporaryData:TemporaryDataService) 
-  {this.userRole=temporaryData.getRole()
+  { this.payments=new Array<any>()
+    this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
   ngOnInit(): void {
@@ -27,12 +32,19 @@ export class ViewPaymentsComponent {
         next:(data)=>{
         this.payments=data
         console.log(this.payments)
+        this.totalRecords=data.length
+
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
       }
     }
     );
+  }
+
+  onItemsPerPageChange(): void {
+    this.page = 1; // Reset to the first page when items per page changes
+    this.fetchPayments(); // Fetch data with the new items per page
   }
 
 }

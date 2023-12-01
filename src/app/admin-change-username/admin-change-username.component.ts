@@ -29,6 +29,7 @@ export class AdminChangeUsernameComponent {
     private temporaryData:TemporaryDataService,
     private router:Router
     ){
+      temporaryData.setRole('Admin')
       this.userRole=temporaryData.getRole()
       console.log(this.userRole)
       this.adminId=dataService.userId;

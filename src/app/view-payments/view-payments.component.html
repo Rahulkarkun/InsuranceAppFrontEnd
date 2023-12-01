@@ -22,7 +22,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let payment of payments">
+        <tr *ngFor="let payment of payments
+        | paginate:{
+          id:'listing_pagination',
+          itemsPerPage:selectedItemsPerPage,
+          currentPage:page,
+          totalItems:totalRecords
+        };index as i">
           <td>{{ payment.paymentId }}</td>
           <td>{{ payment.paymentType }}</td>
           <td>{{ payment.amount }}</td>
@@ -36,5 +42,23 @@
         </tr>
       </tbody>
     </table>
+    <div class="payment-list-container">
+      <div class="items-per-page-container">
+        <label for="itemsPerPage">Items per page:</label>
+        <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+    <div align="center">
+      <pagination-controls
+        id="listing_pagination"
+        [maxSize]="5"
+        [directionLinks]="true"
+        (pageChange)="page = $event">
+      </pagination-controls>
+    </div>
   </div>
   

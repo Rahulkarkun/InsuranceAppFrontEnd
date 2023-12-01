@@ -1,0 +1,35 @@
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+</div>
+<div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+</div>
+<div class="login-container">
+    <h1>Change Username</h1>
+    <!-- <div class="form-group" (change)="selectedId($event)" *ngFor="let agent of agentData  " >
+        <input type="text" value="{{agent.firstName}}">
+    </div> -->
+    <!-- -->
+    
+    <form [formGroup]="changeUsernameEmployee" (ngSubmit)="changeEmployeeUsername(changeUsernameEmployee.value) ">
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+        <label for=""> Old Username</label>
+        <input type="hidden" formControlName="id" [(ngModel)]="employeeId" >
+        <input type="text" id="oldUsername" name="oldUsername" placeholder="Enter your Old Username"formControlName="oldUsername" >
+      </div>
+      <div class="form-group">
+        <label for="">New Username</label>
+        <input type="text" id="newUsername" name="newUsername" placeholder="Enter your New Username" formControlName="newUsername" >
+      </div>
+      
+      
+      <button type="submit">Update</button>
+    </form>
+  </div>

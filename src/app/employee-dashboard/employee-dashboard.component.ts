@@ -12,8 +12,12 @@ import { DataService } from '../services/data.service';
 export class EmployeeDashboardComponent {
   userName:any;
   userId:any;
+  userRole:any;
   constructor(private router: Router,private temporarydata:TemporaryDataService,private data:DataService) 
-  {this.userName=data.userName
+  { this.temporarydata.setRole('Employee')
+    this.userRole=this.temporarydata.getRole();
+    console.log(this.userRole)
+    this.userName=data.userName
     this.userId=data.userId
    }
 
@@ -42,7 +46,7 @@ export class EmployeeDashboardComponent {
   agentList(){
     console.log("hih")
     //debugger
-    this.temporarydata.setRole('Admin')
+    this.temporarydata.setRole('Employee')
     this.router.navigateByUrl("/agent-list")
     // console.log(this.temporarydata.getRole)
     
@@ -63,11 +67,11 @@ export class EmployeeDashboardComponent {
   //   // console.log(this.temporarydata.getRole)
     
   // }
-  customerList(){
+  documentList(){
     console.log("hih")
     //debugger
-    this.temporarydata.setRole('Admin')
-    this.router.navigateByUrl("/customer-list")
+    this.temporarydata.setRole('Employee')
+    this.router.navigateByUrl("/document-verification-list")
     // console.log(this.temporarydata.getRole)
     
   }
@@ -106,7 +110,7 @@ export class EmployeeDashboardComponent {
   viewPayments(){
     console.log("hih")
     //debugger
-    this.temporarydata.setRole('Admin')
+    this.temporarydata.setRole('Employee')
     this.router.navigateByUrl("/view-payments")
     // console.log(this.temporarydata.getRole)
     
@@ -146,7 +150,7 @@ export class EmployeeDashboardComponent {
   viewClaim(){
     console.log("hih")
     //debugger
-    this.temporarydata.setRole('Admin')
+    this.temporarydata.setRole('Employee')
     this.router.navigateByUrl("/claim-list")
     // console.log(this.temporarydata.getRole)
     

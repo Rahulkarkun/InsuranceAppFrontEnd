@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ShemedetailsService } from './schemedetails.service';
+import { SchemedetailsService } from './schemedetails.service';
 
-describe('ShemedetailsService', () => {
-  let service: ShemedetailsService;
+describe('SchemedetailsService', () => {
+  let service: SchemedetailsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ShemedetailsService);
+    service = TestBed.inject(SchemedetailsService);
   });
 
   it('should be created', () => {

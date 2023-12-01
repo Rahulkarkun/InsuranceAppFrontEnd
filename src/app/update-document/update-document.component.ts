@@ -15,6 +15,7 @@ export class UpdateDocumentComponent implements OnInit {
     DocumentId: 0, // Set to the appropriate default value
     DocumentType: '',
     DocumentName: '',
+    Status: '',
     DocumentFile: null, // Set to the appropriate default value
     IsActive: false, // Set to the appropriate default value
     CustomerId: 0 // Set to the appropriate default value

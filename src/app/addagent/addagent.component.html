@@ -11,29 +11,50 @@
 <div class="add-agent-container">
   <h2>Add Agent</h2>
   <form [formGroup]="agentForm" (ngSubmit)="addAgent()">
-    <label for="firstName">First Name:</label>
+    <label for="firstName">First Name:<span class="required-field">*</span></label>
     <input id="firstName" formControlName="firstName" required>
+    <div *ngIf="agentForm.get('firstName')?.hasError('required') && agentForm.get('firstName')?.touched">
+      <span class="error-message">First Name is required</span>
+    </div>
 
-    <label for="lastName">Last Name:</label>
+    <label for="lastName">Last Name:<span class="required-field">*</span></label>
     <input id="lastName" formControlName="lastName" required>
+    <div *ngIf="agentForm.get('lastName')?.hasError('required') && agentForm.get('lastName')?.touched">
+      <span class="error-message">Last Name is required</span>
+    </div>
 
-    <label for="qualification">Qualification:</label>
+    <label for="qualification">Qualification:<span class="required-field">*</span></label>
     <input id="qualification" formControlName="qualification" required>
+    <div *ngIf="agentForm.get('qualification')?.hasError('required') && agentForm.get('qualification')?.touched">
+      <span class="error-message">Qualification is required</span>
+    </div>
 
-    <label for="email">Email:</label>
+    <label for="email">Email:<span class="required-field">*</span></label>
     <input id="email" formControlName="email" type="email" required>
+    <div *ngIf="agentForm.get('email')?.hasError('required') && agentForm.get('email')?.touched">
+      <span class="error-message">Email is required</span>
+    </div>
+    <div *ngIf="agentForm.get('email')?.hasError('email') && agentForm.get('email')?.touched">
+      <span class="error-message">Invalid email format</span>
+    </div>
 
-    <label for="mobileNo">Mobile Number:</label>
+    <label for="mobileNo">Mobile Number:<span class="required-field">*</span></label>
     <input id="mobileNo" formControlName="mobileNo" required>
+    <div *ngIf="agentForm.get('mobileNo')?.hasError('required') && agentForm.get('mobileNo')?.touched">
+      <span class="error-message">Mobile Number is required</span>
+    </div>
 
-    <!-- <label for="userId">User ID:</label> -->
-    <!-- <input id="userId" formControlName="userId" type="number" [hidden]> -->
-
-    <label for="userName">UserName:</label>
+    <label for="userName">UserName:<span class="required-field">*</span></label>
     <input id="userName" formControlName="userName" required>
+    <div *ngIf="agentForm.get('userName')?.hasError('required') && agentForm.get('userName')?.touched">
+      <span class="error-message">User Name is required</span>
+    </div>
 
-    <label for="password">Password:</label>
+    <label for="password">Password:<span class="required-field">*</span></label>
     <input id="password" formControlName="password" type="password" required>
+    <div *ngIf="agentForm.get('password')?.hasError('required') && agentForm.get('password')?.touched">
+      <span class="error-message">Password is required</span>
+    </div>
 
     <button type="submit">Add Agent</button>
   </form>

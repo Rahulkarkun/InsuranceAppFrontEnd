@@ -1,23 +1,23 @@
-<!-- src/app/add-agent/add-agent.component.html -->
-
+<!-- src/app/add-insurance-plan/add-insurance-plan.component.html -->
 <div *ngIf="userRole=='Admin'">
-    <app-admin-navbar></app-admin-navbar>
-  </div>
-  <div *ngIf="userRole=='Agent'">
-    <app-agent-navbar></app-agent-navbar>
-  </div>
-  <div *ngIf="userRole=='Employee'">
-    <app-employee-navbar></app-employee-navbar>
-  </div>
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+  <app-employee-navbar></app-employee-navbar>
+</div>
 <div class="add-insurance-plan-container">
-    <h2>Add Insurance Plan</h2>
-    <form [formGroup]="insurancePlanForm" (ngSubmit)="addInsurancePlan()">
-        <label for="planName">Plan Name:</label>
-        <input id="planName"  formControlName="planName" required>
-  
-        <button type="submit">Add Insurance Plan</button>
-    </form>
-  </div>
+  <h2>Add Insurance Plan</h2>
+  <form [formGroup]="insurancePlanForm" (ngSubmit)="addInsurancePlan()">
+      <label for="planName">Plan Name:</label>
+      <input id="planName" formControlName="planName" required>
 
+      <div *ngIf="insurancePlanForm.get('planName')?.hasError('required') && insurancePlanForm.get('planName')?.touched">
+          <span class="error-message">Plan Name is required</span>
+      </div>
 
-
+      <button type="submit">Add Insurance Plan</button>
+  </form>
+</div>

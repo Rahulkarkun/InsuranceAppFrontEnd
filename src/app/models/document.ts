@@ -7,6 +7,7 @@ export interface Document {
     DocumentFile: null |Uint8Array; // Assuming you handle file data as a byte array
     IsActive: boolean;
     CustomerId: number;
-    Customer?: any; // You might want to create a separate Customer model if needed
+    Status: string;
+    // Customer?: any; // You might want to create a separate Customer model if needed
   }
   

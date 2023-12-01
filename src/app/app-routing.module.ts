@@ -55,6 +55,11 @@ import { CustomerProfileComponent } from './customer-profile/customer-profile.co
 import { CustomerChangePasswordComponent } from './customer-change-password/customer-change-password.component';
 import { CustomerChangeUsernameComponent } from './customer-change-username/customer-change-username.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
+import { SchemeDetailsComponent } from './scheme-details/scheme-details.component';
+import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { EmployeeChangeUsernameComponent } from './employee-change-username/employee-change-username.component';
+import { DocumentVerificationListComponent } from './document-verification-list/document-verification-list.component';
+import { UpdateInsurancePolicyComponent } from './update-insurance-policy/update-insurance-policy.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -101,12 +106,22 @@ const routes: Routes = [
   {path:'update-agent/:id',component:UpdateAgentComponent},
   {path:'update-scheme/:id',component:UpdateSchemeComponent},
   {path:'update-scheme-details/:id',component:UpdateSchemeDetailsComponent},
-  {path:'update-scheme-details/:id',component:UpdateSchemeDetailsComponent},
+  // {path:'update-scheme-details/:id',component:UpdateSchemeDetailsComponent},
   {path:'admin-profile/:id',component:AdminProfileComponent},
   {path:'employee-navbar',component:EmployeeNavbarComponent},
   {path:'employee-dashboard',component:EmployeeDashboardComponent},
   {path:'admin-change-password',component: AdminChangePasswordComponent},
   {path:'admin-change-username',component: AdminChangeUsernameComponent},
+  {path:'employee-profile/:id',component: EmployeeProfileComponent},
+  {path:'customer-dashboard',component:CustomerDashboardComponent},
+  {path:'customer-profile',component:CustomerProfileComponent},
+  {path:'customer-change-password',component: CustomerChangePasswordComponent},
+  {path:'customer-change-username',component: CustomerChangeUsernameComponent},
+  {path:'scheme-details',component: SchemeDetailsComponent},
+  {path:'employee-change-password',component: EmployeeChangePasswordComponent},
+  {path:'employee-change-username',component: EmployeeChangeUsernameComponent},
+  {path:'document-verification-list',component: DocumentVerificationListComponent},
+  {path:'update-insurance-policy/:id',component: UpdateInsurancePolicyComponent},
   {
     path:"weather",
     component:WeatherInfoComponent

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerService } from '../services/customer.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TemporaryDataService } from '../services/temporary-data.service';
 import { DataService } from '../services/data.service';
 import { lastValueFrom } from 'rxjs';
@@ -22,6 +22,7 @@ export class CustomerProfileComponent {
     private fb: FormBuilder,
     private customerService: CustomerService,
     private route: ActivatedRoute,
+    private router:Router,
     private temporaryData: TemporaryDataService,
     private dataService: DataService,
   ) {this.userRole = temporaryData.getRole();
@@ -56,6 +57,7 @@ export class CustomerProfileComponent {
 
       // Display an alert to the user
       alert('Customer updated successfully!');
+      this.router.navigateByUrl("/customer-dashboard")
 
       // Optionally, you can reset the form or perform any other actions here
       // this.customerForm.reset();

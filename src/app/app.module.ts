@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,6 +61,14 @@ import { CustomerProfileComponent } from './customer-profile/customer-profile.co
 import { CustomerChangePasswordComponent } from './customer-change-password/customer-change-password.component';
 import { CustomerChangeUsernameComponent } from './customer-change-username/customer-change-username.component';
 import { EmployeeProfileComponent } from './employee-profile/employee-profile.component';
+import { SchemeDetailsComponent } from './scheme-details/scheme-details.component';
+import { EmployeeChangePasswordComponent } from './employee-change-password/employee-change-password.component';
+import { EmployeeChangeUsernameComponent } from './employee-change-username/employee-change-username.component';
+import { DocumentVerificationListComponent } from './document-verification-list/document-verification-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+import { UpdateInsurancePolicyComponent } from './update-insurance-policy/update-insurance-policy.component';
+
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -113,17 +122,30 @@ import { EmployeeProfileComponent } from './employee-profile/employee-profile.co
     EmployeeNavbarComponent,
     EmployeeDashboardComponent,
     AdminChangePasswordComponent,
-    AdminChangeUsernameComponent
+    AdminChangeUsernameComponent,
+    CustomerDashboardComponent,
+    CustomerProfileComponent,
+    CustomerChangePasswordComponent,
+    CustomerChangeUsernameComponent,
+    EmployeeProfileComponent,
+    SchemeDetailsComponent,
+    EmployeeChangePasswordComponent,
+    EmployeeChangeUsernameComponent,
+    DocumentVerificationListComponent,
+    UpdateInsurancePolicyComponent
   ],
   imports: [
+    MatTableModule,
+    MatPaginatorModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    NgxPaginationModule
+    ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })

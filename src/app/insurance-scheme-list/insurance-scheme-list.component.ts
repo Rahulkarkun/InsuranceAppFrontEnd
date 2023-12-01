@@ -4,6 +4,8 @@ import { InsuranceSchemeService } from '../services/insurance-scheme.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TemporaryDataService } from '../services/temporary-data.service';
+import { SchemedetailsService } from '../services/schemedetails.service';
+import { InsuranceplanService } from '../services/insuranceplan.service';
 
 @Component({
   selector: 'app-insurance-scheme-list',
@@ -11,13 +13,32 @@ import { TemporaryDataService } from '../services/temporary-data.service';
   styleUrl: './insurance-scheme-list.component.css'
 })
 export class InsuranceSchemeListComponent {
-  schemes: any;
+  schemes: Array<any>;
+  page: number = 1;
+  totalRecords:number=0
+  selectedItemsPerPage: number = 5; // Set a default value, or fetch it from user preferences
   userRole:string=''
-  constructor(private insuranceSchemeService: InsuranceSchemeService, private router: Router,private temporaryData:TemporaryDataService) 
-  {this.userRole=temporaryData.getRole()
+  insurancePlan: Array<any>;
+  constructor(
+    private insuranceSchemeService: InsuranceSchemeService, 
+    private router: Router,
+    private temporaryData:TemporaryDataService,
+    private schemeDetails: SchemedetailsService,
+    private insurancePlanService: InsuranceplanService) 
+  { this.schemes=new Array<any>()
+    this.insurancePlan = new Array<any>();
+    this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    this.insurancePlanService.getAllInsurancePlan().subscribe({
+      next:(response)=>{
+        this.insurancePlan=response
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse)
+      }
+    })
     this.fetchInsuranceScheme();
   }
 
@@ -27,12 +48,28 @@ export class InsuranceSchemeListComponent {
         next:(data)=>{
         this.schemes=data
         console.log(this.schemes)
+        this.totalRecords=data.length
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
       }
     }
     );
+  }
+
+  getInsurancePlanName(planId: number): string {
+    if (this.insurancePlan) {
+      const plan = this.insurancePlan.find((a: any) => a.planId === planId);
+      console.log(plan);
+      return plan!=null ? `${plan.planName}` : 'Customer Not Found';
+    } else {
+      return 'Customer Data Not Loaded';
+    }
+  }
+
+
+  addInsuranceScheme(): void {
+    this.router.navigateByUrl("/add-insurance-scheme")
   }
 
   editInsuranceScheme(schemeId: number): void {
@@ -54,4 +91,25 @@ export class InsuranceSchemeListComponent {
       }
     );
   }
+
+  viewInsuranceDetails(schemeId: number): void {
+    this.insuranceSchemeService.getDetailsBySchemeId(schemeId).subscribe(
+      (details) => {
+        // Update the agents list after successful deletion
+        console.log(details)
+        this.router.navigate(['/scheme-details'], { state: { schemeDetails: details } });
+        // debugger
+        // this.router.navigate(['/scheme-details'], { state: { schemeDetails: details } });
+      },
+      (error) => {
+        console.error('Error fetching Scheme Details:', error);
+      }
+    );
+  }
+
+  onItemsPerPageChange(): void {
+    this.page = 1; // Reset to the first page when items per page changes
+    this.fetchInsuranceScheme(); // Fetch data with the new items per page
+  }
 }
+

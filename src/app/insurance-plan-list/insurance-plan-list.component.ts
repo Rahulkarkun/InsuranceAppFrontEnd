@@ -11,10 +11,14 @@ import { TemporaryDataService } from '../services/temporary-data.service';
   styleUrl: './insurance-plan-list.component.css'
 })
 export class InsurancePlanListComponent {
-  plans: any;
+  plans: Array<any>;
+  page: number = 1;
+  totalRecords:number=0;
+  selectedItemsPerPage: number = 5; // Set a default value, or fetch it from user preferences;
   userRole:string=''
   constructor(private insurancePlanService: InsuranceplanService, private router: Router,private temporaryData:TemporaryDataService) 
-  {this.userRole=temporaryData.getRole()
+  { this.plans = new Array<any>();
+    this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
   ngOnInit(): void {
@@ -27,12 +31,17 @@ export class InsurancePlanListComponent {
         next:(data)=>{
         this.plans=data
         console.log(this.plans)
+        this.totalRecords=data.length
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
       }
     }
     );
+  }
+
+  addInsurancePlan(): void {
+    this.router.navigateByUrl("/add-insurance-plan")
   }
 
   editInsurancePlan(planId: number): void {
@@ -52,5 +61,9 @@ export class InsurancePlanListComponent {
         console.error('Error deleting Plan:', error);
       }
     );
+  }
+  onItemsPerPageChange(): void {
+    this.page = 1; // Reset to the first page when items per page changes
+    this.fetchInsurancePlan(); // Fetch data with the new items per page
   }
 }

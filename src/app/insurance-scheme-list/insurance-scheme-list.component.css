@@ -1,8 +1,26 @@
 /* agents-list.component.css */
+body {
+  padding-top: 80px;
+  background-image: url("/assets/background-image-1.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* This keeps the background fixed while scrolling */
+  margin: 0; /* Remove default body margin to cover the entire viewport */
+  padding-bottom: 79px; 
+}
 
-.insurance-scheme-list-container {
+.insurance-scheme-list-container  {
+  max-width: 1000px;
+  margin: auto;
+
+  /* Adjust margin to center the form vertically */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to the form */
+}
+/* .insurance-scheme-list-container {
     margin: 20px;
-  }
+  } */
   
   .insurance-scheme-card {
     border: 1px solid #ccc;

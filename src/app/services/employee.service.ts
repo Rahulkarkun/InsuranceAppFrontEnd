@@ -37,6 +37,14 @@ export class EmployeeService {
     
   }
 
+  changePasswordEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(`${this.apiUrl}/Employee/ChangePassword`, employee);
+  }
+
+  changeUsernameEmployee(employee: Employee): Observable<Employee> {
+    return this.http.post<Employee>(`${this.apiUrl}/Employee/ChangeUsername`, employee);
+  }
+
   getId(){
     return this.id
   }

@@ -11,10 +11,14 @@ import { TemporaryDataService } from '../services/temporary-data.service';
   styleUrl: './employee-list.component.css'
 })
 export class EmployeeListComponent {
-  employees: any;
+  employees: Array<any>;
+  page: number = 1;
+  totalRecords:number=0;
+  selectedItemsPerPage: number = 5; // Set a default value, or fetch it from user preferences
   userRole:string=''
   constructor(private employeeService: EmployeeService, private router: Router,private temporaryData:TemporaryDataService) 
-  {this.userRole=temporaryData.getRole()
+  {this.employees=new Array<any>()
+    this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
   ngOnInit(): void {
@@ -27,12 +31,18 @@ export class EmployeeListComponent {
         next:(data)=>{
         this.employees=data
         console.log(this.employees)
+        this.totalRecords=data.length
+
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
       }
     }
     );
+  }
+
+  addEmployee(): void {
+    this.router.navigateByUrl("/add-employee")
   }
 
   editEmployee(employeeId: number): void {
@@ -53,5 +63,10 @@ export class EmployeeListComponent {
         console.error('Error deleting employee:', error);
       }
     );
+  }
+
+  onItemsPerPageChange(): void {
+    this.page = 1; // Reset to the first page when items per page changes
+    this.fetchEmployees(); // Fetch data with the new items per page
   }
 }

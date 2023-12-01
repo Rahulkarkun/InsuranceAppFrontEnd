@@ -24,7 +24,7 @@ export class InsurancePolicyService {
   }
 
   updateInsurancePolicy(updatedInsurancePolicy: InsurancePolicy): Observable<InsurancePolicy> {
-    return this.http.put<InsurancePolicy>(`${this.apiUrl}/InsurancePolicy/put`, updatedInsurancePolicy);
+    return this.http.put<InsurancePolicy>(`${this.apiUrl}/InsurancePolicy/`, updatedInsurancePolicy);
   }
 
   deleteInsurancePolicy(id: number): Observable<any> {

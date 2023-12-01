@@ -12,45 +12,81 @@
   <h2>Add Scheme Details</h2>
   <form [formGroup]="schemeDetailsForm" (ngSubmit)="addSchemeDetails()">
 
-    <label >Insurance Scheme</label>
+    <label>Insurance Scheme</label>
     <div class="form-group">
-      <select  id="insurance-scheme" name="insurance-scheme" aria-placeholder="Insurance Scheme" formControlName="insuranceSchemeId" *ngIf="insuranceSchemeData">
+      <select id="insurance-scheme" name="insurance-scheme" aria-placeholder="Insurance Scheme" formControlName="insuranceSchemeId" *ngIf="insuranceSchemeData">
         <option value="" disabled selected>Choose Insurance Scheme</option>
         <option *ngFor="let insuranceScheme of insuranceSchemeData" [value]="insuranceScheme?.schemeId">{{insuranceScheme?.schemeName}}</option>
       </select>
+      <div *ngIf="schemeDetailsForm.get('insuranceSchemeId')?.hasError('required') && schemeDetailsForm.get('insuranceSchemeId')?.touched">
+        <span class="error-message">Insurance Scheme is required</span>
+      </div>
 
       <label for="schemeImage">Scheme Image:</label>
       <input id="schemeImage" formControlName="SchemeImage" required>
+      <div *ngIf="schemeDetailsForm.get('SchemeImage')?.hasError('required') && schemeDetailsForm.get('SchemeImage')?.touched">
+        <span class="error-message">Scheme Image is required</span>
+      </div>
 
       <label for="Description">Description:</label>
       <textarea id="Description" formControlName="Description" rows="4" cols="50" required></textarea>
+      <div *ngIf="schemeDetailsForm.get('Description')?.hasError('required') && schemeDetailsForm.get('Description')?.touched">
+        <span class="error-message">Description is required</span>
+      </div>
 
       <label for="minAmount">Min Amount:</label>
       <input id="minAmount" formControlName="MinAmount" type="number" required>
+      <div *ngIf="schemeDetailsForm.get('MinAmount')?.hasError('required') && schemeDetailsForm.get('MinAmount')?.touched">
+        <span class="error-message">Min Amount is required</span>
+      </div>
 
       <label for="maxAmount">Max Amount:</label>
       <input id="maxAmount" formControlName="MaxAmount" type="number" required>
+      <div *ngIf="schemeDetailsForm.get('MaxAmount')?.hasError('required') && schemeDetailsForm.get('MaxAmount')?.touched">
+        <span class="error-message">Max Amount is required</span>
+      </div>
 
       <label for="minInvestment">Min Investment Time:</label>
       <input id="minInvestment" formControlName="MinInvestmentTime" type="number" required>
+      <div *ngIf="schemeDetailsForm.get('MinInvestmentTime')?.hasError('required') && schemeDetailsForm.get('MinInvestmentTime')?.touched">
+        <span class="error-message">Min Investment Time is required</span>
+      </div>
 
       <label for="maxInvestment">Max Investment Time:</label>
       <input id="maxInvestment" formControlName="MaxInvestmentTime" type="number" required>
+      <div *ngIf="schemeDetailsForm.get('MaxInvestmentTime')?.hasError('required') && schemeDetailsForm.get('MaxInvestmentTime')?.touched">
+        <span class="error-message">Max Investment Time is required</span>
+      </div>
 
       <label for="minAge">Min Age:</label>
       <input id="minAge" formControlName="MinAge" type="number" required>
+      <div *ngIf="schemeDetailsForm.get('MinAge')?.hasError('required') && schemeDetailsForm.get('MinAge')?.touched">
+        <span class="error-message">Min Age is required</span>
+      </div>
 
       <label for="maxAge">Max Age:</label>
       <input id="maxAge" formControlName="MaxAge" type="number" required>
+      <div *ngIf="schemeDetailsForm.get('MaxAge')?.hasError('required') && schemeDetailsForm.get('MaxAge')?.touched">
+        <span class="error-message">Max Age is required</span>
+      </div>
 
       <label for="profitRatio">Profit Ratio:</label>
       <input id="profitRatio" formControlName="ProfitRatio" type="number" required>
+      <div *ngIf="schemeDetailsForm.get('ProfitRatio')?.hasError('required') && schemeDetailsForm.get('ProfitRatio')?.touched">
+        <span class="error-message">Profit Ratio is required</span>
+      </div>
 
       <label for="registrationCommRatio">Registration Commission Ratio:</label>
       <input id="registrationCommRatio" formControlName="RegistrationCommRatio" type="number" required>
+      <div *ngIf="schemeDetailsForm.get('RegistrationCommRatio')?.hasError('required') && schemeDetailsForm.get('RegistrationCommRatio')?.touched">
+        <span class="error-message">Registration Commission Ratio is required</span>
+      </div>
 
       <label for="installmentCommRatio">Installment Commission Ratio:</label>
       <input id="installmentCommRatio" formControlName="InstallmentCommRatio" type="number" required>
+      <div *ngIf="schemeDetailsForm.get('InstallmentCommRatio')?.hasError('required') && schemeDetailsForm.get('InstallmentCommRatio')?.touched">
+        <span class="error-message">Installment Commission Ratio is required</span>
+      </div>
 
       <input id="schemeId" [(ngModel)]="schemeDetailsForm.value.insuranceSchemeId" formControlName="schemeId" type="hidden">
 

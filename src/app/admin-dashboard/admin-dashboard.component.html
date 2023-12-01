@@ -1,8 +1,8 @@
-<app-admin-navbar></app-admin-navbar>
+<!-- <app-admin-navbar></app-admin-navbar>
 <div class="dashboard-background">
     <div class="dashboard-page">
         <div class="container mt-5">
-            <!-- First row of icons -->
+            First row of icons
             <div class="row">
                 <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="addAgent()">
@@ -13,7 +13,7 @@
                 <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="agentList()">
                         <img src="assets/view-agents.png" alt="View Agents Icon" class="icon-image view-agents-icon"><br><br>
-                        <div class="icon-text">View Agents</div>
+                        <div class="icon-text">Manage Agents</div>
                     </a>
                 </div>
                 <div class="col-md-3 text-center custom-column">
@@ -25,12 +25,12 @@
                 <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="employeeList()">
                         <img src="assets/view-employees.png" alt="View Employees Icon" class="icon-image view-employees-icon"><br><br>
-                        <div class="icon-text">View Employees</div>
+                        <div class="icon-text">Manage Employees</div>
                     </a>
                 </div>
             </div>
 
-            <!-- Second row of icons -->
+            Second row of icons
             <div class="row mt-5">
                 <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="addCustomer()">
@@ -41,7 +41,7 @@
                 <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="customerList()">
                         <img src="assets/view-customers.png" alt="View Customers Icon" class="icon-image view-customers-icon"><br><br>
-                        <div class="icon-text">View Customers</div>
+                        <div class="icon-text">Manage Customers</div>
                     </a>
                 </div>
                 <div class="col-md-3 text-center custom-column">
@@ -53,12 +53,12 @@
                 <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="insurancePlanList()">
                         <img src="assets/view-insurance-plans.png" alt="View Insurance Plans Icon" class="icon-image view-insurance-plans-icon"><br><br>
-                        <div class="icon-text">View Insurance Plans</div>
+                        <div class="icon-text">Manage Insurance Plans</div>
                     </a>
                 </div>
             </div>
 
-            <!-- Third row of icons -->
+            Third row of icons
             <div class="row mt-5">
                 <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="addInsuranceScheme()">
@@ -69,7 +69,7 @@
                 <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="insuranceSchemeList()">
                         <img src="assets/view-insurance-schemes.png" alt="View Insurance Schemes Icon" class="icon-image view-insurance-schemes-icon"><br><br>
-                        <div class="icon-text">View Insurance Schemes</div>
+                        <div class="icon-text">Manage Insurance Schemes</div>
                     </a>
                 </div>
                 <div class="col-md-3 text-center custom-column">
@@ -84,7 +84,7 @@
                         <div class="icon-text">View Scheme Details</div>
                     </a>
                 </div>
-                <!-- <div class="col-md-3 text-center custom-column">
+                <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="viewPayments()">
                         <img src="assets/view-payments.png" alt="View Insurance Schemes Icon" class="icon-image view-insurance-schemes-icon"><br><br><br>
                         <div class="icon-text">View Payments</div>
@@ -95,11 +95,11 @@
                         <img src="assets/view-claims.png" alt="View Insurance Schemes Icon" class="icon-image view-insurance-schemes-icon"><br><br><br>
                         <div class="icon-text">View Claims</div>
                     </a>
-                </div> -->
-                <!-- Add more icons for the third row as needed -->
+                </div>
+                Add more icons for the third row as needed
             </div>
 
-            <!-- Fourth row of icons -->
+            Fourth row of icons
             <div class="row mt-5">
                 <div class="col-md-3 text-center custom-column">
                     <a class="btn btn-light d-block" (click)="addInsurancePolicy()">
@@ -123,6 +123,88 @@
                     <a class="btn btn-light d-block" (click)="viewClaim()">
                         <img src="assets/view-claims.png" alt="View Insurance Schemes Icon" class="icon-image view-insurance-schemes-icon"><br><br><br>
                         <div class="icon-text">View Claims</div>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+<!-- src/app/admin-dashboard/admin-dashboard.component.html -->
+<app-admin-navbar></app-admin-navbar>
+<div class="dashboard-background">
+    <div class="dashboard-page">
+        <div class="container mt-5">
+            <!-- First row of icons -->
+            <div class="row">
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="agentList()">
+                        <img src="assets/view-agents.png" alt="View Agents Icon" class="icon-image view-agents-icon"><br><br>
+                        <div class="icon-text">Manage Agents</div>
+                    </a>
+                </div>
+                
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="employeeList()">
+                        <img src="assets/view-employees.png" alt="View Employees Icon" class="icon-image view-employees-icon"><br><br>
+                        <div class="icon-text">Manage Employees</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="customerList()">
+                        <img src="assets/view-customers.png" alt="View Customers Icon" class="icon-image view-customers-icon"><br><br>
+                        <div class="icon-text">Manage Customers</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="insurancePlanList()">
+                        <img src="assets/view-insurance-plans.png" alt="View Insurance Plans Icon" class="icon-image view-insurance-plans-icon"><br><br>
+                        <div class="icon-text">Manage Insurance Plans</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Second row of icons -->
+            <div class="row mt-5">
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="insuranceSchemeList()">
+                        <img src="assets/view-insurance-schemes.png" alt="View Insurance Schemes Icon" class="icon-image view-insurance-schemes-icon"><br><br>
+                        <div class="icon-text">Manage Insurance Schemes</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="viewPolicyList()">
+                        <img src="assets/view-insurance-policies.png" alt="View Insurance Policies" class="icon-image view-insurance-policies-icon"><br><br>
+                        <div class="icon-text">View Insurance Policies</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="viewPayments()">
+                        <img src="assets/view-payments.png" alt="View Insurance Schemes Icon" class="icon-image view-insurance-schemes-icon"><br><br><br>
+                        <div class="icon-text">View Payments</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="viewClaim()">
+                        <img src="assets/view-claims.png" alt="View Insurance Schemes Icon" class="icon-image view-insurance-schemes-icon"><br><br><br>
+                        <div class="icon-text">View Claims</div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Third row of icons -->
+            <div class="row mt-5">
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="addSchemeDetails()">
+                        <img src="assets/add-scheme-details.png" alt="Add Scheme Details Icon" class="icon-image add-scheme-details-icon"><br><br><br>
+                        <div class="icon-text">Add Scheme Details</div>
+                    </a>
+                </div>
+                <div class="col-md-3 text-center custom-column">
+                    <a class="btn btn-light d-block" (click)="viewSchemeDetails()">
+                        <img src="assets/view-scheme-details.jpg" alt="View Scheme Details Icon" class="icon-image view-scheme-details-icon"><br><br><br>
+                        <div class="icon-text">View Scheme Details</div>
                     </a>
                 </div>
             </div>

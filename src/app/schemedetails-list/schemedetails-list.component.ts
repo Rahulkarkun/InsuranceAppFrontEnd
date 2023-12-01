@@ -11,10 +11,14 @@ import { TemporaryDataService } from '../services/temporary-data.service';
   styleUrl: './schemedetails-list.component.css'
 })
 export class SchemedetailsListComponent {
-  details: any;
+  details: Array<any>;
+  page: number = 1;
+  totalRecords:number=0
+  selectedItemsPerPage: number = 5; // Set a default value, or fetch it from user preferences
   userRole:string=''
   constructor(private schemeDetailsService: SchemedetailsService, private router: Router,private temporaryData:TemporaryDataService) 
-  {this.userRole=temporaryData.getRole()
+  { this.details=new Array<any>()
+    this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
   ngOnInit(): void {
@@ -27,6 +31,7 @@ export class SchemedetailsListComponent {
         next:(data)=>{
         this.details=data
         console.log(this.details)
+        this.totalRecords=data.length
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
@@ -53,5 +58,10 @@ export class SchemedetailsListComponent {
         console.error('Error deleting agent:', error);
       }
     );
+  }
+
+  onItemsPerPageChange(): void {
+    this.page = 1; // Reset to the first page when items per page changes
+    this.fetchSchemeDetails(); // Fetch data with the new items per page
   }
 }

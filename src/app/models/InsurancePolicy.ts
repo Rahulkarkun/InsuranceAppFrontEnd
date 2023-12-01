@@ -6,7 +6,7 @@ export interface InsurancePolicy {
     PremiumAmount: number;
     SumAssured: number;
     Status: string;
-    PlanId: number;
+    SchemeId: number;
     PaymentId: number;
     CustomerId: number;
     //IsActive: boolean;

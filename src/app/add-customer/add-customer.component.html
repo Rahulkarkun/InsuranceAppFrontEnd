@@ -1,70 +1,90 @@
 <!-- src/app/add-agent/add-agent.component.html -->
-    <div *ngIf="userRole=='Admin'">
-      <app-admin-navbar></app-admin-navbar>
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+  <app-employee-navbar></app-employee-navbar>
+</div>
+<div class="add-customer-container">
+  <h2>Add Customer</h2>
+  <form [formGroup]="customerForm" (ngSubmit)="addCustomer()">
+    <label for="firstName">First Name:<span class="required-field">*</span></label>
+    <input id="firstName" formControlName="firstName" required>
+    <div *ngIf="customerForm.get('firstName')?.hasError('required') && customerForm.get('firstName')?.touched">
+      <span class="error-message">First Name is required</span>
     </div>
-    <div *ngIf="userRole=='Agent'">
-      <app-agent-navbar></app-agent-navbar>
-    </div>
-    <div *ngIf="userRole=='Employee'">
-      <app-employee-navbar></app-employee-navbar>
-    </div>
-    <div class="add-customer-container">
-      <h2>Add Customer</h2>
-      <form [formGroup]="customerForm" (ngSubmit)="addCustomer()">
-          <label for="firstName">First Name:</label>
-          <input id="firstName"  formControlName="firstName" required>
-    
-          <label for="lastName">Last Name:</label>
-          <input id="lastName" formControlName="lastName" required>
-    
-          <label for="email">Email:</label>
-          <input id="email" formControlName="email" type="email" required>
-    
-          <label for="mobileNo">Mobile Number:</label>
-          <input id="mobileNo" formControlName="mobileNo" required>
-    
-          <label for="state">State:</label>
-          <input id="state" formControlName="state" required>
-    
-          <label for="city">City:</label>
-          <input id="city" formControlName="city" required>
-    
-          <label for="nominee">Nominee Name:</label>
-          <input id="nominee" formControlName="nominee" required>
-    
-          <label for="nomineeRelation">Nominee Relation:</label>
-          <input id="nomineeRelation" formControlName="nomineeRelation" required>
-    
-          <!-- <input id="userId" [(ngModel)]="customerForm.get('userId')!.value" name="userId" type="hidden" required>
-          <input id="agentId" [(ngModel)]="customerForm.get('agentId')!.value" name="agentId" type="hidden" required> -->
-    
-          <!-- <label for="userId">UserId:</label>
-          <input id="userId" formControlName="userId"  required> -->
-          <label for="userName">UserName:</label>
-        <input id="userName" formControlName="userName" required>
 
-        <label for="password">Password:</label>
-        <input id="password" formControlName="password" type="password" required>
-    
-        <!-- <label for="agentId">Select Agent:</label>
-        <select id="agentId" formControlName="agentId" required>
-          <option *ngFor="let agent of agents" [value]="agent.AgentId">{{ agent.FirstName }} {{ agent.LastName }}</option>
-        </select> -->
-        <label >Add Agent</label>
-        <select  id="agent" name="agent" formControlName="agentId">
-          
-          <option [ngValue]="null" disabled>Choose Insurance Type</option>
-          <option *ngFor="let agent of agents" value="{{agent.agentId}}">{{agent.firstName}}
-           </option>
-          
-        </select>
-        
-        <br><br><br>
-          <!-- <label for="agentId">agentId:</label>
-          <input id="agentId" formControlName="agentId"  required> -->
-    
-          <button type="submit">Add Customer</button>
-      </form>
+    <label for="lastName">Last Name:<span class="required-field">*</span></label>
+    <input id="lastName" formControlName="lastName" required>
+    <div *ngIf="customerForm.get('lastName')?.hasError('required') && customerForm.get('lastName')?.touched">
+      <span class="error-message">Last Name is required</span>
     </div>
-  
 
+    <label for="email">Email:<span class="required-field">*</span></label>
+    <input id="email" formControlName="email" type="email" required>
+    <div *ngIf="customerForm.get('email')?.hasError('required') && customerForm.get('email')?.touched">
+      <span class="error-message">Email is required</span>
+    </div>
+    <div *ngIf="customerForm.get('email')?.hasError('email') && customerForm.get('email')?.touched">
+      <span class="error-message">Invalid email format</span>
+    </div>
+
+    <label for="mobileNo">Mobile Number:<span class="required-field">*</span></label>
+    <input id="mobileNo" formControlName="mobileNo" required>
+    <div *ngIf="customerForm.get('mobileNo')?.hasError('required') && customerForm.get('mobileNo')?.touched">
+      <span class="error-message">Mobile Number is required</span>
+    </div>
+
+    <label for="state">State:<span class="required-field">*</span></label>
+    <input id="state" formControlName="state" required>
+    <div *ngIf="customerForm.get('state')?.hasError('required') && customerForm.get('state')?.touched">
+      <span class="error-message">State is required</span>
+    </div>
+
+    <label for="city">City:<span class="required-field">*</span></label>
+    <input id="city" formControlName="city" required>
+    <div *ngIf="customerForm.get('city')?.hasError('required') && customerForm.get('city')?.touched">
+      <span class="error-message">City is required</span>
+    </div>
+
+    <label for="nominee">Nominee Name:<span class="required-field">*</span></label>
+    <input id="nominee" formControlName="nominee" required>
+    <div *ngIf="customerForm.get('nominee')?.hasError('required') && customerForm.get('nominee')?.touched">
+      <span class="error-message">Nominee Name is required</span>
+    </div>
+
+    <label for="nomineeRelation">Nominee Relation:<span class="required-field">*</span></label>
+    <input id="nomineeRelation" formControlName="nomineeRelation" required>
+    <div *ngIf="customerForm.get('nomineeRelation')?.hasError('required') && customerForm.get('nomineeRelation')?.touched">
+      <span class="error-message">Nominee Relation is required</span>
+    </div>
+
+    <label for="userName">UserName:<span class="required-field">*</span></label>
+    <input id="userName" formControlName="userName" required>
+    <div *ngIf="customerForm.get('userName')?.hasError('required') && customerForm.get('userName')?.touched">
+      <span class="error-message">User Name is required</span>
+    </div>
+
+    <label for="password">Password:<span class="required-field">*</span></label>
+    <input id="password" formControlName="password" type="password" required>
+    <div *ngIf="customerForm.get('password')?.hasError('required') && customerForm.get('password')?.touched">
+      <span class="error-message">Password is required</span>
+    </div>
+
+    <label>Add Agent<span class="required-field">*</span></label>
+    <select id="agent" name="agent" formControlName="agentId" required>
+      <option [ngValue]="null" disabled>Choose Agent</option>
+      <option *ngFor="let agent of agents" value="{{agent.agentId}}">{{agent.firstName}}</option>
+    </select>
+    <div *ngIf="customerForm.get('agentId')?.hasError('required') && customerForm.get('agentId')?.touched">
+      <span class="error-message">Agent is required</span>
+    </div>
+
+    <br><br><br>
+
+    <button type="submit">Add Customer</button>
+  </form>
+</div>

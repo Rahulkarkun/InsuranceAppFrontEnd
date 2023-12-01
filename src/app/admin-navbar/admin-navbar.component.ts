@@ -31,6 +31,7 @@ export class AdminNavbarComponent implements OnInit{
       {
         next: (result) => {
           this.data = result;
+          console.log(result)
           console.log(this.data.adminId)
           // Move the navigation logic here, inside the callback
           this.adminId = this.data.adminId

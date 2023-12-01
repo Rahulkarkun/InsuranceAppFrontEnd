@@ -1,58 +1,162 @@
-.login-register-page {
-    display: flex;
-    justify-content: space-around;
-    padding: 50px;
-  }
-  
-  .form-container {
-    width: 300px;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    text-align: center;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-bottom: 5px;
-  }
-  
-  input {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  button {
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .register-link {
-    margin-top: 10px;
-    text-align: center;
-    cursor: pointer;
-    color: #007bff;
-  }
-  
-  .register-link:hover {
-    text-decoration: underline;
-  }
-  
+body {
+  padding-top: 26px;
+  background-image: url("/assets/background-image-1.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* This keeps the background fixed while scrolling */
+  margin: 0; /* Remove default body margin to cover the entire viewport */
+  padding-bottom: 26px; 
+}
+
+.form-container {
+  max-width: 400px;
+  margin: auto;
+
+  /* Adjust margin to center the form vertically */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to the form */
+}
+
+/* .login-register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  color: #fff;
+} */
+
+/* .form-container {
+  width: 300px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+} */
+
+h2 {
+  text-align: center;
+  color: #000;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  color: #000;
+  font-weight: bold; /* Added to make the text bold */
+  margin-bottom: 5px;
+}
+
+.error-message {
+  color: #ff0000;
+  margin-top: 5px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #333; /* Light black border */
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.register-link {
+  text-align: center;
+  cursor: pointer;
+  color: #007bff;
+  margin-top: 10px;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+/* .login-register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  color: #fff;
+} */
+
+.form-container {
+  width: 300px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #000;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  color: #000;
+  font-weight: bold; /* Added to make the text bold */
+  margin-bottom: 5px;
+}
+
+.error-message {
+  color: #ff0000;
+  margin-top: 5px;
+}
+
+input {
+  padding: 10px;
+  border: 1px solid #333; /* Light black border */
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.register-link {
+  text-align: center;
+  cursor: pointer;
+  color: #007bff;
+  margin-top: 10px;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
