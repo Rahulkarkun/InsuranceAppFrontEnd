@@ -68,6 +68,10 @@ import { DocumentVerificationListComponent } from './document-verification-list/
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { UpdateInsurancePolicyComponent } from './update-insurance-policy/update-insurance-policy.component';
+import { AgentDashboardComponent } from './agent-dashboard/agent-dashboard.component';
+import { AgentChangePasswordComponent } from './agent-change-password/agent-change-password.component';
+import { AgentProfileComponent } from './agent-profile/agent-profile.component';
+
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -132,7 +136,10 @@ import { UpdateInsurancePolicyComponent } from './update-insurance-policy/update
     EmployeeChangePasswordComponent,
     EmployeeChangeUsernameComponent,
     DocumentVerificationListComponent,
-    UpdateInsurancePolicyComponent
+    UpdateInsurancePolicyComponent,
+    AgentDashboardComponent,
+    AgentChangePasswordComponent,
+    AgentProfileComponent
   ],
   imports: [
     MatTableModule,
