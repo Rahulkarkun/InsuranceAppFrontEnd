@@ -1,9 +1,27 @@
 /* agents-list.component.css */
 
-.employee-list-container {
+/* .employee-list-container {
     margin: 20px;
+  } */
+  body {
+    padding-top: 110px;
+    background-image: url("/assets/background-image-1.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* This keeps the background fixed while scrolling */
+    margin: 0; /* Remove default body margin to cover the entire viewport */
+    padding-bottom: 110px; 
   }
   
+  .employee-list-container  {
+    max-width: 1000px;
+    margin: auto;
+  
+    /* Adjust margin to center the form vertically */
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to the form */
+  }
   .employee-card {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -23,9 +41,19 @@
     gap: 10px;
   }
   
+  .add-button{
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   .edit-button,
   .delete-button {
-    padding: 8px;
+    padding: 4px;
+    margin-left: 5px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -38,7 +66,8 @@
   }
   
   .edit-button:hover,
-  .delete-button:hover {
+  .delete-button:hover,
+  .add-button:hover {
     background-color: #0056b3;
   }
   

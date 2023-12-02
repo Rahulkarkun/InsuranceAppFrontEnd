@@ -8,6 +8,7 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<body>
 <div class="update-customer-container">
   <h2>Update Customer</h2>
   <form [formGroup]="customerForm" (ngSubmit)="updateCustomer()">
@@ -60,6 +61,6 @@
   </form>
 </div>
 
-
+</body>
 
 

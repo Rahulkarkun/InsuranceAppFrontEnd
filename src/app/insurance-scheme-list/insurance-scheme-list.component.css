@@ -41,9 +41,20 @@ body {
     gap: 10px;
   }
   
-  .edit-button,
-  .delete-button {
+  .add-button{
     padding: 8px;
+    margin-bottom: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .edit-button,
+  .delete-button ,
+  .view-button{
+    padding: 4px;
+    margin-left: 5px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -54,9 +65,14 @@ body {
   .delete-button {
     background-color: #dc3545;
   }
+  .view-button {
+    background-color: green;
+  }
   
   .edit-button:hover,
-  .delete-button:hover {
+  .delete-button:hover,
+  .add-button:hover,
+  .view-button:hover {
     background-color: #0056b3;
   }
   

@@ -8,9 +8,10 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<body>
 <div class="insurance-plan-list-container">
     <h2>Insurance Plan List</h2>
-    <button (click)="addInsurancePlan()">Add Insurance Plan</button>
+    <button class="add-button" (click)="addInsurancePlan()">Add Insurance Plan</button>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -31,13 +32,13 @@
           <td>{{ plan.planName }}</td>
           <td>
             
-            <button (click)="editInsurancePlan(plan.planId)">Edit</button>
-            <button (click)="deleteInsurancePlan(plan.planId)">Delete</button>
+            <button class="edit-button" (click)="editInsurancePlan(plan.planId)">Edit</button>
+            <button class="delete-button" (click)="deleteInsurancePlan(plan.planId)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="agent-list-container">
+    <div class="insurance-plan-list-container">
       <div class="items-per-page-container">
         <label for="itemsPerPage">Items per page:</label>
         <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
@@ -57,5 +58,6 @@
       </pagination-controls>
     </div>
   </div>
-  
+</div> 
+</body>
 

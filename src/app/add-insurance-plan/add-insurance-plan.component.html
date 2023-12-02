@@ -8,6 +8,7 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<body>
 <div class="add-insurance-plan-container">
   <h2>Add Insurance Plan</h2>
   <form [formGroup]="insurancePlanForm" (ngSubmit)="addInsurancePlan()">
@@ -21,3 +22,4 @@
       <button type="submit">Add Insurance Plan</button>
   </form>
 </div>
+</body>

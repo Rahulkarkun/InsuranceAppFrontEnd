@@ -8,6 +8,7 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<body>
 <div class="update-scheme-container">
     <h2>Update Insurance Scheme</h2>
     <form [formGroup]="schemeForm" (ngSubmit)="updateScheme()">
@@ -53,3 +54,4 @@
       <button type="submit">Update Scheme</button>
     </form>
   </div>
+</body>

@@ -5,9 +5,10 @@
 <div *ngIf="userRole=='Agent'">
   <app-agent-navbar></app-agent-navbar>
 </div>
+<body>
 <div class="customer-list-container">
     <h2>Customer List</h2>
-    <button (click)="addCustomer()">Add Customer</button>
+    <button class="add-button" (click)="addCustomer()">Add Customer</button>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -45,13 +46,13 @@
           <td>{{getAgentName(customer.agentId)}}</td>
           <!-- <td>{{customer.userId}}</td> -->
           <td>
-            <button (click)="editCustomer(customer.customerId)">Edit</button>
-            <button (click)="deleteCustomer(customer.customerId)">Delete</button>
+            <button class="edit-button" (click)="editCustomer(customer.customerId)">Edit</button>
+            <button class="delete-button" (click)="deleteCustomer(customer.customerId)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <div class="agent-list-container">
+    <div class="customer-list-container">
       <div class="items-per-page-container">
         <label for="itemsPerPage">Items per page:</label>
         <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
@@ -71,6 +72,6 @@
       </pagination-controls>
     </div>
   </div>
-  
-
+</div>
+</body>
   

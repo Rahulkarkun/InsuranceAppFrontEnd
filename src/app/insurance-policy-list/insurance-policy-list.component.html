@@ -5,7 +5,8 @@
 <div *ngIf="userRole=='Agent'">
   <app-agent-navbar></app-agent-navbar>
 </div>
-<div class="agent-list-container">
+<body>
+<div class="insurance-policy-list-container">
     <h2>Insurance Policy List</h2>
     <table class="table table-bordered">
       <thead>
@@ -47,8 +48,8 @@
           <td>{{ policy.paymentId }}</td>
           <td>{{ policy.customerId }}</td> -->
           <td>
-            <button (click)="editInsurancePolicy(policy.policyNo)">Edit</button>
-            <button (click)="deleteInsurancePolicy(policy.policyNo)">Delete</button>
+            <button class="edit-button" (click)="editInsurancePolicy(policy.policyNo)">Edit</button>
+            <button class="delete-button" (click)="deleteInsurancePolicy(policy.policyNo)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -72,4 +73,5 @@
       </pagination-controls>
     </div>
   </div>
-  
+</div> 
+</body>

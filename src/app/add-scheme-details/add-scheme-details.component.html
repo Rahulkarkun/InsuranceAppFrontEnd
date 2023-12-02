@@ -8,6 +8,7 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<body>
 <div class="add-scheme-details-container">
   <h2>Add Scheme Details</h2>
   <form [formGroup]="schemeDetailsForm" (ngSubmit)="addSchemeDetails()">
@@ -94,3 +95,4 @@
     </div>
   </form>
 </div>
+</body>
