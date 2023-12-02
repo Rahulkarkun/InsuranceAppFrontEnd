@@ -1,11 +1,29 @@
 /* src/app/add-agent/add-agent.component.css */
+body {
+  padding-top: 55px;
+  background-image: url("/assets/background-image-1.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* This keeps the background fixed while scrolling */
+  margin: 0; /* Remove default body margin to cover the entire viewport */
+  padding-bottom: 55px; 
+}
 
-.add-scheme-details-container {
+.add-scheme-details-container  {
+  max-width: 400px;
+  margin: auto;
+
+  /* Adjust margin to center the form vertically */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to the form */
+}
+/* .add-scheme-details-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
-  }
+  } */
   
   label {
     display: block;
@@ -17,7 +35,35 @@
     padding: 8px;
     margin-bottom: 10px;
   }
+  .add-button{
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .edit-button,
+  .delete-button {
+    padding: 4px;
+    margin-left: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   
+  .delete-button {
+    background-color: #dc3545;
+  }
+  
+  .edit-button:hover,
+  .delete-button:hover,
+  .add-button:hover {
+    background-color: #0056b3;
+  }
   button {
     padding: 10px;
     background-color: #007bff;

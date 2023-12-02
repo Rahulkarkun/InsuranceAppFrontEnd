@@ -7,9 +7,10 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
-
+<body>
+  <div class="agent-list-container">
   <h2>Agent List</h2>
-  <button (click)="addAgent()">Add Agent</button>
+  <button class="add-button" (click)="addAgent()">Add Agent</button>
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -39,8 +40,8 @@
         <td>{{ agent.commissionEarned }}</td>
         <!-- <td>{{ agent.userId }}</td> -->
         <td>
-          <button (click)="editAgent(agent.agentId)">Edit</button>
-          <button (click)="deleteAgent(agent.agentId)">Delete</button>
+          <button class="edit-button" (click)="editAgent(agent.agentId)">Edit</button>
+          <button class="delete-button" (click)="deleteAgent(agent.agentId)">Delete</button>
         </td>
       </tr>
     </tbody>
@@ -64,3 +65,5 @@
     </pagination-controls>
   </div>
 </div>
+</div>
+</body>

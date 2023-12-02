@@ -8,6 +8,7 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<body>
 <div class="add-agent-container">
   <h2>Add Agent</h2>
   <form [formGroup]="agentForm" (ngSubmit)="addAgent()">
@@ -59,3 +60,4 @@
     <button type="submit">Add Agent</button>
   </form>
 </div>
+</body>

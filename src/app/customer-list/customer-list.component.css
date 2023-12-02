@@ -1,8 +1,26 @@
 /* agents-list.component.css */
+body {
+  padding-top: 70px;
+  background-image: url("/assets/background-image-1.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed; /* This keeps the background fixed while scrolling */
+  margin: 0; /* Remove default body margin to cover the entire viewport */
+  padding-bottom: 70px; 
+}
 
-.customer-list-container {
+.customer-list-container  {
+  max-width: 1500px;
+  margin: auto;
+
+  /* Adjust margin to center the form vertically */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to the form */
+}
+/* .customer-list-container {
     margin: 20px;
-  }
+  } */
   
   .customer-card {
     border: 1px solid #ccc;
@@ -22,10 +40,18 @@
     display: flex;
     gap: 10px;
   }
-  
+  .add-button{
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   .edit-button,
   .delete-button {
-    padding: 8px;
+    padding: 4px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -38,7 +64,8 @@
   }
   
   .edit-button:hover,
-  .delete-button:hover {
+  .delete-button:hover,
+  .add-button:hover {
     background-color: #0056b3;
   }
   

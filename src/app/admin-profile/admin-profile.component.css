@@ -1,12 +1,12 @@
 /* src/app/add-agent/add-agent.component.css */
 body {
-  padding-top: 25px;
+  padding-top: 45px;
   background-image: url("/assets/background-image-1.jpg");
   background-size: cover;
   background-position: center center;
   background-attachment: fixed; /* This keeps the background fixed while scrolling */
   margin: 0; /* Remove default body margin to cover the entire viewport */
-  padding-bottom: 25px; 
+  padding-bottom: 45px; 
 }
 
 .admin-profile-container {

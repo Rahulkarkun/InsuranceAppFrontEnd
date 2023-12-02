@@ -11,7 +11,7 @@
 <body>
 <div class="insurance-scheme-list-container">
     <h2>Insurance Scheme List</h2>
-    <button (click)="addInsuranceScheme()">Add Insurance Scheme</button>
+    <button class="add-button" (click)="addInsuranceScheme()">Add Insurance Scheme</button>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -36,9 +36,9 @@
           <!-- <td>{{ scheme.detailId }}</td> -->
           <!-- <td>{{ scheme.isActive}}</td> -->
           <td>
-            <button (click)="editInsuranceScheme(scheme.schemeId)">Edit</button>
-            <button (click)="deleteInsuranceScheme(scheme.schemeId)">Delete</button>
-            <button (click)="viewInsuranceDetails(scheme.schemeId)">View Insurance Details</button>
+            <button  class="edit-button" (click)="editInsuranceScheme(scheme.schemeId)">Edit</button>
+            <button   class="delete-button" (click)="deleteInsuranceScheme(scheme.schemeId)">Delete</button>
+            <button  class="view-button" (click)="viewInsuranceDetails(scheme.schemeId)">View Insurance Details</button>
           </td>
         </tr>
       </tbody>
