@@ -1,0 +1,77 @@
+<!-- agent-list.component.html -->
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <body>
+  <div class="customer-list-container">
+      <h2>Customer List</h2>
+      <button class="add-button" (click)="addCustomer()">Add Customer</button>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Customer ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Email</th>
+            <th>MobileNo</th>
+            <th>State</th>
+            <th>City</th>
+            <th>Nominee</th>
+            <th>NomineeRelation</th>
+            <th>Agent Name</th>
+            <!-- <th>UserId</th> -->
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers
+          | paginate:{
+            id:'listing_pagination',
+            itemsPerPage:selectedItemsPerPage,
+            currentPage:page,
+            totalItems:totalRecords
+          };index as i">
+            <td>{{ customer.customerId }}</td>
+            <td>{{ customer.firstName }}</td>
+            <td>{{ customer.lastName }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.mobileNo }}</td>
+            <td>{{ customer.state}}</td>
+            <td>{{ customer.city}}</td>
+            <td>{{ customer.nominee}}</td>
+            <td>{{ customer.nomineeRelation}}</td>
+            <td>{{getAgentName(customer.agentId)}}</td>
+            <!-- <td>{{customer.userId}}</td> -->
+            <td>
+              <button class="edit-button" (click)="editCustomer(customer.customerId)">Edit</button>
+              <button class="delete-button" (click)="deleteCustomer(customer.customerId)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="customer-list-container">
+        <div class="items-per-page-container">
+          <label for="itemsPerPage">Items per page:</label>
+          <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+      <div align="center">
+        <pagination-controls
+        id="listing_pagination"
+        [maxSize]="5"
+        [directionLinks]="true"
+        
+        (pageChange)="page =$event">
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+  </body>
+    

@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class LoginService {
 
   url="https://localhost:7029/api/User/login"
+  private loggedInAgentId: number | null = null;
 
   constructor(private http:HttpClient) { }
   login(data:any){

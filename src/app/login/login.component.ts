@@ -46,6 +46,7 @@ export class LoginComponent {
           
           console.log(this.data.userId)
           this.data.userName=this.user.userName
+          this.data.roleName=this.user.roleName
           // Check if 'user' is not null or undefined before accessing properties
           //debugger
           if (this.user.roleName == 'Admin') {

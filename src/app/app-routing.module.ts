@@ -60,6 +60,7 @@ import { EmployeeChangePasswordComponent } from './employee-change-password/empl
 import { EmployeeChangeUsernameComponent } from './employee-change-username/employee-change-username.component';
 import { DocumentVerificationListComponent } from './document-verification-list/document-verification-list.component';
 import { UpdateInsurancePolicyComponent } from './update-insurance-policy/update-insurance-policy.component';
+import { AgentCustomerListComponent } from './agent-customer-list/agent-customer-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -122,6 +123,7 @@ const routes: Routes = [
   {path:'employee-change-username',component: EmployeeChangeUsernameComponent},
   {path:'document-verification-list',component: DocumentVerificationListComponent},
   {path:'update-insurance-policy/:id',component: UpdateInsurancePolicyComponent},
+  {path:'agent-customer-list',component:AgentCustomerListComponent},
   {
     path:"weather",
     component:WeatherInfoComponent
