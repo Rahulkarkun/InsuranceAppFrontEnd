@@ -7,7 +7,7 @@ export interface InsurancePolicy {
     SumAssured: number;
     Status: string;
     SchemeId: number;
-    PaymentId: number;
+    //PaymentId: number;
     CustomerId: number;
     //IsActive: boolean;
   }

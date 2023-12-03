@@ -1,0 +1,46 @@
+<!-- agent-profile.component.html -->
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<body>
+<!-- <div *ngIf="agentData"> -->
+  <div class="agent-profile-container">
+    <h2>Agent Profile</h2>
+    <form [formGroup]="agentForm" (ngSubmit)="updateAgent()">
+      <div>
+        <label for="AgentId">Agent ID:</label>
+        <input type="text" id="AgentId" formControlName="agentId" readonly>
+      </div>
+      <div>
+        <label for="FirstName">First Name:</label>
+        <input id="FirstName" formControlName="firstName">
+      </div>
+      <div>
+        <label for="LastName">Last Name:</label>
+        <input id="LastName" formControlName="lastName">
+      </div>
+      <div>
+        <label for="Qualification">Qualification:</label>
+        <input id="Qualification" formControlName="qualification">
+      </div>
+      <div>
+        <label for="Email">Email:</label>
+        <input id="Email" formControlName="email">
+      </div>
+      <div>
+        <label for="MobileNo">Mobile Number:</label>
+        <input id="MobileNo" formControlName="mobileNo">
+      </div>
+      <!-- UserId and CommissionEarned are hidden fields -->
+      <!-- <input id="UserId" formControlName="UserId" type="hidden"> -->
+      <input id="CommissionEarned" formControlName="commissionEarned" type="hidden">
+  
+      <input id="userId" formControlName="userId" type="hidden">
+
+      <button type="submit">Update Agent</button>
+    </form>
+  </div>
+</body>

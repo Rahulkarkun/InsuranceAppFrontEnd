@@ -21,6 +21,7 @@
         <th>Date</th>
         <th>Status</th>
         <th>Policy No</th>
+        <th>Customer Name</th>
         <th *ngIf="userRole == 'Employee'">Actions</th>
         <!-- <th>Actions</th> -->
       </tr>
@@ -40,6 +41,7 @@
         <td>{{ claim.date }}</td>
         <td>{{ claim.status }}</td>
         <td>{{ claim.policyNo }}</td>
+        <td>{{getCustomerName(claim.customerId)}}</td>
         <td>
           <!-- Show the button only if the userRole is 'Agent' -->
           <!-- *ngIf="userRole == 'Employee'" -->

@@ -34,6 +34,18 @@ export class AgentService {
     return this.http.delete<any>(`${this.apiUrl}/Agent/${agentId}`);
   }
 
+  getByUserId(userId: number): Observable<Agent> {
+    return this.http.get<Agent>(`${this.apiUrl}/Agent/getByUserId?id=${userId}`);
+ }
+
+  changePasswordAgent(agent: Agent): Observable<Agent> {
+    return this.http.post<Agent>(`${this.apiUrl}/Agent/ChangePassword`, agent);
+  }
+
+  changeUsernameAgent(agent: Agent): Observable<Agent> {
+    return this.http.post<Agent>(`${this.apiUrl}/Agent/ChangeUsername`, agent);
+  }
+
   getId(){
     return this.id;
   }

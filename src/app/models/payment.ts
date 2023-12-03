@@ -5,6 +5,8 @@ export interface Payment {
     Date: Date;
     Tax: number;
     TotalPayment: number;
+    CustomerId:number;
+    PolicyNo:number;
     //IsActive: boolean;
   }
  

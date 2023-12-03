@@ -60,6 +60,9 @@ import { EmployeeChangePasswordComponent } from './employee-change-password/empl
 import { EmployeeChangeUsernameComponent } from './employee-change-username/employee-change-username.component';
 import { DocumentVerificationListComponent } from './document-verification-list/document-verification-list.component';
 import { UpdateInsurancePolicyComponent } from './update-insurance-policy/update-insurance-policy.component';
+import { AgentProfileComponent } from './agent-profile/agent-profile.component';
+import { AgentChangePasswordComponent } from './agent-change-password/agent-change-password.component';
+import { AgentDashboardComponent } from './agent-dashboard/agent-dashboard.component';
 import { AgentCustomerListComponent } from './agent-customer-list/agent-customer-list.component';
 
 const routes: Routes = [
@@ -123,6 +126,9 @@ const routes: Routes = [
   {path:'employee-change-username',component: EmployeeChangeUsernameComponent},
   {path:'document-verification-list',component: DocumentVerificationListComponent},
   {path:'update-insurance-policy/:id',component: UpdateInsurancePolicyComponent},
+  {path:'agent-profile/:id',component:AgentProfileComponent},
+  {path:'agent-change-password',component:AgentChangePasswordComponent},
+  {path:'agent-dashboard',component:AgentDashboardComponent},
   {path:'agent-customer-list',component:AgentCustomerListComponent},
   {
     path:"weather",

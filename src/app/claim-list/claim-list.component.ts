@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TemporaryDataService } from '../services/temporary-data.service';
 import { Claim } from '../models/claim';
+import { CustomerService } from '../services/customer.service';
+import { DataService } from '../services/data.service';
+import { AgentService } from '../services/agent.service';
 
 @Component({
   selector: 'app-claim-list',
@@ -13,27 +16,54 @@ import { Claim } from '../models/claim';
 })
 export class ClaimListComponent {
   claims: Array<any>;
+  customer: Array<any>;
+  agentData: Array<any>;
   page: number = 1;
   totalRecords:number=0
   selectedItemsPerPage: number = 5; // Set a default value, or fetch it from user preferences
   userRole:string=''
-  constructor(private claimService: ClaimService, private router: Router,private temporaryData:TemporaryDataService) 
+  constructor(private claimService: ClaimService, private router: Router,private temporaryData:TemporaryDataService,
+    private customerService: CustomerService,private dataService:DataService,private agentService:AgentService) 
   { 
     this.claims=new Array<any>()
+    this.agentData=new Array<any>()
+    this.customer=new Array<any>()
     this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    this.agentService.getAllAgents().subscribe({
+      next:(response)=>{
+        this.agentData=response
+       
+        
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse)
+      }
+    })
+    this.customerService.getAllCustomers().subscribe({
+      next:(data)=>{
+        this.customer=data
+        this.totalRecords=data.length
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse)
+      }
+    })
     this.fetchClaims();
   }
 
   fetchClaims(): void {
+    //debugger
     this.claimService.getAllClaims().subscribe(
       {
         next:(data)=>{
         this.claims=data
         console.log(this.claims)
         this.totalRecords=data.length
+        debugger
+        this.filterCustomer();
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
@@ -67,7 +97,36 @@ resolveClaim(claimId: number): void {
     }
   );
 }
-
+getCustomerName(customerId: number): string {
+  if (this.customer) {
+    const customer = this.customer.find((a: any) => a.customerId === customerId);
+    console.log(customer);
+    return customer!=null ? `${customer.firstName} ${customer.lastName}` : 'Customer Not Found';
+  } else {
+    return 'Customer Data Not Loaded';
+  }
+}
+filterCustomer(){
+  var agent=this.agentData.find((a: any) => a.userId === this.dataService.userId)
+  if((this.dataService.roleName=="Agent")){
+    this.customer=this.customer.filter(x=>x.agentId === agent.agentId)
+    console.log('jdsc' + this.customer)
+    this.filterClaim()
+  }
+}
+filterClaim(){
+  //debugger
+  //var claim=this.claims.find((a: any) => a.userId === this.dataService.userId)
+  // if((this.dataService.roleName=="Agent")){
+  //   this.customer=this.customer.filter(x=>x.customerId === claim.customerId)
+  //   console.log('jdsc' + this.customer)
+  for(let c of this.customer){
+    if((this.dataService.roleName=="Agent")){
+    this.claims=this.claims.filter(x=>x.customerId === c.customerId)
+    console.log('jdsc' + this.customer)
+  }
+  }
+}
 onItemsPerPageChange(): void {
   this.page = 1; // Reset to the first page when items per page changes
   this.fetchClaims(); // Fetch data with the new items per page

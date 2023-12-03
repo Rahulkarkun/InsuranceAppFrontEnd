@@ -122,3 +122,4 @@ onItemsPerPageChange(): void {
   this.fetchCustomers(); // Fetch data with the new items per page
 }
 }
+

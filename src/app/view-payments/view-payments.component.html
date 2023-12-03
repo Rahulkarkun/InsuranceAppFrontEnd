@@ -20,6 +20,8 @@
           <th>Date</th>
           <th>Tax</th>
           <th>TotalPayment</th>
+          <th>Policy No</th>
+          <th>Customer Name</th>
         </tr>
       </thead>
       <tbody>
@@ -36,6 +38,9 @@
           <td>{{payment.date}}</td>
           <td>{{ payment.tax }}</td>
           <td>{{ payment.totalPayment }}</td>
+          <td>{{payment.policyNo}}</td>
+          <td>{{getCustomerName(payment.customerId)}}</td>
+          
           <!-- <td>
             <button (click)="editAgent(agent.AgentId)">Edit</button>
             <button (click)="deleteAgent(agent.AgentId)">Delete</button>

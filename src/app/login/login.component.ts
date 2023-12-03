@@ -55,7 +55,7 @@ export class LoginComponent {
             this.router.navigateByUrl('/employee-dashboard');
           }
           else if(this.user.roleName == 'Agent') {
-            this.router.navigateByUrl('/agent');
+            this.router.navigateByUrl('/agent-dashboard');
           }
            else {
             this.router.navigateByUrl('/customer-dashboard');
