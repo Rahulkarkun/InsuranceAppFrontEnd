@@ -32,6 +32,7 @@ export class ClaimListComponent {
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    debugger
     this.agentService.getAllAgents().subscribe({
       next:(response)=>{
         this.agentData=response

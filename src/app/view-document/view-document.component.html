@@ -1,0 +1,43 @@
+<!-- view-document.component.html -->
+
+<div>
+    <h2>View Document</h2>
+  
+    <div *ngIf="document">
+      <div class="form-group">
+        <label for="documentId">Document ID</label>
+        <input type="text" id="documentId" name="documentId" [(ngModel)]="document.documentId" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="documentType">Document Type</label>
+        <input type="text" id="documentType" name="documentType" [(ngModel)]="document.documentType" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="documentName">Document Name</label>
+        <input type="text" id="documentName" name="documentName" [(ngModel)]="document.documentName" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="customerId">Customer ID</label>
+        <input type="number" id="customerId" name="customerId" [(ngModel)]="document.customerId" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="file">File</label>
+        <!-- Display the PDF file using an iframe -->
+        <!-- <iframe [src]="documentFile" width="100%" height="500px" frameborder="0"></iframe> -->
+        <!-- <embed [src]="documentFile" type="application/pdf" width="100%" height="500px"> -->
+        <ngx-extended-pdf-viewer [src]="documentFile"></ngx-extended-pdf-viewer>
+      </div>
+      
+      <!-- Add a link to open the document -->
+      <div class="form-group">
+        <label>View Document</label>
+        <a [href]="documentFile" target="_blank">Open Document</a>
+      </div>
+  
+      <button (click)="goBack()">Back</button>
+    </div>
+</div>

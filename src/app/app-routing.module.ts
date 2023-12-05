@@ -64,6 +64,10 @@ import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { AgentChangePasswordComponent } from './agent-change-password/agent-change-password.component';
 import { AgentDashboardComponent } from './agent-dashboard/agent-dashboard.component';
 import { AgentCustomerListComponent } from './agent-customer-list/agent-customer-list.component';
+import { CommissionListComponent } from './commission-list/commission-list.component';
+import { UploadDocumentComponent } from './upload-document/upload-document.component';
+import { ViewDocumentComponent } from './view-document/view-document.component';
+import { CommissionWithdrawalListComponent } from './commission-withdrawal-list/commission-withdrawal-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -130,6 +134,10 @@ const routes: Routes = [
   {path:'agent-change-password',component:AgentChangePasswordComponent},
   {path:'agent-dashboard',component:AgentDashboardComponent},
   {path:'agent-customer-list',component:AgentCustomerListComponent},
+  {path:'commission-list',component:CommissionListComponent},
+  {path:'upload-document',component:UploadDocumentComponent},
+  { path: 'view-document/:id', component: ViewDocumentComponent },
+  { path: 'commission-withdrawal-list', component: CommissionWithdrawalListComponent },
   {
     path:"weather",
     component:WeatherInfoComponent

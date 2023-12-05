@@ -4,6 +4,16 @@
     max-height: 100px; /* Set the desired height */
 }
 
+/* .dropdown-menu {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 10s ease-in-out, visibility 10s ease-in-out;
+}
+
+.nav-item:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+} */
 
 .navbar {
     background: linear-gradient(

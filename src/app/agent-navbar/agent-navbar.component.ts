@@ -35,7 +35,7 @@ export class AgentNavbarComponent implements OnInit{
           console.log(result)
           // console.log(this.data.agentId)
           // Move the navigation logic here, inside the callback
-          // this.agentId = this.data.agentId
+          this.agentId = this.data.agentId
           // console.log(this.data.AdminId)
           // this.router.navigate(['/admin-profile',result.AdminId]);
           // console.log(result.AdminId)

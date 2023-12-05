@@ -29,12 +29,16 @@ export class DocumentService {
   }
   getDocumentById(documentId: number): Observable<Document> {
     // Implement your API endpoint to get document details by ID
-    return this.http.get<Document>(`${this.apiUrl}/Document/GetById?id=${documentId}`);
+    return this.http.get<Document>(`${this.apiUrl}/Document?id=${documentId}`);
   }
 
   getAllDocuments(): Observable<Document[]> {
     // const url = `${this.apiUrl}/documents`;
     return this.http.get<Document[]>(`${this.apiUrl}/Document/get/`);
+  }
+
+  uploadFile(formData: FormData) {
+    return this.http.post<any>(`${this.apiUrl}/Document/upload`, formData);
   }
 
   getId(){

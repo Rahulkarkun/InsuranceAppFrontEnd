@@ -1,0 +1,64 @@
+<!-- commission-withdrawal-list.component.html -->
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <body>
+    <div class="commission-withdrawal-list-container">
+      <!-- <h1>View Commission Withdrawal</h1> -->
+  
+      <div class="commission-list-container">
+        <h2>Commission Withdrawal List</h2>
+        <!-- <button class="add-button" (click)="addCustomer()">Add Customer</button> -->
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Agent Name</th>
+              <th>Request Date</th>
+              <!-- <th>Is Approved</th> -->
+              <th>Withdrawal Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let withdrawal of (withdrawalData | paginate: {
+                id:'listing_pagination',
+                itemsPerPage:selectedItemsPerPage,
+                currentPage:page,
+                totalItems:totalRecords
+              }); index as i">
+              <td>{{ fetchAgentName(withdrawal.agentId) }}</td>
+              <td>{{ withdrawal.requestDate }}</td>
+              <!-- <td>{{ withdrawal.isApproved }}</td> -->
+              <td>{{ withdrawal.withdrawalAmount }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"><strong>TotalWithdrawalAmount</strong></td>
+              <td><strong>{{calculateTotal()}} {{makeTotalZero()}}</strong></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="customer-list-container">
+          <div class="items-per-page-container">
+            <label for="itemsPerPage">Items per page:</label>
+            <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <!-- Add more options as needed -->
+            </select>
+          </div>
+          <div align="center">
+            <pagination-controls
+              id="listing_pagination"
+              [maxSize]="5"
+              [directionLinks]="true"
+              (pageChange)="page =$event">
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+  

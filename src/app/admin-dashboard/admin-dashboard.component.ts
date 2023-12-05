@@ -127,6 +127,25 @@ export class AdminDashboardComponent {
     // console.log(this.temporarydata.getRole)
     
   }
+
+  viewCommissionList(){
+    console.log("hih")
+    //debugger
+    this.temporarydata.setRole('Admin')
+    this.router.navigateByUrl("/commission-list")
+    // console.log(this.temporarydata.getRole)
+    
+  }
+
+  viewCommissionWithdrawalList(){
+    console.log("hih")
+    //debugger
+    this.temporarydata.setRole('Admin')
+    this.router.navigateByUrl("/commission-withdrawal-list")
+    // console.log(this.temporarydata.getRole)
+    
+  }
+
   addInsurancePolicy(){
     console.log("hih")
     //debugger

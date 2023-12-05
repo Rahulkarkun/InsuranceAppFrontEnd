@@ -51,7 +51,7 @@ export class AdminProfileComponent {
       lastName: ['', Validators.required],
       userId: [0]
     });
-
+    debugger
     this.fetchAdminDetails()
     // Extract the customer ID from the route params
     
