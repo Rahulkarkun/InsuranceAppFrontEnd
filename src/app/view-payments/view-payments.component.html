@@ -8,6 +8,9 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<div *ngIf="userRole=='Customer'">
+  <app-customer-navbar></app-customer-navbar>
+</div>
 <body>
 <div class="payment-list-container">
     <h2>Payments</h2>

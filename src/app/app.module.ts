@@ -73,9 +73,11 @@ import { AgentChangePasswordComponent } from './agent-change-password/agent-chan
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { UploadDocumentComponent } from './upload-document/upload-document.component';
 import { AgentCustomerListComponent } from './agent-customer-list/agent-customer-list.component';
+import { AddQueryComponent } from './add-query/add-query.component';
+import { ViewQueryListComponent } from './view-query-list/view-query-list.component';
+import { UpdateQueryComponent } from './update-query/update-query.component';
+import { DocumentViewerComponent } from './document-viewer/document-viewer.component';
 import { CommissionListComponent } from './commission-list/commission-list.component';
-import { ViewDocumentComponent } from './view-document/view-document.component';
-import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer'
 import { CommissionWithdrawalListComponent } from './commission-withdrawal-list/commission-withdrawal-list.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -145,9 +147,14 @@ import { CommissionWithdrawalListComponent } from './commission-withdrawal-list/
     AgentChangePasswordComponent,
     AgentProfileComponent ,
     AgentCustomerListComponent,
+    AddQueryComponent,
+    ViewQueryListComponent,
+    UpdateQueryComponent,
+    DocumentViewerComponent,
+    // UploadDocumentComponent
+    AgentCustomerListComponent,
     CommissionListComponent,
     UploadDocumentComponent,
-    ViewDocumentComponent,
     CommissionWithdrawalListComponent
   ],
   imports: [
@@ -161,7 +168,6 @@ import { CommissionWithdrawalListComponent } from './commission-withdrawal-list/
     NgbModule,
     HttpClientModule,
     NgxPaginationModule,
-    NgxExtendedPdfViewerModule
     ],
   providers: [{provide: HTTP_INTERCEPTORS,useClass:JwtInterceptor,multi:true}],
   bootstrap: [AppComponent]

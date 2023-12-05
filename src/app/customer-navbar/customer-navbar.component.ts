@@ -11,32 +11,34 @@ import { CustomerService } from '../services/customer.service';
   styleUrl: './customer-navbar.component.css'
 })
 export class CustomerNavbarComponent {
+  data:any
+  customerId: number = 0;
  constructor(private router:Router,
   private temporarydata:TemporaryDataService,
   private dataService: DataService,
   private customerService: CustomerService 
   ){}
-  // ngOnInit(): void {
-  //   // this.loginId = this.dataService.userId;
-  //   debugger
-  //   console.log(this.dataService.userId)
-  //   this.customerService.getByuserId(this.dataService.userId).subscribe(
-  //     {
-  //       next: (result) => {
-  //         this.data = result;
-  //         console.log(this.data.adminId)
-  //         // Move the navigation logic here, inside the callback
-  //         this.adminId = this.data.adminId
-  //         // console.log(this.data.AdminId)
-  //         // this.router.navigate(['/admin-profile',result.AdminId]);
-  //         // console.log(result.AdminId)
-  //       },
-  //       error: (error) => {
-  //         console.error('Error fetching customer details:', error);
-  //       }
-  //     }
-  //   );
-  // }
+  ngOnInit(): void {
+    // this.loginId = this.dataService.userId;
+    //debugger
+    console.log(this.dataService.userId)
+    this.customerService.getByuserId(this.dataService.userId).subscribe(
+      {
+        next: (result) => {
+          this.data = result;
+          console.log(this.data.customerId)
+          // Move the navigation logic here, inside the callback
+          this.customerId = this.data.customerId
+          // console.log(this.data.AdminId)
+          // this.router.navigate(['/admin-profile',result.AdminId]);
+          // console.log(result.AdminId)
+        },
+        error: (error) => {
+          console.error('Error fetching customer details:', error);
+        }
+      }
+    );
+  }
  setRole(){
   this.temporarydata.setRole('Customer')
   // console.log(this.temporarydata.getRole)

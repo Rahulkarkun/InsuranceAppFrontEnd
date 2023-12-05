@@ -111,6 +111,7 @@ export class AdminProfileComponent {
   }
 
   private fetchAdminDetails(): void {
+    debugger
     this.adminService.getByuserId(this.dataService.userId).subscribe(
       (data) => {
         // Populate the form with customer details

@@ -8,10 +8,13 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<div *ngIf="userRole=='Customer'">
+  <app-customer-navbar></app-customer-navbar>
+</div>
 <body>
 <div class="insurance-scheme-list-container">
     <h2>Insurance Scheme List</h2>
-    <button class="add-button" (click)="addInsuranceScheme()">Add Insurance Scheme</button>
+    <button  *ngIf="userRole == 'Admin'" class="add-button" (click)="addInsuranceScheme()">Add Insurance Scheme</button>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -36,8 +39,8 @@
           <!-- <td>{{ scheme.detailId }}</td> -->
           <!-- <td>{{ scheme.isActive}}</td> -->
           <td>
-            <button  class="edit-button" (click)="editInsuranceScheme(scheme.schemeId)">Edit</button>
-            <button   class="delete-button" (click)="deleteInsuranceScheme(scheme.schemeId)">Delete</button>
+            <button  *ngIf="userRole == 'Admin'"  class="edit-button" (click)="editInsuranceScheme(scheme.schemeId)">Edit</button>
+            <button  *ngIf="userRole == 'Admin'"  class="delete-button" (click)="deleteInsuranceScheme(scheme.schemeId)">Delete</button>
             <button  class="view-button" (click)="viewInsuranceDetails(scheme.schemeId)">View Insurance Details</button>
           </td>
         </tr>

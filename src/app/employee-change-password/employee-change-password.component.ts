@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
 import { DataService } from '../services/data.service';
 import { TemporaryDataService } from '../services/temporary-data.service';
@@ -15,11 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class EmployeeChangePasswordComponent {
   employeeData:any
   userRole:string='';
-  changePasswordEmployee = new FormGroup({
-    id:new FormControl(''),
-    oldPassword: new FormControl(''),
-    newPassword:new FormControl('')
-  })
+  changePasswordEmployee :FormGroup
 
   employeeId:number=0;
 
@@ -33,6 +29,13 @@ export class EmployeeChangePasswordComponent {
       this.userRole=temporaryData.getRole()
       console.log(this.userRole)
       this.employeeId=dataService.userId;
+
+      this.changePasswordEmployee = new FormGroup({
+        id: new FormControl(''),
+        oldPassword: new FormControl(''),
+        newPassword: new FormControl('', Validators.required),
+        confirmPassword: new FormControl('', Validators.required),
+      }, { validators:(control) => this.passwordMatchValidator(control) });
     }
     changeEmployeePassword(data:any){
 
@@ -48,5 +51,11 @@ export class EmployeeChangePasswordComponent {
           
         }
       })
+    }
+    private passwordMatchValidator(control: AbstractControl) {
+      const newPassword = control.get('newPassword')?.value;
+      const confirmPassword = control.get('confirmPassword')?.value;
+  
+      return newPassword === confirmPassword ? null : { 'passwordMismatch': true };
     }
 }

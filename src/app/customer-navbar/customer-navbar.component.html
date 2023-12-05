@@ -13,47 +13,56 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/customer-dashboard">Dashboard</a>
                     </li>
-                    <li ngbDropdown class="nav-item dropdown">
+                    <!-- <li ngbDropdown class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownAccount" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
-                            Customer Profile
+                            Agent
                         </a>
                         <div ngbDropdownMenu aria-labelledby="navbarDropdownAccount" class="dropdown-menu">
-                            <a ngbDropdownItem routerLink="/customer-profile" class="dropdown-item">Update Profile</a>
-                            <a ngbDropdownItem routerLink="#" class="dropdown-item">Documents</a>
-                            <a ngbDropdownItem routerLink="/customer-change-username" class="dropdown-item">Change Username</a>
-                            <a ngbDropdownItem routerLink="/customer-change-password" class="dropdown-item">Change Password</a>
+                            <a ngbDropdownItem routerLink="/add-agent" class="dropdown-item">Add Agent</a>
+                            <a ngbDropdownItem routerLink="/agent-list" class="dropdown-item">View Agent</a>
                         </div>
-                    </li>
-                        <!-- Dropdown Menu for Insurance Plans -->
-                    <li ngbDropdown class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" routerLink="/insurance-plans" id="insuranceDropdown" role="button"
-                            ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
-                                Insurance Plans
+                    </li> -->
+                    <!-- <li ngbDropdown class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownInsurance" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+                            Insurance
                         </a>
-                        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="insuranceDropdown">
-                            <a ngbDropdownItem class="dropdown-item" routerLink="/insurance-plans/protection-plan">Protection Plan</a>
-                            <a ngbDropdownItem class="dropdown-item" href="#">Child Plan</a>
-                            <a ngbDropdownItem class="dropdown-item" href="#">Saving Plan</a>
-                            <a ngbDropdownItem class="dropdown-item" href="#">Growth Plan</a>
-                            <a ngbDropdownItem class="dropdown-item" href="#">Group Plan</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="#">Insurance Account</a>
-                    </li>              
+                        <ul ngbDropdownMenu aria-labelledby="navbarDropdownInsurance" class="dropdown-menu">
+                            <li><a ngbDropdownItem routerLink = "/add-customer" class="dropdown-item">Add Customers</a></li>
+                            <li><a ngbDropdownItem routerLink = "/customer-list" class="dropdown-item">View Customers</a></li>
+                            <li><a ngbDropdownItem routerLink = "/insurance-policy-list"class="dropdown-item">View Insurance Policy</a></li>
+                            <li><a ngbDropdownItem routerLink="/view-payments" class="dropdown-item">View Policy Payment</a></li>
+                            <li><a ngbDropdownItem routerLink="/claim" class="dropdown-item">View Policy Claim</a></li>
+                        </ul>
+                    </li>            -->
+                    <!-- <li ngbDropdown class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownInsurance" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+                            Insurance Type
+                        </a>
+                        <ul ngbDropdownMenu aria-labelledby="navbarDropdownInsurance" class="dropdown-menu">
+                            <li><a ngbDropdownItem routerLink="/add-insurance-plan" class="dropdown-item">Add Insurance Plan</a></li>
+                            <li><a ngbDropdownItem routerLink="/insurance-plan-list" class="dropdown-item">View Insurance Plan</a></li>
+                            <li><a ngbDropdownItem routerLink="/add-insurance-scheme" class="dropdown-item">Add Insurance Scheme</a></li>
+                            <li><a ngbDropdownItem routerLink="/insurance-scheme-list" class="dropdown-item">View Insurance Scheme</a></li>
+                            <li><a ngbDropdownItem routerLink="/add-insurance-scheme" class="dropdown-item">Add Insurance SchemeDetails</a></li>
+                            <li><a ngbDropdownItem routerLink="/schemedetails-list" class="dropdown-item">View Insurance SchemeDetails</a></li>
+                        </ul>
+                    </li> -->
                     <li ngbDropdown class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownCommission" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
-                            Queries
+                            Account
                         </a>
                         <ul ngbDropdownMenu aria-labelledby="navbarDropdownCommission" class="dropdown-menu">
-                            <li><a ngbDropdownItem routerLink = "#" class="dropdown-item" href="#">Enquiry</a></li>
-                            <li><a class="dropdown-item" routerLink="#">Feedback</a></li>
-                            <li><a class="dropdown-item" routerLink="#">Withdraw Amount</a></li>
+                            <!-- <li><a ngbDropdownItem routerLink = "/admin-profile/:id" class="dropdown-item" >Profile</a></li> -->
+                            <li><a ngbDropdownItem routerLink="/customer-profile" class="dropdown-item">Profile</a></li>
+                            <li><a ngbDropdownItem routerLink = "/customer-change-username" class="dropdown-item">Change Username</a></li>
+                            <li><a ngbDropdownItem routerLink = "/customer-change-password" class="dropdown-item">Change Password</a></li>
+                            <!-- <li><a ngbDropdownItem routerLink = "/add-employee" class="dropdown-item">Add Employee</a></li>
+                            <li><a ngbDropdownItem routerLink = "/employee-list" class="dropdown-item">View Employee</a></li> -->
                         </ul>
                     </li>
                     <li class="nav-item">
                         <button class="nav-link" (click)="deleteToken()">Logout</button>
-                        <!-- <a class="nav-link" routerLink="/logout">Logout</a> -->
+                        <!-- <a class="nav-link" (click)="deleteToken()">Logout</a> -->
                     </li>
                 </ul>
             </div>

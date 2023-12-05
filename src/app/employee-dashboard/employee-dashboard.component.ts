@@ -35,6 +35,10 @@ export class EmployeeDashboardComponent {
     // console.log(this.temporarydata.getRole)
     
   }
+  viewQuery(){
+    this.temporarydata.setRole('Employee')
+    this.router.navigateByUrl("/view-query-list")
+  }
   addAgent(){
     console.log("hih")
     //debugger

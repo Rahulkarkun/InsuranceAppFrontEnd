@@ -35,6 +35,18 @@ export class CustomerDashboardComponent {
     this.temporarydata.setRole('Customer')
     this.router.navigateByUrl("/customer-change-username")
   }
+  addQuery(){
+    this.temporarydata.setRole('Customer')
+    this.router.navigateByUrl("/add-query")
+  }
+  viewQuery(){
+    this.temporarydata.setRole('Customer')
+    this.router.navigateByUrl("/view-query-list")
+  }
+  documentUpload(){
+    this.temporarydata.setRole('Customer')
+    this.router.navigateByUrl("/upload-document")
+  }
   addCustomer(){
     console.log("hih")
     //debugger
@@ -94,7 +106,7 @@ export class CustomerDashboardComponent {
   insurancePlanList(){
     console.log("hih")
     //debugger
-    this.temporarydata.setRole('Admin')
+    this.temporarydata.setRole('Customer')
     this.router.navigateByUrl("/insurance-plan-list")
     // console.log(this.temporarydata.getRole)
     
@@ -110,15 +122,19 @@ export class CustomerDashboardComponent {
   insuranceSchemeList(){
     console.log("hih")
     //debugger
-    this.temporarydata.setRole('Admin')
+    this.temporarydata.setRole('Customer')
     this.router.navigateByUrl("/insurance-scheme-list")
     // console.log(this.temporarydata.getRole)
     
   }
+  insurancePolicyList(){
+    this.temporarydata.setRole('Customer')
+    this.router.navigateByUrl("/insurance-policy-list")
+  }
   viewPayments(){
     console.log("hih")
     //debugger
-    this.temporarydata.setRole('Admin')
+    this.temporarydata.setRole('Customer')
     this.router.navigateByUrl("/view-payments")
     // console.log(this.temporarydata.getRole)
     

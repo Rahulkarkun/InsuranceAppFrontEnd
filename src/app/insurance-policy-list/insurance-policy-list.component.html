@@ -5,6 +5,9 @@
 <div *ngIf="userRole=='Agent'">
   <app-agent-navbar></app-agent-navbar>
 </div>
+<div *ngIf="userRole=='Customer'">
+  <app-customer-navbar></app-customer-navbar>
+</div>
 <body>
 <div class="insurance-policy-list-container">
     <h2>Insurance Policy List</h2>
@@ -19,6 +22,7 @@
           <th>Premium Type</th>
           <th>Premium Amount</th>
           <th>SumAssured</th>
+          <th>Scheme Id</th>
           <th>Status</th>
           <!-- <th>Scheme Id</th>
           <th>Payment Id</th>
@@ -42,7 +46,9 @@
           <td>{{ policy.premiumType}}</td>
           <td>{{ policy.premiumAmount }}</td>
           <td>{{ policy.sumAssured }}</td>
+          <td>{{ policy.schemeId }}</td>
           <td>{{ policy.status }}</td>
+          
         <!-- I want to call the getCustomerName here and then display their first and last name-->
           <!-- <td>{{ policy.schemeId }}</td>
           <td>{{ policy.paymentId }}</td>

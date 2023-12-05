@@ -7,7 +7,9 @@
 <div *ngIf="userRole=='Customer'">
     <app-customer-navbar></app-customer-navbar>
 </div>
-<div class="update-customer-container">
+<body> 
+
+<div class="customer-profile-container">
     <h2>Customer Profile</h2>
     <form [formGroup]="customerForm" (ngSubmit)="updateCustomer()">
         <div>
@@ -54,3 +56,4 @@
         <button type="submit">Update Customer</button>
     </form>
 </div> 
+</body>

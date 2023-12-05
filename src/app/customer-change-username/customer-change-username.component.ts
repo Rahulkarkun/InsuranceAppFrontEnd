@@ -29,6 +29,7 @@ export class CustomerChangeUsernameComponent {
     private temporaryData:TemporaryDataService,
     private router:Router
     ){
+      temporaryData.setRole('Customer')
       this.userRole=temporaryData.getRole()
       console.log(this.userRole)
       this.customerId=dataService.userId;
