@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DocumentService } from '../services/document.service';
+import { TemporaryDataService } from '../services/temporary-data.service';
 
 @Component({
   selector: 'app-upload-document',
@@ -9,14 +10,21 @@ import { DocumentService } from '../services/document.service';
 })
 export class UploadDocumentComponent {
   documents: Document[] = [];
+  userRole:string='';
   documentDto: any = {
     documentType: '',
     documentName: '',
     customerId: 0,
+    
     file: null
   };
 
-  constructor(private documentService: DocumentService) {}
+  constructor(private documentService: DocumentService,
+    private temporaryData:TemporaryDataService,) 
+    {
+      this.userRole=temporaryData.getRole()
+    console.log(this.userRole)
+    }
 
   ngOnInit() {
     // Load documents if needed

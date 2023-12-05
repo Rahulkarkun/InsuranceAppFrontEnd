@@ -33,37 +33,51 @@ export class ViewPaymentsComponent {
     this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
-  ngOnInit(): void {
-    this.agentService.getAllAgents().subscribe({
-      next:(response)=>{
-        this.agentData=response
-      },
-      error(errorResponse:HttpErrorResponse){
-        console.log(errorResponse)
-      }
-    })
-    this.customerService.getAllCustomers().subscribe({
-      next:(data)=>{
-        this.customer=data
-        this.totalRecords=data.length
-      },
-      error(errorResponse:HttpErrorResponse){
-        console.log(errorResponse)
-      }
-    })
-    this.fetchPayments();
+  ngOnInit(): void { 
+    debugger
+    // this.customerService.getAllCustomers().subscribe(
+    //   {
+    //     next:(data)=>{
+    //     this.customer=data
+    //     console.log(this.customer)
+    //     this.totalRecords=data.length
+    //   },
+    //   error:(errorResponse:HttpErrorResponse)=>{
+    //     console.log(errorResponse); 
+    //   }
+    // }
+    // );
+    //this.fetchCustomers()
+    this.fetchPayments()
   }
 
   fetchPayments(): void {
-    debugger
+   // debugger
     this.paymentService.getAllPayments().subscribe(
       {
         next:(data)=>{
         this.payments=data
         console.log(this.payments)
         this.totalRecords=data.length
-        this.filterCustomer()
+        //this.filterPayment()
+        this.fetchCustomers()
 
+      },
+      error:(errorResponse:HttpErrorResponse)=>{
+        console.log(errorResponse); 
+      }
+    }
+    );
+  }
+  fetchCustomers(): void {
+    //debugger
+    this.customerService.getAllCustomers().subscribe(
+      {
+        next:(data)=>{
+        this.customer=data
+        console.log(this.customer)
+        this.totalRecords=data.length
+        this.filterPayment();
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
@@ -80,27 +94,29 @@ export class ViewPaymentsComponent {
       return 'Customer Data Not Loaded';
     }
   }
-  filterCustomer(){
-    var agent=this.agentData.find((a: any) => a.userId === this.dataService.userId)
-    if((this.dataService.roleName=="Agent")){
-      this.customer=this.customer.filter(x=>x.agentId === agent.agentId)
-      console.log('jdsc' + this.customer)
-      this.filterPayment()
-    }
-  }
   filterPayment(){
     //debugger
-    //var claim=this.claims.find((a: any) => a.userId === this.dataService.userId)
-    // if((this.dataService.roleName=="Agent")){
-    //   this.customer=this.customer.filter(x=>x.customerId === claim.customerId)
-    //   console.log('jdsc' + this.customer)
-    for(let c of this.customer){
-      if((this.dataService.roleName=="Agent")){
-      this.payments=this.payments.filter(x=>x.customerId === c.customerId)
-      console.log('jdsc' + this.customer)
-    }
+    var customer=this.customer.find((a: any) => a.userId === this.dataService.userId)
+    //console.log(customer);
+    if((this.dataService.roleName=="Customer")){
+      this.payments=this.payments.filter(x=>x.customerId === customer.customerId)
+      console.log(this.payments)
+      //this.filterPayment()
     }
   }
+  // filterPayment(){
+  //   //debugger
+  //   //var claim=this.claims.find((a: any) => a.userId === this.dataService.userId)
+  //   // if((this.dataService.roleName=="Agent")){
+  //   //   this.customer=this.customer.filter(x=>x.customerId === claim.customerId)
+  //   //   console.log('jdsc' + this.customer)
+  //   for(let c of this.customer){
+  //     if((this.dataService.roleName=="Agent")){
+  //     this.payments=this.payments.filter(x=>x.customerId === c.customerId)
+  //     console.log('jdsc' + this.customer)
+  //   }
+  //   }
+  // }
   onItemsPerPageChange(): void {
     this.page = 1; // Reset to the first page when items per page changes
     this.fetchPayments(); // Fetch data with the new items per page

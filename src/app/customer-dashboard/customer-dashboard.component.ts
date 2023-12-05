@@ -43,6 +43,10 @@ export class CustomerDashboardComponent {
     this.temporarydata.setRole('Customer')
     this.router.navigateByUrl("/view-query-list")
   }
+  documentUpload(){
+    this.temporarydata.setRole('Customer')
+    this.router.navigateByUrl("/upload-document")
+  }
   addCustomer(){
     console.log("hih")
     //debugger

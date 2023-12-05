@@ -20,7 +20,7 @@ export class CustomerNavbarComponent {
   ){}
   ngOnInit(): void {
     // this.loginId = this.dataService.userId;
-    debugger
+    //debugger
     console.log(this.dataService.userId)
     this.customerService.getByuserId(this.dataService.userId).subscribe(
       {
