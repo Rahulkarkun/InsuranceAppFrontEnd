@@ -73,6 +73,11 @@ import { AgentChangePasswordComponent } from './agent-change-password/agent-chan
 import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 
 import { AgentCustomerListComponent } from './agent-customer-list/agent-customer-list.component';
+import { AddQueryComponent } from './add-query/add-query.component';
+import { ViewQueryListComponent } from './view-query-list/view-query-list.component';
+import { UpdateQueryComponent } from './update-query/update-query.component';
+import { DocumentViewerComponent } from './document-viewer/document-viewer.component';
+import { UploadDocumentComponent } from './upload-document/upload-document.component';
 
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -141,7 +146,12 @@ import { AgentCustomerListComponent } from './agent-customer-list/agent-customer
     AgentDashboardComponent,
     AgentChangePasswordComponent,
     AgentProfileComponent ,
-    AgentCustomerListComponent
+    AgentCustomerListComponent,
+    AddQueryComponent,
+    ViewQueryListComponent,
+    UpdateQueryComponent,
+    DocumentViewerComponent,
+    UploadDocumentComponent
   ],
   imports: [
     MatTableModule,

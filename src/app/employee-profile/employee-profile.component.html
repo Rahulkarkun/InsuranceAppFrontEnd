@@ -7,12 +7,13 @@
 <div *ngIf="userRole=='Employee'">
     <app-employee-navbar></app-employee-navbar>
 </div>
+
 <body>
 <div class="update-employee-container">
     <h2>Employee Profile</h2>
     <form [formGroup]="employeeForm" (ngSubmit)="updateEmployee()">
         <div>
-            <label for="employeeId">Admin ID:</label>
+            <label for="employeeId">Employee ID:</label>
             <!-- <input type="text" id="admintId" formControlName="adminId" [disabled]="true" > -->
             <input type="text" id="employeeId" formControlName="employeeId" readonly>
         </div>

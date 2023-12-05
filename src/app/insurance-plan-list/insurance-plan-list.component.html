@@ -8,16 +8,19 @@
 <div *ngIf="userRole=='Employee'">
   <app-employee-navbar></app-employee-navbar>
 </div>
+<div *ngIf="userRole=='Customer'">
+  <app-customer-navbar></app-customer-navbar>
+</div>
 <body>
 <div class="insurance-plan-list-container">
     <h2>Insurance Plan List</h2>
-    <button class="add-button" (click)="addInsurancePlan()">Add Insurance Plan</button>
+    <button  *ngIf="userRole == 'Employee' || userRole == 'Admin'" class="add-button" (click)="addInsurancePlan()">Add Insurance Plan</button>
     <table class="table table-bordered">
       <thead>
         <tr>
           <th>Plan Id</th>
           <th>Plan Name</th>
-          <th>Actions</th>
+          <th  *ngIf="userRole == 'Admin'" >Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -32,8 +35,8 @@
           <td>{{ plan.planName }}</td>
           <td>
             
-            <button class="edit-button" (click)="editInsurancePlan(plan.planId)">Edit</button>
-            <button class="delete-button" (click)="deleteInsurancePlan(plan.planId)">Delete</button>
+            <button  *ngIf="userRole == 'Admin'" class="edit-button" (click)="editInsurancePlan(plan.planId)">Edit</button>
+            <button  *ngIf="userRole == 'Admin'" class="delete-button" (click)="deleteInsurancePlan(plan.planId)">Delete</button>
           </td>
         </tr>
       </tbody>

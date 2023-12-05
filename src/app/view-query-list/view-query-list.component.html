@@ -1,0 +1,72 @@
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+  <div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+  </div>
+  <body>
+    <div class="query-list-container">
+    <h2>Quries List</h2>
+    <button  *ngIf="userRole == 'Customer'" class="add-button" (click)="addQuery()">Add Query</button>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Query ID</th>
+          <th>Query Title</th>
+          <th>Query Message</th>
+          <th>Query Date</th>
+          <th>Reply</th>
+          <th>Customer Id</th>
+          <!-- <th>UserId</th> -->
+          <th  *ngIf="userRole == 'Employee'">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let query of queries
+          | paginate:{
+            id:'listing_pagination',
+            itemsPerPage:selectedItemsPerPage,
+            currentPage:page,
+            totalItems:totalRecords
+          };index as i">
+          <td>{{ query.queryId }}</td>
+          <td>{{ query.queryTitle }}</td>
+          <td>{{ query.queryMessage }}</td>
+          <td>{{ query.queryDate }}</td>
+          <td>{{ query.reply }}</td>
+          <td>{{ query.customerId }}</td>
+          <!-- <td>{{ agent.userId }}</td> -->
+          <td>
+            <button  *ngIf="userRole == 'Employee'" class="edit-button" (click)="editQuery(query.queryId)">Edit</button>
+            <button  *ngIf="userRole == 'Employee'" class="delete-button" (click)="deleteQuery(query.queryId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="agent-list-container">
+      <div class="items-per-page-container">
+        <label for="itemsPerPage">Items per page:</label>
+        <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <!-- Add more options as needed -->
+        </select>
+      </div>
+    <div align="center">
+      <pagination-controls
+        id="listing_pagination"
+        [maxSize]="5"
+        [directionLinks]="true"
+        (pageChange)="page = $event">
+      </pagination-controls>
+    </div>
+  </div>
+  </div>
+  </body>

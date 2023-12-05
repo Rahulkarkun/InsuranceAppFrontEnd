@@ -25,7 +25,8 @@ export class CustomerProfileComponent {
     private router:Router,
     private temporaryData: TemporaryDataService,
     private dataService: DataService,
-  ) {this.userRole = temporaryData.getRole();
+  ) {temporaryData.setRole('Customer')
+    this.userRole = temporaryData.getRole();
     console.log(this.userRole)
   }
   ngOnInit(): void {

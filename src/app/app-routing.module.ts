@@ -12,7 +12,7 @@ import { AddagentComponent } from './addagent/addagent.component';
 import { EmployeeComponent } from './employee/employee.component';
 // import { ResolveClaimComponent } from './resolve-claim/resolve-claim.component';
 import { DocumentverificationComponent } from './documentverification/documentverification.component';
-import { UpdateDocumentComponent } from './update-document/update-document.component';
+//import { UpdateDocumentComponent } from './update-document/update-document.component';
 import { AgentListComponent } from './agent-list/agent-list.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
@@ -64,6 +64,11 @@ import { AgentProfileComponent } from './agent-profile/agent-profile.component';
 import { AgentChangePasswordComponent } from './agent-change-password/agent-change-password.component';
 import { AgentDashboardComponent } from './agent-dashboard/agent-dashboard.component';
 import { AgentCustomerListComponent } from './agent-customer-list/agent-customer-list.component';
+import { AddQueryComponent } from './add-query/add-query.component';
+import { ViewQueryListComponent } from './view-query-list/view-query-list.component';
+import { UpdateQueryComponent } from './update-query/update-query.component';
+import { DocumentViewerComponent } from './document-viewer/document-viewer.component';
+import { UploadDocumentComponent } from './upload-document/upload-document.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -77,7 +82,7 @@ const routes: Routes = [
   {path: 'employee', component: EmployeeComponent},
   // {path: 'claims', component: ResolveClaimComponent},
   {path: 'document-verification', component: DocumentverificationComponent },
-  { path: 'update-document/:id', component: UpdateDocumentComponent },
+  //{ path: 'update-document/:id', component: UpdateDocumentComponent },
   { path: 'agent-list', component: AgentListComponent },
   {path: 'add-customer', component: AddCustomerComponent},
   { path: 'customer-list', component: CustomerListComponent },
@@ -130,6 +135,11 @@ const routes: Routes = [
   {path:'agent-change-password',component:AgentChangePasswordComponent},
   {path:'agent-dashboard',component:AgentDashboardComponent},
   {path:'agent-customer-list',component:AgentCustomerListComponent},
+  {path:'add-query',component:AddQueryComponent},
+  {path:'view-query-list',component:ViewQueryListComponent},
+  {path:'update-query/:id',component:UpdateQueryComponent},
+  {path:'view-document/:id',component:DocumentViewerComponent},
+  {path:'upload-document',component:UploadDocumentComponent},
   {
     path:"weather",
     component:WeatherInfoComponent

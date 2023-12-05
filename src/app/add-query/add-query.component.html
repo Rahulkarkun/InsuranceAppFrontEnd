@@ -1,0 +1,39 @@
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+  </div>
+  <body>
+  <div class="add-query-container">
+    <h2>Add Query</h2>
+    <form [formGroup]="queryForm" (ngSubmit)="addQuery()">
+        <label for="queryTitle">Query Title:<span class="required-field">*</span></label>
+        <input type="text" id="queryTitle" formControlName="queryTitle">
+        <div *ngIf="queryForm.get('queryTitle')?.hasError('required') && queryForm.get('queryTitle')?.touched">
+          <span class="error-message">Query Title is required</span>
+        </div>
+      
+        <label for="queryMessage">Query Message:<span class="required-field">*</span></label>
+        <input type="text" id="queryMessage" formControlName="queryMessage">
+        <div *ngIf="queryForm.get('queryMessage')?.hasError('required') && queryForm.get('queryMessage')?.touched">
+          <span class="error-message">Query Message is required</span>
+        </div>
+  
+      <label for="queryDate">Query Date:<span class="required-field">*</span></label>
+      <input type="date" id="queryDate" formControlName="queryDate" required>
+      <div *ngIf="queryForm.get('queryDate')?.hasError('required') && queryForm.get('queryDate')?.touched">
+        <span class="error-message">Query Date is required</span>
+      </div>
+  
+      <input type="hidden" formControlName="reply">
+      <label for="customerId">Customer Id:<span class="required-field">*</span></label>
+      <input type="number" formControlName="customerId">
+
+      <button type="submit">Add Employee</button>
+    </form>
+  </div>
+  </body>

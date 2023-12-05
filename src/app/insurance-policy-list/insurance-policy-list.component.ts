@@ -6,6 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { TemporaryDataService } from '../services/temporary-data.service';
 import { CustomerService } from '../services/customer.service';
 import { Customer } from '../models/customer';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-insurance-policy-list',
@@ -14,6 +15,7 @@ import { Customer } from '../models/customer';
 })
 export class InsurancePolicyListComponent {
   policies: Array<any>;
+  // customers: Array<any>;
   page: number = 1;
   totalRecords:number=0
   selectedItemsPerPage: number = 5; // Set a default value, or fetch it from user preferences
@@ -23,6 +25,7 @@ export class InsurancePolicyListComponent {
   constructor(
     private insurancePolicyService: InsurancePolicyService, 
     private router: Router,
+    private dataService:DataService,
     private temporaryData:TemporaryDataService,
     private customerService: CustomerService) 
   { this.policies=new Array<any>()
@@ -49,6 +52,7 @@ export class InsurancePolicyListComponent {
         next:(data)=>{
         this.policies=data
         console.log(this.policies)
+        //this.filterCustomer()
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
@@ -56,6 +60,13 @@ export class InsurancePolicyListComponent {
     }
     );
   }
+  // filterCustomer(){
+  //   var policy=this.policies.find((a: any) => a.userId === this.dataService.userId)
+  //   if((this.dataService.roleName=="Customer")){
+  //     this.customer=this.customer.filter(x=>x.customerId === policy.customerId)
+  //     console.log('jdsc' + this.customer)
+  //   }
+  // }
 
   // fetchInsurancePolicies(): void {
   //   this.insurancePolicyService.getAllInsurancePolicy().subscribe(
