@@ -1,5 +1,5 @@
 <!-- document-viewer.component.html -->
-<div *ngIf="document; else loading">
+<!-- <div *ngIf="document; else loading">
     <h2>{{ document.documentName }}</h2>
     <p>Document Type: {{ document.documentType }}</p>
     <p>Customer ID: {{ document.customerId }}</p>
@@ -13,4 +13,52 @@
   </div>
   <ng-template #loading>
     <div>Loading document...</div>
+  </ng-template> -->
+  <!-- 
+
+ <div *ngIf="document; else loading">
+  <h2>{{ document.documentName }}</h2>
+  <p>Document Type: {{ document.documentType }}</p>
+  <p>Customer ID: {{ document.customerId }}</p>
+
+  <div *ngIf="documentUrl; else noDocument">
+    <iframe [src]="documentUrl" width="100%" height="500px"></iframe>
+  </div>
+  <ng-template #noDocument>
+    <div>No document available.</div>
   </ng-template>
+
+   Verify Button -->
+  <!-- <button *ngIf="document.Status !== 'Verified'" (click)="verifyDocument()">Verify Document</button>
+  <button *ngIf="document.Status === 'Verified'" (click)="unverifyDocument()">Unverify Document</button>
+</div>
+<ng-template #loading>
+  <div>Loading document...</div>
+</ng-template> --> 
+
+
+
+<!-- document-viewer.component.html -->
+<div *ngIf="document; else loading">
+  <h2>{{ document.documentName }}</h2>
+  <p>Document Type: {{ document.documentType }}</p>
+  <p>Customer ID: {{ document.customerId }}</p>
+
+  <div *ngIf="documentUrl; else noDocument">
+    <iframe [src]="documentUrl" width="100%" height="500px"></iframe>
+  </div>
+  <ng-template #noDocument>
+    <div>No document available.</div>
+  </ng-template>
+
+  <!-- Verify Button -->
+  <!-- <button  (click)="verifyDocument()">Verify Document</button>
+  <button  (click)="unverifyDocument()">Unverify Document</button> -->
+
+
+  <button *ngIf="document.Status === 'Unverified'" (click)="verifyDocument()">Verify Document</button>
+  <button *ngIf="document.Status === 'Verified'" (click)="unverifyDocument()">Unverify Document</button>
+</div>
+<ng-template #loading>
+  <div>Loading document...</div>
+</ng-template>

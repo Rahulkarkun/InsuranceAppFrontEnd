@@ -75,7 +75,7 @@ export class EmployeeDashboardComponent {
     console.log("hih")
     //debugger
     this.temporarydata.setRole('Employee')
-    this.router.navigateByUrl("/document-verification-list")
+    this.router.navigateByUrl("view-document/:id")
     // console.log(this.temporarydata.getRole)
     
   }

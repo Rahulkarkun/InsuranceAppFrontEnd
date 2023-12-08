@@ -22,10 +22,10 @@ export class DocumentService {
 
   options = { headers: this.headers };
 
-  updateDocumentStatus( document: Document): Observable<any> {
-    // Implement your API endpoint to update only the 'isActive' field
-    return this.http.put<any>(`${this.apiUrl}/document`, document, this.options);
-  }
+  // updateDocumentStatus( document: Document): Observable<any> {
+  //   // Implement your API endpoint to update only the 'isActive' field
+  //   return this.http.put<any>(`${this.apiUrl}/document`, document, this.options);
+  // }
   // getDocumentById(documentId: number): Observable<any> {
   //   // Implement your API endpoint to get document details by ID
   //   return this.http.get<any>(`${this.apiUrl}/document/${documentId}`,this.options);
@@ -46,7 +46,10 @@ export class DocumentService {
   }
 
   
- 
+  updateDocumentStatus( documentId: any): Observable<any> {
+    // Implement your API endpoint to update only the 'isActive' field
+    return this.http.put<any>(`${this.apiUrl}/document/${documentId}`, this.options);
+  }
   
   uploadFile(formData: FormData) {
     return this.http.post<any>(`${this.apiUrl}/Document/upload`, formData);
