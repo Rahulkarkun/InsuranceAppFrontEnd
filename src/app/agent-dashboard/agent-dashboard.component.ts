@@ -70,6 +70,33 @@ export class AgentDashboardComponent {
     this.router.navigateByUrl("/agent-customer-list")
     // console.log(this.temporarydata.getRole)
   }
+
+  viewCommissionList(){
+    console.log("hih")
+    //debugger
+    this.temporarydata.setRole('Agent')
+    this.router.navigateByUrl("/commission-list")
+    // console.log(this.temporarydata.getRole)
+    
+  }
+
+  viewPolicyList(){
+    console.log("hih")
+    //debugger
+    this.temporarydata.setRole('Agent')
+    this.router.navigateByUrl("/insurance-policy-list")
+    // console.log(this.temporarydata.getRole)
+    
+  }
+
+  viewCommissionWithdrawalList(){
+    console.log("hih")
+    //debugger
+    this.temporarydata.setRole('Agent')
+    this.router.navigateByUrl("/commission-withdrawal-list")
+    // console.log(this.temporarydata.getRole)
+    
+  }
   // addInsurancePlan(){
   //   console.log("hih")
   //   //debugger

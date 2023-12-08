@@ -15,6 +15,7 @@
       <thead>
         <tr>
           <th>Policy No</th>
+          <th>Plan Name</th>
           <th>Customer Name</th>
           <!-- <th>Customer Last Name</th> -->
           <th>Issue Date</th>
@@ -22,7 +23,7 @@
           <th>Premium Type</th>
           <th>Premium Amount</th>
           <th>SumAssured</th>
-          <th>Scheme Id</th>
+          <th>Scheme Name</th>
           <th>Status</th>
           <!-- <th>Scheme Id</th>
           <th>Payment Id</th>
@@ -39,14 +40,15 @@
           totalItems:totalRecords
         };index as i">
           <td>{{ policy.policyNo }}</td>
+          <td>{{ getPlanName(policy.schemeId) }}</td>
           <td>{{ getCustomerName(policy.customerId)}}</td>
           <!-- <td>{{ customers[policy.customerId]?.LastName }}</td> -->
-          <td>{{ policy.issueDate }}</td>
-          <td>{{ policy.maturityDate }}</td>
+          <td>{{ policy.issueDate | date:'dd-MM-yyyy' }}</td>
+          <td>{{ policy.maturityDate | date:'dd-MM-yyyy' }}</td>
           <td>{{ policy.premiumType}}</td>
           <td>{{ policy.premiumAmount }}</td>
           <td>{{ policy.sumAssured }}</td>
-          <td>{{ policy.schemeId }}</td>
+          <td>{{ getSchemeName(policy.schemeId) }}</td>
           <td>{{ policy.status }}</td>
           
         <!-- I want to call the getCustomerName here and then display their first and last name-->

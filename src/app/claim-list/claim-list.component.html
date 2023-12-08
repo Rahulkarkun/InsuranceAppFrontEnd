@@ -38,7 +38,8 @@
         <td>{{ claim.claimAmount }}</td>
         <td>{{ claim.bankAccountNumber }}</td>
         <td>{{ claim.bankIfscCode }}</td>
-        <td>{{ claim.date }}</td>
+        <td>{{ claim.date | date:'dd-MM-yyyy' }}</td>
+        <!-- <td>{{ claim.date }}</td> -->
         <td>{{ claim.status }}</td>
         <td>{{ claim.policyNo }}</td>
         <td>{{getCustomerName(claim.customerId)}}</td>

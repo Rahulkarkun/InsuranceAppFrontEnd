@@ -16,6 +16,7 @@ import { AgentService } from '../services/agent.service';
 })
 export class ClaimListComponent {
   claims: Array<any>;
+  claimData: Array<any>;
   customer: Array<any>;
   agentData: Array<any>;
   page: number = 1;
@@ -26,51 +27,88 @@ export class ClaimListComponent {
     private customerService: CustomerService,private dataService:DataService,private agentService:AgentService) 
   { 
     this.claims=new Array<any>()
+    this.claimData=new Array<any>()
     this.agentData=new Array<any>()
     this.customer=new Array<any>()
     this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
   ngOnInit(): void {
-    debugger
-    this.agentService.getAllAgents().subscribe({
-      next:(response)=>{
-        this.agentData=response
+    // debugger
+    // this.agentService.getAllAgents().subscribe({
+    //   next:(response)=>{
+    //     this.agentData=response
        
         
-      },
-      error(errorResponse:HttpErrorResponse){
-        console.log(errorResponse)
-      }
-    })
+    //   },
+    //   error(errorResponse:HttpErrorResponse){
+    //     console.log(errorResponse)
+    //   }
+    // })
+    // debugger
+    // this.customerService.getAllCustomers().subscribe({
+    //   next:(data)=>{
+    //     this.customer=data
+    //     this.totalRecords=data.length
+    //   },
+    //   error(errorResponse:HttpErrorResponse){
+    //     console.log(errorResponse)
+    //   }
+    // })
+    // this.fetchClaims();
+    // this.filterCustomer()
+    // debugger
+    this.fetchCustomers()
+    // this.filterCustomer();
+    // this.fetchClaims();
+    // this.filterClaim();
+  }
+
+  fetchCustomers():void {
+    debugger
     this.customerService.getAllCustomers().subscribe({
       next:(data)=>{
         this.customer=data
         this.totalRecords=data.length
+        this.fetchAgents()
       },
       error(errorResponse:HttpErrorResponse){
         console.log(errorResponse)
       }
     })
-    this.fetchClaims();
+  }
+
+  fetchAgents():void{
+    this.agentService.getAllAgents().subscribe({
+      next:(response)=>{
+        this.agentData=response
+       console.log(this.agentData)
+       this.filterCustomer()
+      },
+      error(errorResponse:HttpErrorResponse){
+        console.log(errorResponse)
+      }
+    })
   }
 
   fetchClaims(): void {
-    //debugger
+    // debugger
     this.claimService.getAllClaims().subscribe(
       {
         next:(data)=>{
-        this.claims=data
-        console.log(this.claims)
+        this.claimData=data
+        console.log(this.claimData)
         this.totalRecords=data.length
-        debugger
-        this.filterCustomer();
+        // debugger
+        // this.filterCustomer();
+        this.filterClaim();
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
       }
     }
     );
+    // this.filterClaim();
   }
  
 //   editClaim(claimId: number): void {
@@ -108,29 +146,41 @@ getCustomerName(customerId: number): string {
   }
 }
 filterCustomer(){
+  // debugger
+  // this.customerService.getAllCustomers().subscribe({
+  //   next:(data)=>{
+  //     this.customer=data
+  //     this.totalRecords=data.length
+  //   },
+  //   error(errorResponse:HttpErrorResponse){
+  //     console.log(errorResponse)
+  //   }
+  // })
   var agent=this.agentData.find((a: any) => a.userId === this.dataService.userId)
   if((this.dataService.roleName=="Agent")){
     this.customer=this.customer.filter(x=>x.agentId === agent.agentId)
-    console.log('jdsc' + this.customer)
-    this.filterClaim()
+    console.log(this.customer)
+    // this.filterClaim()
+    this.fetchClaims()
+
   }
 }
 filterClaim(){
-  //debugger
+  // debugger
   //var claim=this.claims.find((a: any) => a.userId === this.dataService.userId)
   // if((this.dataService.roleName=="Agent")){
   //   this.customer=this.customer.filter(x=>x.customerId === claim.customerId)
   //   console.log('jdsc' + this.customer)
   for(let c of this.customer){
     if((this.dataService.roleName=="Agent")){
-    this.claims=this.claims.filter(x=>x.customerId === c.customerId)
-    console.log('jdsc' + this.customer)
+    this.claims=this.claimData.filter(x=>x.customerId === c.customerId)
+    console.log(this.claims)
   }
   }
 }
 onItemsPerPageChange(): void {
   this.page = 1; // Reset to the first page when items per page changes
-  this.fetchClaims(); // Fetch data with the new items per page
+  this.filterClaim(); // Fetch data with the new items per page
 }
 
   // deleteClaim(claimId: number): void {
@@ -146,4 +196,4 @@ onItemsPerPageChange(): void {
   //     }
   //   );
   // }
-        }
+}

@@ -48,17 +48,30 @@ export class CommissionListComponent {
         console.log(errorResponse)
       }
     })
+    // this.commissionService.getAllCommissions().subscribe({
+    //   next:(response)=>{
+    //     this.commissionData=response
+       
+        
+    //   },
+    //   error(errorResponse:HttpErrorResponse){
+    //     console.log(errorResponse)
+    //   }
+    // })
+    this.fetchCustomers();
+  }
+
+  fetchCommission():void{
     this.commissionService.getAllCommissions().subscribe({
       next:(response)=>{
         this.commissionData=response
-       
+        this.filterCommission();
         
       },
       error(errorResponse:HttpErrorResponse){
         console.log(errorResponse)
       }
     })
-    this.fetchCustomers();
   }
 
   fetchCustomers(): void {
@@ -70,12 +83,25 @@ export class CommissionListComponent {
         console.log(this.customerData)
         this.totalRecords=data.length
         // this.filterCustomer();
+        this.fetchCommission();
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
       }
     }
     );
+  }
+
+  filterCommission(): void {
+    debugger
+    if (this.agentData) {
+      const agent = this.agentData.find((a: any) => a.userId === this.dataService.userId);
+      console.log(this.dataService.userId)
+      if((this.dataService.roleName=="Agent")){
+        this.commissionData=this.commissionData.filter(x=>x.agentId === agent.agentId)
+        console.log(this.commissionData)
+      }
+    }
   }
 
   // addCustomer(): void {

@@ -38,7 +38,7 @@
           <td>{{ payment.paymentId }}</td>
           <td>{{ payment.paymentType }}</td>
           <td>{{ payment.amount }}</td>
-          <td>{{payment.date}}</td>
+          <td>{{payment.date| date:'dd-MM-yyyy'}}</td>
           <td>{{ payment.tax }}</td>
           <td>{{ payment.totalPayment }}</td>
           <td>{{payment.policyNo}}</td>

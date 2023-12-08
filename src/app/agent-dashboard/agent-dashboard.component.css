@@ -11,6 +11,11 @@
     color: #fff;
 }
 
+.top-margin {
+    margin-top: 30px; /* Adjust the margin as needed */
+}
+
+
 /* Adjust column size for a total of 4 columns in a row */
 .custom-column {
     width: calc(25% - 40px); /* Adjust the width and margin as needed */

@@ -35,20 +35,20 @@ export class ViewPaymentsComponent {
 
   ngOnInit(): void { 
     debugger
-    // this.customerService.getAllCustomers().subscribe(
-    //   {
-    //     next:(data)=>{
-    //     this.customer=data
-    //     console.log(this.customer)
-    //     this.totalRecords=data.length
-    //   },
-    //   error:(errorResponse:HttpErrorResponse)=>{
-    //     console.log(errorResponse); 
-    //   }
-    // }
-    // );
-    //this.fetchCustomers()
-    this.fetchPayments()
+    this.agentService.getAllAgents().subscribe(
+      {
+        next:(data)=>{
+        this.agentData=data
+        console.log(this.customer)
+        this.totalRecords=data.length
+      },
+      error:(errorResponse:HttpErrorResponse)=>{
+        console.log(errorResponse); 
+      }
+    }
+    );
+    this.fetchCustomers()
+    // this.fetchPayments()
   }
 
   fetchPayments(): void {
@@ -59,8 +59,8 @@ export class ViewPaymentsComponent {
         this.payments=data
         console.log(this.payments)
         this.totalRecords=data.length
-        //this.filterPayment()
-        this.fetchCustomers()
+        this.filterPayment()
+        // this.fetchCustomers()
 
       },
       error:(errorResponse:HttpErrorResponse)=>{
@@ -77,7 +77,8 @@ export class ViewPaymentsComponent {
         this.customer=data
         console.log(this.customer)
         this.totalRecords=data.length
-        this.filterPayment();
+        // this.filterPayment();
+        this.fetchPayments();
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
@@ -103,6 +104,29 @@ export class ViewPaymentsComponent {
       console.log(this.payments)
       //this.filterPayment()
     }
+    if((this.dataService.roleName=="Agent")){
+      this.filterCustomersOfAgent();
+      // // this.payments=this.payments.filter(x=>x.customerId === agent.customerId)
+      // // console.log(this.payments)
+      //this.filterPayment()
+    }
+  }
+
+  filterCustomersOfAgent(){
+    //debugger
+    // var customer=this.customer.find((a: any) => a.userId === this.dataService.userId)
+    //console.log(customer);
+    var agent = this.agentData.find((a: any) => a.userId === this.dataService.userId)
+    if((this.dataService.roleName=="Agent")){
+      var customer=this.customer.filter(x=>x.agentId === agent.agentId)
+      console.log(customer)
+      for(let c of customer){
+        // if((this.dataService.roleName=="Agent")){
+        this.payments=this.payments.filter(x=>x.customerId === c.customerId)
+        console.log('jdsc' + this.customer)
+      //this.filterPayment()
+    }
+  }
   }
   // filterPayment(){
   //   //debugger

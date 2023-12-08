@@ -30,6 +30,7 @@ export class CommissionWithdrawalListComponent {
     this.agentData=new Array<any>()
     this.withdrawalData = new Array<any>();
     this.userRole = temporaryData.getRole();
+    console.log(this.userRole)
   }
 
   ngOnInit(): void {
@@ -64,12 +65,24 @@ export class CommissionWithdrawalListComponent {
   }
 
   fetchData(): void {
+    debugger
     this.commissionWithdrawal.getCommissonWithdrawal().subscribe((data) => {
       this.withdrawalData = data;
+      console.log(this.withdrawalData)
       if (this.userRole === 'Agent') {
-        this.withdrawalData = this.withdrawalData.filter((x: any) => x.agentId === this.data.userId);
+        this.filterWithdrawalData();
       }
     });
+  }
+
+  filterWithdrawalData(): void {
+    // this.commissionWithdrawal.getCommissonWithdrawal().subscribe((data) => {
+      // this.withdrawalData = data;
+      const agent = this.agentData.find((x: any) => x.userId === this.data.userId);
+      this.withdrawalData = this.withdrawalData.filter((x: any) => x.agentId === agent.agentId);
+        console.log(this.withdrawalData)
+      // this.withdrawalData = this.withdrawalData.filter((x: any) => x.agentId === agentId);
+      // return this.withdrawalData!=null ? `${agent.firstName} ${agent.lastName}` : 'Customer Not Found';
   }
 
   fetchAgentName(agentId:number): string {
