@@ -1,0 +1,56 @@
+<!-- src/app/add-agent/add-agent.component.html -->
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+  <div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+  </div>
+  <body>
+  <div class="add-claim-container">
+    <h2>Add Claim</h2>
+    <form [formGroup]="claimForm" (ngSubmit)="addClaim()">
+      <label for="claimAmount">Claim Amount:<span class="required-field">*</span></label>
+      <input id="claimAmount" formControlName="claimAmount" required>
+      <div *ngIf="claimForm.get('claimAmount')?.hasError('required') && claimForm.get('claimAmount')?.touched">
+        <span class="error-message">Claim Amount is required</span>
+      </div>
+
+      <label for="bankAccountNumber">Bank Account No:<span class="required-field">*</span></label>
+      <input id="bankAccountNumber" formControlName="bankAccountNumber" required>
+      <div *ngIf="claimForm.get('bankAccountNumber')?.hasError('required') && claimForm.get('bankAccountNumber')?.touched">
+        <span class="error-message">Bank Account Number is required</span>
+      </div>
+
+      <label for="bankIfscCode">Bank Ifsc Code:<span class="required-field">*</span></label>
+      <input id="bankIfscCode" formControlName="bankIfscCode" required>
+      <div *ngIf="claimForm.get('bankIfscCode')?.hasError('required') && claimForm.get('bankIfscCode')?.touched">
+        <span class="error-message">Bank Ifsc Code is required</span>
+      </div>
+
+      <label for="date">Claim Date:<span class="required-field">*</span></label>
+      <input type="date" id="date" formControlName="date" required>
+      <div *ngIf="claimForm.get('date')?.hasError('required') && claimForm.get('date')?.touched">
+        <span class="error-message">Claim Date is required</span>
+      </div>
+
+      <input type="hidden" formControlName="status">
+
+      <label for="policyNo">Policy No:<span class="required-field">*</span></label>
+      <input type="number" formControlName="policyNo">
+  
+      <label for="customerId">Customer Id:<span class="required-field">*</span></label>
+      <input type="number" formControlName="customerId">
+
+  
+      <br><br>
+  
+      <button type="submit">Add Claim</button>
+    </form>
+  </div>
+  </body>

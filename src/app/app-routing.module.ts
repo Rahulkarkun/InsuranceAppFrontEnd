@@ -71,6 +71,10 @@ import { DocumentViewerComponent } from './document-viewer/document-viewer.compo
 import { CommissionListComponent } from './commission-list/commission-list.component';
 import { UploadDocumentComponent } from './upload-document/upload-document.component';
 import { CommissionWithdrawalListComponent } from './commission-withdrawal-list/commission-withdrawal-list.component';
+import { QueryFilterCustomerComponent } from './query-filter-customer/query-filter-customer.component';
+import { InsuranceAccountFilterComponent } from './insurance-account-filter/insurance-account-filter.component';
+import { CustomerClaimListFilterComponent } from './customer-claim-list-filter/customer-claim-list-filter.component';
+import { AddClaimComponent } from './add-claim/add-claim.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -145,6 +149,10 @@ const routes: Routes = [
   {path:'commission-list',component:CommissionListComponent},
   {path:'upload-document',component:UploadDocumentComponent},
   { path: 'commission-withdrawal-list', component: CommissionWithdrawalListComponent },
+  {path:'query-filter-customer',component:QueryFilterCustomerComponent},
+  {path:'insurance-account-filter',component:InsuranceAccountFilterComponent},
+  {path:'customer-claim-list-filter',component:CustomerClaimListFilterComponent},
+  {path:'add-claim',component:AddClaimComponent},
   {
     path:"weather",
     component:WeatherInfoComponent

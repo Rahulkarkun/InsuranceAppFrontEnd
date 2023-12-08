@@ -41,11 +41,15 @@ export class CustomerDashboardComponent {
   }
   viewQuery(){
     this.temporarydata.setRole('Customer')
-    this.router.navigateByUrl("/view-query-list")
+    this.router.navigateByUrl("/query-filter-customer")
   }
   documentUpload(){
     this.temporarydata.setRole('Customer')
     this.router.navigateByUrl("/upload-document")
+  }
+  customerClaimList(){
+    this.temporarydata.setRole('Customer')
+    this.router.navigateByUrl("/customer-claim-list-filter")
   }
   addCustomer(){
     console.log("hih")
@@ -129,7 +133,7 @@ export class CustomerDashboardComponent {
   }
   insurancePolicyList(){
     this.temporarydata.setRole('Customer')
-    this.router.navigateByUrl("/insurance-policy-list")
+    this.router.navigateByUrl("/insurance-account-filter")
   }
   viewPayments(){
     console.log("hih")

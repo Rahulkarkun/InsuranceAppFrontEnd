@@ -79,6 +79,10 @@ import { UpdateQueryComponent } from './update-query/update-query.component';
 import { DocumentViewerComponent } from './document-viewer/document-viewer.component';
 import { CommissionListComponent } from './commission-list/commission-list.component';
 import { CommissionWithdrawalListComponent } from './commission-withdrawal-list/commission-withdrawal-list.component';
+import { QueryFilterCustomerComponent } from './query-filter-customer/query-filter-customer.component';
+import { InsuranceAccountFilterComponent } from './insurance-account-filter/insurance-account-filter.component';
+import { CustomerClaimListFilterComponent } from './customer-claim-list-filter/customer-claim-list-filter.component';
+import { AddClaimComponent } from './add-claim/add-claim.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -155,7 +159,11 @@ import { CommissionWithdrawalListComponent } from './commission-withdrawal-list/
     AgentCustomerListComponent,
     CommissionListComponent,
     UploadDocumentComponent,
-    CommissionWithdrawalListComponent
+    CommissionWithdrawalListComponent,
+    QueryFilterCustomerComponent,
+    InsuranceAccountFilterComponent,
+    CustomerClaimListFilterComponent,
+    AddClaimComponent
   ],
   imports: [
     MatTableModule,

@@ -6,6 +6,7 @@ import { TemporaryDataService } from '../services/temporary-data.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Document } from '../models/document';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { CustomerService } from '../services/customer.service';
 
 
 @Component({
@@ -14,6 +15,9 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrl: './document-verification-list.component.css'
 })
 export class DocumentVerificationListComponent {
+  // customerName = '';
+  customerData: Array<any>;
+
   documents: Array<any>;
   page: number = 1;
   totalRecords:number=0
@@ -22,9 +26,12 @@ export class DocumentVerificationListComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
     private documentService: DocumentService, 
+    private customerService:CustomerService,
     private router: Router,
+    
     private temporaryData:TemporaryDataService) 
   { this.documents=new Array<any>()
+    this.customerData= new Array<any>()
     this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
@@ -36,8 +43,8 @@ export class DocumentVerificationListComponent {
     this.documentService.getAllDocuments().subscribe(
       {
         next:(data)=>{
-        this.documents=data
-        console.log(this.documents)
+        this.documents=this.customerData
+        console.log(data)
         this.totalRecords=data.length
         // this.setupPaginator();
       },
@@ -73,6 +80,33 @@ resolveDocument(documentId: number): void {
     }
   );
 }
+editDocument(documentId: number): void {
+  // Navigate to the view-document route with the document ID
+  this.router.navigate(['/view-document', documentId]);
+}
+
+// getCustomerName(customerId:number):string{
+//   this.customerService.getCustomerById(customerId).subscribe(
+//     (data) => {
+//      this.customerName = data.FirstName + " " + data.LastName
+
+//     },
+
+// )
+// return this.customerName;
+// }
+getCustomerName(customerId: number): string {
+  if (this.customerData) {
+    const customer = this.customerData.find((a: any) => a.customerId === customerId);
+    console.log(customer);
+    return customer!=null ? `${customer.firstName} ${customer.lastName}` : 'Customer Not Found';
+  } else {
+    return 'Customer name Not Loaded';
+  }
+}
+
+
+
 
 onItemsPerPageChange(): void {
   this.page = 1; // Reset to the first page when items per page changes
