@@ -9,6 +9,14 @@ export class TemporaryDataService {
   private id= new BehaviorSubject(0);
   private role:string='some';
   private loginId:number=0;
+  private _insurancePlanId:number=0
+  private _insuranceSchemeId:number=0
+  private _totalAmt:number=0;
+  private _installmentAmt:number=0;
+  private _interestAmt:number=0;
+  private _policyTerm:number=0;
+  private _totalInvestmentAmt:number=0;
+  private _months:number=0;
   getId= this.id.asObservable();
   // getRole= this.role.asObservable();
   getRole():string{
@@ -34,4 +42,63 @@ export class TemporaryDataService {
     console.log(this.role)
     
   }
+
+  set insurancePlanId(id:number){
+    this._insurancePlanId=id
+  }
+  get insurancePlanId():number{
+    return this._insurancePlanId
+  }
+
+  set insuranceSchemeId(id:number){
+    this._insuranceSchemeId=id
+  }
+
+  get insuranceSchemeId():number{
+    return this._insuranceSchemeId
+  }
+
+  set totalAmt(amt:number){
+    this._totalAmt=amt
+  }
+  get totalAmt():number{
+    return this._totalAmt
+  }
+
+  set installmentAmt(amt:number){
+    this._installmentAmt=amt
+  }
+  get installmentAmt():number{
+    return this._installmentAmt
+ }
+
+ set interestAmt(amt:number){
+  this._interestAmt=amt
+}
+get interestAmt():number{
+  return this._interestAmt
+}
+
+set policyTerm(num:number){
+  this._policyTerm=num
+}
+get policyTerm():number{
+  return this._policyTerm
+}
+
+set totalInvestmentAmt(amt:number){
+  this._totalInvestmentAmt=amt
+}
+get totalInvestmentAmt():number{
+
+  return this._totalInvestmentAmt
+}
+
+set months(num:number){
+  this._months=num
+}
+get months():number{
+  return this._months
+}
+
 }

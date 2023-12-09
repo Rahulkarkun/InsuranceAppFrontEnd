@@ -1,2 +1,47 @@
-<app-navbar></app-navbar>
-<p>insurance-plans works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insurance Schemes</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyWq8L4SY/6P9U9HCA9/mIebqjBEQ6S9M" crossorigin="anonymous">
+</head>
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+  <div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+  </div>
+<body>
+  <body>
+    <h1>{{ insurancePlanName }}</h1>
+    <!-- Insurance Scheme Section -->
+    <div class="container">
+
+      <div class="row">
+        <div *ngFor="let scheme of insuranceSchemeData" class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold">{{ scheme.schemeName }}</h5>
+              <p class="card-text">{{ scheme.details }}</p><br>
+              <button class="btn btn-primary btn-sm" (click)="setInsuranceSchemeId(scheme.schemeId)">Check {{ scheme.schemeName }}</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Bootstrap JS and Popper.js for Bootstrap features -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js" integrity="sha384-pzjw8IGeF0e8p/00tD75hWp5lHQ3h3dV9d37ZNq0O5QQ5bFfO2ib4vD8RxE2H7/t" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyWq8L4SY/6P9U9HCA9/mIebqjBEQ6S9M" crossorigin="anonymous"></script>
+  </body>
+</body>
+</html>

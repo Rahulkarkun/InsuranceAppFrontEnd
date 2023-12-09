@@ -75,6 +75,8 @@ import { QueryFilterCustomerComponent } from './query-filter-customer/query-filt
 import { InsuranceAccountFilterComponent } from './insurance-account-filter/insurance-account-filter.component';
 import { CustomerClaimListFilterComponent } from './customer-claim-list-filter/customer-claim-list-filter.component';
 import { AddClaimComponent } from './add-claim/add-claim.component';
+import { SdInterestCalculatorComponent } from './sd-interest-calculator/sd-interest-calculator.component';
+import { InsuranceAccountComponent } from './insurance-account/insurance-account.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -153,6 +155,9 @@ const routes: Routes = [
   {path:'insurance-account-filter',component:InsuranceAccountFilterComponent},
   {path:'customer-claim-list-filter',component:CustomerClaimListFilterComponent},
   {path:'add-claim',component:AddClaimComponent},
+  {path:'insurance-plan',component:InsurancePlansComponent},
+  {path:'sd-interest-calculator',component:SdInterestCalculatorComponent},
+  {path:'insurance-account',component:InsuranceAccountComponent},
   {
     path:"weather",
     component:WeatherInfoComponent

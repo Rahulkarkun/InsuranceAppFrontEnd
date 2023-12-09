@@ -13,6 +13,19 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/customer-dashboard">Dashboard</a>
                     </li>
+                    <li ngbDropdown class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownInsurance" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
+                            Insurance Plan
+                        </a>
+                        <ul ngbDropdownMenu aria-labelledby="navbarDropdownInsurance" class="dropdown-menu">
+                            <li *ngFor="let insurancePlan of insurancePlanData">
+                                <!-- <a ngbDropdownItem class="dropdown-item" (click)="setInsuranceTypeId(items.id)">{{items.insuranceTypeName}}</a> -->
+                               <a ngbDropdownItem class="dropdown-item" (click)="setInsurancePlanId(insurancePlan.planId)" >{{ insurancePlan?.planName }}</a>
+                            </li>
+                        </ul>
+                    </li>
+                                         
+                    
                     <!-- <li ngbDropdown class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdownAccount" role="button" ngbDropdownToggle aria-haspopup="true" aria-expanded="false">
                             Agent

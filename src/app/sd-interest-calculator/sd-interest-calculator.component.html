@@ -1,0 +1,129 @@
+
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+  <app-employee-navbar></app-employee-navbar>
+</div>
+<div *ngIf="userRole=='Customer'">
+  <app-customer-navbar></app-customer-navbar>
+</div>
+<!-- src/app/add-employee/add-employee.component.html -->
+<body>
+  <div class="add-scheme-details-container">
+    <h2>View Scheme Details</h2>
+    <form [formGroup]="schemeDetailsForm">
+
+      <table>
+        <tr>
+          <td><label for="insuranceScheme">Insurance Scheme:</label></td>
+          <td><input id="schemeName" [value]="schemeName" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="detailsId">Details Id:</label></td>
+          <td><input id="detailsId" formControlName="DetailId" type="number" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="schemeImage">Scheme Image:</label></td>
+          <td><input id="schemeImage" formControlName="SchemeImage" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="Description">Description:</label></td>
+          <td><textarea id="Description" formControlName="Description" rows="4" cols="50" readonly></textarea></td>
+        </tr>
+        <tr>
+          <td><label for="minAmount">Min Amount:</label></td>
+          <td><input id="minAmount" formControlName="MinAmount" type="number" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="maxAmount">Max Amount:</label></td>
+          <td><input id="maxAmount" formControlName="MaxAmount" type="number" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="minInvestment">Min Investment Time:</label></td>
+          <td><input id="minInvestment" formControlName="MinInvestmentTime" type="number" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="maxInvestment">Max Investment Time:</label></td>
+          <td><input id="maxInvestment" formControlName="MaxInvestmentTime" type="number" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="minAge">Min Age:</label></td>
+          <td><input id="minAge" formControlName="MinAge" type="number" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="maxAge">Max Age:</label></td>
+          <td><input id="maxAge" formControlName="MaxAge" type="number" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="profitRatio">Profit Ratio:</label></td>
+          <td><input id="profitRatio" formControlName="ProfitRatio" type="number" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="registrationCommRatio">Registration Commission Ratio:</label></td>
+          <td><input id="registrationCommRatio" formControlName="RegistrationCommRatio" type="number" readonly></td>
+        </tr>
+        <tr>
+          <td><label for="installmentCommRatio">Installment Commission Ratio:</label></td>
+          <td><input id="installmentCommRatio" formControlName="InstallmentCommRatio" type="number" readonly></td>
+        </tr>
+      </table>
+
+      <input id="SchemeId" formControlName="SchemeId" type="hidden">
+  
+      <!-- <button *ngIf="userRole == 'Admin'" type="submit">Update Scheme Details</button> -->
+    </form>
+  </div>
+  <form  [formGroup]="scheme"  (ngSubmit)="calculateInterest(scheme.value)">
+    <!-- <form [formGroup]="scheme"> -->
+
+      <div class="add-scheme-details-container">
+        <h3>Interest Calculator</h3>
+        <table>
+          <tr>
+            <td>No of Years</td>
+            <td><input type="number" formControlName="years" class="scheme-input"></td>
+          </tr>
+          <tr>
+            <td>Total Investment Amount</td>
+            <td><input type="number" formControlName="investmentAmt" class="scheme-input"></td>
+          </tr>
+          <tr>
+            <td>Months</td>
+            <td>
+              <input type="number" formControlName="months" class="scheme-input">
+              <!-- Replace the input with a select if needed -->
+              <!-- <select id="account-type" name="account-type" formControlName="months">
+                <option value="" disabled selected>Choose your profile</option>
+                <option *ngFor="let prf of noMonths" [ngValue]="prf">
+                  {{ prf }}
+                </option>
+              </select> -->
+            </td>
+          </tr>
+        </table><br>
+        <button align="center">Calculate</button>
+      </div>    
+    </form>
+    <div class="add-scheme-details-container">
+      <table>
+        <tr>
+          <td><label for="installmentAmount">Installment Amount:</label></td>
+          <td><input id="installmentAmount" [placeholder]="calculateData.investmentAmt / divideYears" disabled></td>
+        </tr>
+        <tr>
+          <td><label for="interestAmount">Interest Amount:</label></td>
+          <td><input id="interestAmount" [placeholder]="calculateData.investmentAmt * 0.06" disabled></td>
+        </tr>
+        <tr>
+          <td><label for="totalAmount">Total Amount:</label></td>
+          <td><input id="totalAmount" [placeholder]="(calculateData.investmentAmt) * 1 + (calculateData.investmentAmt * 0.06)" disabled></td>
+        </tr>
+      </table><br>
+      <button routerLink="/insurance-account">Submit</button>
+
+    </div>
+</body>

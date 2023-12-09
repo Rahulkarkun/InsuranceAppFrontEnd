@@ -1,22 +1,37 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SchemedetailsService } from '../services/schemedetails.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TemporaryDataService } from '../services/temporary-data.service';
 import { InsuranceSchemeService } from '../services/insurance-scheme.service';
 import { lastValueFrom } from 'rxjs';
+import { InsuranceScheme } from '../models/insuranceScheme';
 
 @Component({
-  selector: 'app-scheme-details',
-  templateUrl: './scheme-details.component.html',
-  styleUrl: './scheme-details.component.css'
+  selector: 'app-sd-interest-calculator',
+  templateUrl: './sd-interest-calculator.component.html',
+  styleUrl: './sd-interest-calculator.component.css'
 })
-export class SchemeDetailsComponent {
+export class SdInterestCalculatorComponent {
+  // scheme = new FormGroup({
+  //   years : new FormControl('', [Validators.required]),
+  //   investmentAmt : new FormControl('', [Validators.required, Validators.maxLength(100)]),
+  //   months : new FormControl('', [Validators.required]),
+  // })
+
+  scheme! : FormGroup
+  
   schemeDetails: any; // Adjust the type based on your actual data structure
   schemeDetailsForm!: FormGroup;
   userRole: string = '';
   schemeName: string = '';
+  calculateData:any;
+  noMonths=["1","3","6","12"];
+  divideYears:number=0;
+  totalAmt:number=0;
+  installmentAmt:number=0;
+  interestAmt:number=0;
 
   constructor(private route: ActivatedRoute,
     private schemeDetailsService: SchemedetailsService,
@@ -25,8 +40,6 @@ export class SchemeDetailsComponent {
     private router: Router,
     private insuranceSchemeService: InsuranceSchemeService
     ) {
-      // this.schemeDetails = this.route.snapshot.paramMap.get('schemeDetails');
-      console.log(this.schemeDetails)
       this.userRole = temporaryData.getRole();
     console.log(this.userRole)
     }
@@ -49,6 +62,11 @@ export class SchemeDetailsComponent {
       // agentId: [0],
       // userId: [0]
     });
+    this.scheme = this.fb.group({
+    years : ['', Validators.required],
+    investmentAmt : ['', Validators.required, Validators.maxLength(100)],
+    months : ['', Validators.required],
+  })
     // this.route.data.subscribe((data) => {
     //   this.schemeDetails = data['schemeDetails'];
     //   console.log(this.schemeDetails);
@@ -56,6 +74,7 @@ export class SchemeDetailsComponent {
     // });
 
     this.schemeDetails = history.state.schemeDetails;
+    console.log(this.schemeDetails)
     debugger
     if (this.schemeDetails) {
       console.log(this.schemeDetails)
@@ -63,21 +82,6 @@ export class SchemeDetailsComponent {
       this.getSchemeName();
     }
   }
-  
-  
-
-  // private fetchSchemeDetails(): void {
-    // this.schemeDetailsService.getSchemeDetailsById(this.schemeDetails.detailId).subscribe(
-    //   (data) => {
-    //     this.schemeDetailsForm.patchValue(data);
-    //   },
-    //   (error) => {
-    //     console.error('Error fetching scheme details:', error);
-    //   }
-    // );
-    // this.schemeDetailsForm.patchValue(this.schemeDetails);
-  // }
-
   private fetchSchemeDetails(): void {
 
     const schemeDetailsFormValue = {
@@ -95,52 +99,52 @@ export class SchemeDetailsComponent {
       InstallmentCommRatio: this.schemeDetails.installmentCommRatio,
       SchemeId: this.schemeDetails.schemeId,
     };
-  
+    console.log(this.schemeDetails.schemeId)
     this.schemeDetailsForm.patchValue(schemeDetailsFormValue);
   }
 
-  async updateSchemeDetails(): Promise<void> {
-    try {
-      // Ensure all form fields are correctly mapped to the API request body
-      const requestBody = { ...this.schemeDetailsForm.value };
-      const updatedSchemeDetails = await lastValueFrom(this.schemeDetailsService.updateSchemeDetails(requestBody));
-      console.log('Scheme details updated:', updatedSchemeDetails);
-
-      // Display an alert to the user
-      alert('Scheme details updated successfully!');
-      this.router.navigateByUrl("/insurance-scheme-list")
-
-      // Optionally, you can reset the form or perform any other actions here
-      this.schemeDetailsForm.reset();
-    } catch (error) {
-      console.error('Error updating scheme details:', error);
-
-      // Display an error alert to the user
-      alert('Error updating scheme details. Please try again.');
-    }
+  getSchemeName(): void {
+    this.insuranceSchemeService.getInsuranceSchemeById(this.schemeDetails.schemeId).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.schemeName = response.schemeName;
+        console.log(this.schemeName);
+      },
+      error: (error) => {
+        console.error('Error fetching Scheme Details:', error);
+      },
+    });
   }
 
-  async getSchemeName(): Promise<void> {
-    try {
-      // Ensure all form fields are correctly mapped to the API request body
-      // const requestBody = { ...this.schemeDeilsForm.value };
-      debugger
-      var schemeData = await lastValueFrom(this.insuranceSchemeService.getInsuranceSchemeById(this.schemeDetails.schemeId));
-      console.log(schemeData)
-      this.schemeName = schemeData.schemeName;
+  calculateInterest(data:any){
 
-      console.log(this.schemeName)
-      // Display an alert to the user
-      // alert('Scheme details updated successfully!');
-      // this.router.navigateByUrl("/insurance-scheme-list")
-
-      // // Optionally, you can reset the form or perform any other actions here
-      // this.schemeDetailsForm.reset();
-    } catch (error) {
-      console.error('Error updating scheme details:', error);
-
-      // Display an error alert to the user
-      alert('Error updating scheme details. Please try again.');
+    this.calculateData=data
+    if(this.calculateData.months==12){
+      this.divideYears=this.calculateData.years
+      this.temporaryData.installmentAmt=this.calculateData.investmentAmt/this.divideYears
     }
+    if(this.calculateData.months==6){
+      this.divideYears=this.calculateData.years *2
+    }
+    if(this.calculateData.months==3){
+      this.divideYears=this.calculateData.years*4
+    }
+    if(this.calculateData.months==3){
+      this.divideYears=this.calculateData.years*12
+    }
+    this.temporaryData.interestAmt=this.calculateData.investmentAmt * 0.06
+    this.temporaryData.totalAmt= Number.parseInt(this.calculateData.investmentAmt) + this.temporaryData.interestAmt
+    console.log(typeof this.calculateData.investmentAmt);
+    console.log(typeof this.temporaryData.interestAmt);
+    
+    
+    console.log(this.calculateData);
+    this.temporaryData.policyTerm=data.years
+    console.log(this.temporaryData.policyTerm);
+    
+    this.temporaryData.totalInvestmentAmt=data.investmentAmt
+    this.temporaryData.months=data.months 
+    
   }
+  
 }

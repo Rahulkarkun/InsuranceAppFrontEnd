@@ -1,0 +1,31 @@
+<body>
+    <div class="login-container">
+        <h1>Insurnace-Account</h1>
+        <form [formGroup]="account" (ngSubmit)="storeInsurnaceData(account.value)" >
+            <!-- <p>Kindly enter the credentials</p> -->
+            <div class="form-group">
+              <label for="username">Insurance Creation Date <span>*</span></label>
+              <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+             
+              <!-- <h1>{{agentId}}</h1> -->
+              <input type="text" formControlName="insuranceCreationDate" [(ngModel)]="date">
+              <label for="username">Maturity Date <span>*</span></label>
+              <input type="text" formControlName="maturityDate" [(ngModel)]="maturityDate">
+              <label for="username">Policy Term <span>*</span></label>
+              <input type="text" formControlName="policyTerm" [(ngModel)]="temporaryData.policyTerm">
+              <label for="username">Total Premium <span>*</span></label>
+              <input type="text" formControlName="totalPremium" [(ngModel)]="temporaryData.totalInvestmentAmt">
+              <label for="username">Profit Ratio <span>*</span></label>
+              <input type="text" formControlName="profitRatio" [(ngModel)]="(temporaryData.interestAmt*100)/temporaryData.totalInvestmentAmt">
+              <!-- <label for="username">sumAssured</label> -->
+              <input type="text" formControlName="sumAssured" [(ngModel)]="temporaryData.totalAmt">
+              <!-- <label for="username">commision</label> -->
+              <input type="hidden" formControlName="customerId" [(ngModel)]="dataS.userId">
+              <!-- <label for="username">totalCommision</label> -->
+              <input type="hidden" formControlName="insurancePlanId" [(ngModel)]="temporaryData.planId">
+            </div>
+           
+            <button type="submit">Submit</button>
+          </form>
+    </div>
+</body>

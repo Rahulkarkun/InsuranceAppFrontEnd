@@ -1,6 +1,6 @@
 export interface InsuranceScheme {
     SchemeId: number;
-    SchemeName: string;
+    schemeName: string;
     DetailId:number;
     PlanId: number;
     //IsActive: boolean;
