@@ -22,6 +22,18 @@ export class EmployeeListComponent {
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    debugger
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Admin'){
+      alert('Please Login As Admin')
+      this.router.navigateByUrl('/login')
+    }
     this.fetchEmployees();
   }
 

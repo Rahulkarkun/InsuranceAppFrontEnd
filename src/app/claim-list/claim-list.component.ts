@@ -96,12 +96,14 @@ export class ClaimListComponent {
     this.claimService.getAllClaims().subscribe(
       {
         next:(data)=>{
-        this.claimData=data
-        console.log(this.claimData)
+        // this.claimData=data
+        this.claims=data
+        console.log(this.claims)
         this.totalRecords=data.length
         // debugger
         // this.filterCustomer();
-        this.filterClaim();
+        if(this.userRole=="Agent")
+          this.filterClaim();
       },
       error:(errorResponse:HttpErrorResponse)=>{
         console.log(errorResponse); 
@@ -164,6 +166,9 @@ filterCustomer(){
     this.fetchClaims()
 
   }
+  else
+    this.fetchClaims()
+
 }
 filterClaim(){
   // debugger
@@ -171,9 +176,9 @@ filterClaim(){
   // if((this.dataService.roleName=="Agent")){
   //   this.customer=this.customer.filter(x=>x.customerId === claim.customerId)
   //   console.log('jdsc' + this.customer)
+  if(this.dataService.roleName=="Agent"){
   for(let c of this.customer){
-    if((this.dataService.roleName=="Agent")){
-    this.claims=this.claimData.filter(x=>x.customerId === c.customerId)
+    this.claims=this.claims.filter(x=>x.customerId === c.customerId)
     console.log(this.claims)
   }
   }

@@ -100,6 +100,7 @@ export class SdInterestCalculatorComponent {
       SchemeId: this.schemeDetails.schemeId,
     };
     console.log(this.schemeDetails.schemeId)
+    this.temporaryData.insuranceSchemeId=this.schemeDetails.schemeId
     this.schemeDetailsForm.patchValue(schemeDetailsFormValue);
   }
 
@@ -122,15 +123,22 @@ export class SdInterestCalculatorComponent {
     if(this.calculateData.months==12){
       this.divideYears=this.calculateData.years
       this.temporaryData.installmentAmt=this.calculateData.investmentAmt/this.divideYears
+      this.temporaryData.premiumType = 'Yearly'
     }
     if(this.calculateData.months==6){
       this.divideYears=this.calculateData.years *2
+      this.temporaryData.installmentAmt=this.calculateData.investmentAmt/this.divideYears
+      this.temporaryData.premiumType = 'Half-Yearly'
     }
     if(this.calculateData.months==3){
       this.divideYears=this.calculateData.years*4
+      this.temporaryData.installmentAmt=this.calculateData.investmentAmt/this.divideYears
+      this.temporaryData.premiumType = 'Quarterly'
     }
-    if(this.calculateData.months==3){
+    if(this.calculateData.months==1){
       this.divideYears=this.calculateData.years*12
+      this.temporaryData.installmentAmt=this.calculateData.investmentAmt/this.divideYears
+      this.temporaryData.premiumType = 'Monthly'
     }
     this.temporaryData.interestAmt=this.calculateData.investmentAmt * 0.06
     this.temporaryData.totalAmt= Number.parseInt(this.calculateData.investmentAmt) + this.temporaryData.interestAmt

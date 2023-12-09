@@ -85,6 +85,7 @@ import { CustomerClaimListFilterComponent } from './customer-claim-list-filter/c
 import { AddClaimComponent } from './add-claim/add-claim.component';
 import { SdInterestCalculatorComponent } from './sd-interest-calculator/sd-interest-calculator.component';
 import { InsuranceAccountComponent } from './insurance-account/insurance-account.component';
+import { CommissionWithdrawalComponent } from './commission-withdrawal/commission-withdrawal.component';
 // import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -168,7 +169,8 @@ import { InsuranceAccountComponent } from './insurance-account/insurance-account
     AddClaimComponent,
     InsurancePlansComponent,
     SdInterestCalculatorComponent,
-    InsuranceAccountComponent
+    InsuranceAccountComponent,
+    CommissionWithdrawalComponent
   ],
   imports: [
     MatTableModule,

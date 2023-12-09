@@ -1,0 +1,46 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="add-commision-withdrawal.component.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
+  <title>Login Page</title>
+</head> -->
+<body>
+    <!-- <app-admin-navbar></app-admin-navbar><br> -->
+    <app-agent-navbar></app-agent-navbar>
+  <div class="login-container">
+    <h1>Request Withdrawal Amount</h1>
+    <!--  -->
+    <form [formGroup]="addWithdrawal" (ngSubmit)="addCommisionWithdrawal(addWithdrawal.value)" >
+      <!-- <p>Kindly enter the credentials</p> -->
+      <div class="form-group">
+   
+        <!-- <span value="{{insuranceTypeId}}" formControlName="id"></span> -->
+       
+        <!-- <h1>{{insuranceTypeId}}</h1> -->
+        <label for="username">Request Date <span>*</span></label>
+        <input type="date" id="username" name="username"
+         formControlName="withdrawalDate">
+         <label for="username">Total Commision Amount </label>
+         <input type="text" id="username" name="username" placeholder=" {{calculateTotal()}} {{makeTotalZero()}}" disabled  >
+           <br>
+           <!-- <label >{{calculateTotal()}} {{makeTotalZero()}}</label>  -->
+ 
+         <label for="username"> withdrawalAmount <span>*</span></label>
+         <input type="text" id="username" name="username"
+         formControlName="withdrawalAmount">
+ 
+         <input type="hidden" id="username" name="username"
+         formControlName="agentId" [(ngModel)]="agentId">
+ 
+         <!-- <input type="hidden" id="username" name="username"
+         formControlName="isApproved" placeholder="true" > -->
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</body>
+<!-- </html> -->
+ 

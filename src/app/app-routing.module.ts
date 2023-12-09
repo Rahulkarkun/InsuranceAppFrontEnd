@@ -77,6 +77,7 @@ import { CustomerClaimListFilterComponent } from './customer-claim-list-filter/c
 import { AddClaimComponent } from './add-claim/add-claim.component';
 import { SdInterestCalculatorComponent } from './sd-interest-calculator/sd-interest-calculator.component';
 import { InsuranceAccountComponent } from './insurance-account/insurance-account.component';
+import { CommissionWithdrawalComponent } from './commission-withdrawal/commission-withdrawal.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -158,6 +159,8 @@ const routes: Routes = [
   {path:'insurance-plan',component:InsurancePlansComponent},
   {path:'sd-interest-calculator',component:SdInterestCalculatorComponent},
   {path:'insurance-account',component:InsuranceAccountComponent},
+  {path:'commission-withdrawal',component:CommissionWithdrawalComponent},
+
   {
     path:"weather",
     component:WeatherInfoComponent

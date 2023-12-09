@@ -21,7 +21,7 @@ export class CommissionWithdrawalService {
   }
 
   addCommissionWithdrawal(data:any){
-    return this.http.post(this.apiUrl+"/CommisionWithdrawal",data)
+    return this.http.post(this.apiUrl+"/CommissionWithdrawal",data)
   }
 
 //   getByUserId(userId: number): Observable<Agent> {

@@ -36,14 +36,28 @@ export class DocumentVerificationListComponent {
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    this.customerService.getAllCustomers().subscribe(
+      {
+        next:(data)=>{
+        this.customerData= data
+        console.log(data)
+        this.totalRecords=data.length
+        // this.setupPaginator();
+      },
+      error:(errorResponse:HttpErrorResponse)=>{
+        console.log(errorResponse); 
+      }
+    }
+    );
     this.fetchDocuments();
   }
 
   fetchDocuments(): void {
+    debugger
     this.documentService.getAllDocuments().subscribe(
       {
         next:(data)=>{
-        this.documents=this.customerData
+        this.documents= data
         console.log(data)
         this.totalRecords=data.length
         // this.setupPaginator();

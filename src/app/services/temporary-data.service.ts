@@ -17,6 +17,8 @@ export class TemporaryDataService {
   private _policyTerm:number=0;
   private _totalInvestmentAmt:number=0;
   private _months:number=0;
+  private _insuranceAccountData:any;
+  private _premiumType: string = '';
   getId= this.id.asObservable();
   // getRole= this.role.asObservable();
   getRole():string{
@@ -65,6 +67,15 @@ export class TemporaryDataService {
     return this._totalAmt
   }
 
+
+  set premiumType(type:string){
+    this._premiumType=type
+  }
+  get premiumType():string{
+    return this._premiumType
+  }
+
+
   set installmentAmt(amt:number){
     this._installmentAmt=amt
   }
@@ -99,6 +110,13 @@ set months(num:number){
 }
 get months():number{
   return this._months
+}
+
+set insuranceAccountData(data:any){
+  this._insuranceAccountData=data
+}
+get insuranceAccountData():any{
+  return this._insuranceAccountData
 }
 
 }

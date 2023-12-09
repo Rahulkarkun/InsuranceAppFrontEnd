@@ -97,6 +97,12 @@ export class AgentDashboardComponent {
     // console.log(this.temporarydata.getRole)
     
   }
+
+  addCommissionWithdrawal(){
+    this.temporarydata.setRole('Agent')
+    this.router.navigateByUrl("/commission-withdrawal")
+  }
+
   // addInsurancePlan(){
   //   console.log("hih")
   //   //debugger

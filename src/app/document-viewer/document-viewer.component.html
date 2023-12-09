@@ -54,10 +54,11 @@
   <!-- Verify Button -->
   <!-- <button  (click)="verifyDocument()">Verify Document</button>
   <button  (click)="unverifyDocument()">Unverify Document</button> -->
+  <button  (click)="verifyDocument()">Verify Document</button>
+  <button  (click)="unverifyDocument()">Unverify Document</button>
 
-
-  <button *ngIf="document.Status === 'Unverified'" (click)="verifyDocument()">Verify Document</button>
-  <button *ngIf="document.Status === 'Verified'" (click)="unverifyDocument()">Unverify Document</button>
+  <!-- <button *ngIf="document.Status === 'Unverified'" (click)="verifyDocument()">Verify Document</button>
+  <button *ngIf="document.Status === 'Verified'" (click)="unverifyDocument()">Unverify Document</button> -->
 </div>
 <ng-template #loading>
   <div>Loading document...</div>

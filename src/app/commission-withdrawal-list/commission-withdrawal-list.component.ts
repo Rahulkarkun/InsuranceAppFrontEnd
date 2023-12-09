@@ -38,14 +38,12 @@ export class CommissionWithdrawalListComponent {
     this.agentService.getAllAgents().subscribe({
       next:(response)=>{
         this.agentData=response
-       
-        
+        this.fetchData()
       },
       error(errorResponse:HttpErrorResponse){
         console.log(errorResponse)
       }
     })
-    this.fetchData()
   }
 
   calculateTotal() {
@@ -69,6 +67,7 @@ export class CommissionWithdrawalListComponent {
     this.commissionWithdrawal.getCommissonWithdrawal().subscribe((data) => {
       this.withdrawalData = data;
       console.log(this.withdrawalData)
+      console.log(this.userRole)
       if (this.userRole === 'Agent') {
         this.filterWithdrawalData();
       }

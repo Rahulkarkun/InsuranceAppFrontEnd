@@ -37,18 +37,18 @@ export class DocumentService {
   // }
 
   getDocumentById(id: number): Observable<Document> {
-    return this.http.get<Document>(`${this.apiUrl}/document?id=${id}`, this.options);
+    return this.http.get<Document>(`${this.apiUrl}/Document?id=${id}`, this.options);
   }
 
   getAllDocuments(): Observable<Document[]> {
-    const url = `${this.apiUrl}/document`;
+    const url = `${this.apiUrl}/Document/get`;
     return this.http.get<Document[]>(url, this.options);
   }
 
   
   updateDocumentStatus( documentId: any): Observable<any> {
     // Implement your API endpoint to update only the 'isActive' field
-    return this.http.put<any>(`${this.apiUrl}/document/${documentId}`, this.options);
+    return this.http.put<any>(`${this.apiUrl}/Document/${documentId}`, this.options);
   }
   
   uploadFile(formData: FormData) {
