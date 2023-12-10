@@ -13,8 +13,66 @@
   </div>
 <body>
     <div class="payment-container">
-        <button (click)="pay()" class="btn btn-outline-dark btn-lg"><i class="fas fa-money-bill"></i> Pay Now</button><br>
-        <h3>Click on Pay Now Button...To Redirect to the payment gateway</h3>
+      <h3>Policy Payments</h3>
+      <form  [formGroup]="payment" (ngSubmit)="pay(payment.value)">
+        <div class="form-group">
+        <label for="username">Date <span>*</span></label>
+        <input type="text" formControlName="date" [(ngModel)]="date" readonly>
+
+        <label for="username">Installment Amount <span>*</span></label>
+        <input type="text" formControlName="amount" [(ngModel)]="temporaryData.installmentAmt" readonly>
+             
+        <label for="username">Tax Amount <span>*</span></label>
+        <input type="text" formControlName="tax" [(ngModel)]="taxAmt" readonly>
+
+        <label for="username">Total Amount <span>*</span></label>
+        <input type="text" formControlName="totalPayment" [(ngModel)]="totalAmt" readonly>
+
+        <label for="username">Transaction Type <span>*</span></label>
+        <input type="text" formControlName="paymentType" [(ngModel)]="paymentType" readonly>
+
+        <input type="hidden" formControlName="customerId">
+        <input type="hidden" formControlName="policyNo" [(ngModel)]="temporaryData.policyNo">
+      </div>
+             
+          <!-- <div class="container mt-5">
+            <div class="vertical-table">
+              <div class="row">
+                <div class="col">Date</div>
+                <div class="col" > <input type="text" formControlName="date" [(ngModel)]="date" readonly></div>
+              </div>
+              <div class="row">
+                <div class="col">Installment Amount</div>
+                <div class="col"><input type="text" formControlName="amount" [(ngModel)]="temporaryData.installmentAmt" readonly></div>
+              </div>
+              <div class="row">
+                <div class="col">Tax Amount</div>
+                <div class="col">
+                  <input type="text" formControlName="tax" [(ngModel)]="taxAmt" readonly>
+              </div>
+              </div>
+              <div class="row">
+                  <div class="col">Total Amount</div>
+                  <div class="col">
+                    <input type="text" formControlName="amount" [(ngModel)]="totalAmt" readonly>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="col">Transaction Type </div>
+                  <div class="col">
+                    <input type="text" formControlName="paymentType" [(ngModel)]="paymentType" readonly>
+                    <input type="hidden" formControlName="customerId">
+                    <input type="hidden" formControlName="policyNo" [(ngModel)]="temporaryData.policyNo">
+                </div>
+              </div>
+          </div>
+      </div> -->
+   
+      <br>
+      <button  align="center">Pay Now</button>
+        </form> 
+        <!-- <button (click)="pay()" class="btn btn-outline-dark btn-lg"><i class="fas fa-money-bill"></i> Pay Now</button><br>
+        <h3>Click on Pay Now Button...To Redirect to the payment gateway</h3> -->
     </div>   
 </body>
 

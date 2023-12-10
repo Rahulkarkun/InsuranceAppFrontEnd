@@ -15,6 +15,7 @@ export class TemporaryDataService {
   private _installmentAmt:number=0;
   private _interestAmt:number=0;
   private _policyTerm:number=0;
+  private _policyNo:number=0;
   private _totalInvestmentAmt:number=0;
   private _months:number=0;
   private _insuranceAccountData:any;
@@ -65,6 +66,12 @@ export class TemporaryDataService {
   }
   get totalAmt():number{
     return this._totalAmt
+  }
+  set policyNo(policyNo:number){
+    this._policyNo=policyNo
+  }
+  get policyNo():number{
+    return this._policyNo
   }
 
 
