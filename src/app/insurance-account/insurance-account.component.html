@@ -1,5 +1,17 @@
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
+<div *ngIf="userRole=='Employee'">
+  <app-employee-navbar></app-employee-navbar>
+</div>
+<div *ngIf="userRole=='Customer'">
+  <app-customer-navbar></app-customer-navbar>
+</div>
 <body>
-    <div class="login-container">
+    <div class="insurance-account-container">
         <h1>Insurnace-Account</h1>
         <form [formGroup]="account" (ngSubmit)="storeInsuranceData(account.value)" >
             <!-- <p>Kindly enter the credentials</p> -->
@@ -26,7 +38,7 @@
               <input type="hidden" formControlName="status">
             </div>
            
-            <button type="submit">Submit</button>
+            <button type="submit"  routerLink="/customer-payment">Submit</button>
           </form>
     </div>
 </body>

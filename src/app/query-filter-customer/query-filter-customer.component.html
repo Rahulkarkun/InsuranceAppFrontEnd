@@ -23,7 +23,7 @@
           <th>Query Message</th>
           <th>Query Date</th>
           <th>Reply</th>
-          <th>Customer Id</th>
+          <th>Customer Name</th>
           <!-- <th>UserId</th> -->
           <th  *ngIf="userRole == 'Employee'">Actions</th>
         </tr>
@@ -41,7 +41,7 @@
           <td>{{ query.queryMessage }}</td>
           <td>{{ query.queryDate }}</td>
           <td>{{ query.reply }}</td>
-          <td>{{ query.customerId }}</td>
+          <td>{{ getCustomerName(query.customerId)}}</td>
           <!-- <td>{{ agent.userId }}</td> -->
           <td>
             <button  *ngIf="userRole == 'Employee'" class="edit-button" (click)="editQuery(query.queryId)">Edit</button>

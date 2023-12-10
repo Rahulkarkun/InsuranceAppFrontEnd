@@ -22,12 +22,12 @@
             <th>Premium Type</th>
             <th>Premium Amount</th>
             <th>SumAssured</th>
-            <th>Scheme Id</th>
+            <th>Scheme Name</th>
             <th>Status</th>
             <!-- <th>Scheme Id</th>
             <th>Payment Id</th>
             <th>Customer Id</th> -->
-            <th>Actions</th>
+            <!-- <th>Actions</th> -->
           </tr>
         </thead>
         <tbody>
@@ -46,17 +46,17 @@
             <td>{{ policy.premiumType}}</td>
             <td>{{ policy.premiumAmount }}</td>
             <td>{{ policy.sumAssured }}</td>
-            <td>{{ policy.schemeId }}</td>
+            <td>{{ getSchemeName(policy.schemeId)}}</td>
             <td>{{ policy.status }}</td>
             
           <!-- I want to call the getCustomerName here and then display their first and last name-->
             <!-- <td>{{ policy.schemeId }}</td>
             <td>{{ policy.paymentId }}</td>
             <td>{{ policy.customerId }}</td> -->
-            <td>
+            <!-- <td>
               <button class="edit-button" (click)="editInsurancePolicy(policy.policyNo)">Edit</button>
               <button class="delete-button" (click)="deleteInsurancePolicy(policy.policyNo)">Delete</button>
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>

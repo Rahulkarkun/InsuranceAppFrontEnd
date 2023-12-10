@@ -6,6 +6,7 @@ import { DataService } from '../services/data.service';
 import { TemporaryDataService } from '../services/temporary-data.service';
 import { CustomerService } from '../services/customer.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { InsuranceSchemeService } from '../services/insurance-scheme.service';
 
 @Component({
   selector: 'app-insurance-account-filter',
@@ -15,6 +16,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class InsuranceAccountFilterComponent {
   policies: Array<any>;
   customer: Array<any>;
+  schemeData: Array<any>;
   page: number = 1;
   totalRecords:number=0
   selectedItemsPerPage: number = 5; // Set a default value, or fetch it from user preferences
@@ -25,9 +27,11 @@ export class InsuranceAccountFilterComponent {
     private router: Router,
     private dataService:DataService,
     private temporaryData:TemporaryDataService,
+    private schemeService:InsuranceSchemeService,
     private customerService: CustomerService) 
   { this.policies=new Array<any>()
     this.customer = new Array<any>();
+    this.schemeData = new Array<any>();
     this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
@@ -41,6 +45,7 @@ export class InsuranceAccountFilterComponent {
     //     console.log(errorResponse)
     //   }
     // })
+    this.fetchScheme();
     this.fetchInsurancePolicies();
   }
 
@@ -115,6 +120,31 @@ export class InsuranceAccountFilterComponent {
         console.error('Error deleting Policy:', error);
       }
     );
+  }
+  fetchScheme(): void {
+    //debugger
+    this.schemeService.getAllInsuranceScheme().subscribe(
+      {
+        next:(schemeData)=>{
+        this.schemeData=schemeData
+        console.log(this.schemeData)
+        this.totalRecords=schemeData.length
+        //this.filterPolicies();
+      },
+      error:(errorResponse:HttpErrorResponse)=>{
+        console.log(errorResponse); 
+      }
+    }
+    );
+  }
+  getSchemeName(schemeId: number): string {
+    if (this.schemeData) {
+      const scheme = this.schemeData.find((a: any) => a.schemeId === schemeId);
+      console.log(scheme);
+      return scheme!=null ? `${scheme.schemeName}` : 'Scheme Not Found';
+    } else {
+      return 'Customer Data Not Loaded';
+    }
   }
 
   onItemsPerPageChange(): void {

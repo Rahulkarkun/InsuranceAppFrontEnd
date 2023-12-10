@@ -97,5 +97,14 @@ export class QueryFilterCustomerComponent {
     this.page = 1; // Reset to the first page when items per page changes
     this.fetchQueries(); // Fetch data with the new items per page
   }
+  getCustomerName(customerId: number): string {
+    if (this.customer) {
+      const customer = this.customer.find((a: any) => a.customerId === customerId);
+      console.log(customer);
+      return customer!=null ? `${customer.firstName} ${customer.lastName}` : 'Customer Not Found';
+    } else {
+      return 'Customer Data Not Loaded';
+    }
+  }
 
 }

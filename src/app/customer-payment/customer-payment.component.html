@@ -1,0 +1,20 @@
+
+<div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <div *ngIf="userRole=='Employee'">
+    <app-employee-navbar></app-employee-navbar>
+  </div>
+  <div *ngIf="userRole=='Customer'">
+    <app-customer-navbar></app-customer-navbar>
+  </div>
+<body>
+    <div class="payment-container">
+        <button (click)="pay()" class="btn btn-outline-dark btn-lg"><i class="fas fa-money-bill"></i> Pay Now</button><br>
+        <h3>Click on Pay Now Button...To Redirect to the payment gateway</h3>
+    </div>   
+</body>
+
