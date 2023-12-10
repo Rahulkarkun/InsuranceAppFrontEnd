@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DocumentService } from '../services/document.service';
 import { TemporaryDataService } from '../services/temporary-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-upload-document',
@@ -20,13 +21,25 @@ export class UploadDocumentComponent {
   };
 
   constructor(private documentService: DocumentService,
-    private temporaryData:TemporaryDataService,) 
+    private temporaryData:TemporaryDataService,
+    private router: Router) 
     {
       this.userRole=temporaryData.getRole()
     console.log(this.userRole)
     }
 
   ngOnInit() {
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Customer'){
+      alert('Please Login As Customer')
+      this.router.navigateByUrl('/login')
+    }
     // Load documents if needed
   }
 

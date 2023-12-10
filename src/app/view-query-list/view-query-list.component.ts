@@ -24,6 +24,16 @@ export class ViewQueryListComponent {
   }
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Employee') {
+      alert('Please Login As Employee');
+      this.router.navigateByUrl('/login');
+    }
     this.fetchQueries();
   }
 

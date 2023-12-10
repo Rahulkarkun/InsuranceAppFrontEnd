@@ -42,6 +42,17 @@ export class AddSchemeDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Admin'){
+      alert('Please Login As Admin')
+      this.router.navigateByUrl('/login')
+    }
     this.schemeDetailsForm = this.fb.group({
       insuranceSchemeId: ['', Validators.required],
       SchemeImage: ['', Validators.required],

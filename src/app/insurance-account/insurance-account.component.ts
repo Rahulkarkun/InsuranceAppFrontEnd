@@ -38,6 +38,17 @@ export class InsuranceAccountComponent {
 
 
   ngOnInit(): void {
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Customer'){
+      alert('Please Login As Customer')
+      this.router.navigateByUrl('/login')
+    }
     this.account = this.fb.group({
       issueDate: ['', Validators.required],
       maturityDate: ['', Validators.required],
@@ -92,6 +103,7 @@ export class InsuranceAccountComponent {
 
       // Display an alert to the user
       alert('Policy added successfully!');
+      this.router.navigateByUrl("/customer-payment")
       // if(this.userRole=='Admin')
       //   this.router.navigateByUrl("/admin-dashboard")
       // if(this.userRole=='Employee')

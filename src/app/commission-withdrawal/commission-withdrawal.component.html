@@ -1,15 +1,10 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="add-commision-withdrawal.component.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap">
-  <title>Login Page</title>
-</head> -->
+<div *ngIf="userRole=='Admin'">
+  <app-admin-navbar></app-admin-navbar>
+</div>
+<div *ngIf="userRole=='Agent'">
+  <app-agent-navbar></app-agent-navbar>
+</div>
 <body>
-    <!-- <app-admin-navbar></app-admin-navbar><br> -->
-    <app-agent-navbar></app-agent-navbar>
   <div class="login-container">
     <h1>Request Withdrawal Amount</h1>
     <!--  -->

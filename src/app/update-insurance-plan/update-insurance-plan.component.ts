@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
 import { InsuranceplanService } from '../services/insuranceplan.service';
 import { TemporaryDataService } from '../services/temporary-data.service';
@@ -17,11 +17,22 @@ export class UpdateInsurancePlanComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
+    private router: Router,
     private insurancePlanService: InsuranceplanService,private temporaryData:TemporaryDataService
   ) {this.userRole=temporaryData.getRole()
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Admin') {
+      alert('Please Login As Admin');
+      this.router.navigateByUrl('/login');
+    }
     this.initForm();
     this.route.params.subscribe(params => {
       const idParam = +params['id'];

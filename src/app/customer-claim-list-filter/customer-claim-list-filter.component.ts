@@ -33,6 +33,17 @@ export class CustomerClaimListFilterComponent {
 
   ngOnInit(): void {
     debugger
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Customer'){
+      alert('Please Login As Customer')
+      this.router.navigateByUrl('/login')
+    }
     // this.agentService.getAllAgents().subscribe({
     //   next:(response)=>{
     //     this.agentData=response

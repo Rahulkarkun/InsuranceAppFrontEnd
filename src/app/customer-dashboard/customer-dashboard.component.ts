@@ -18,6 +18,7 @@ export class CustomerDashboardComponent {
    }
 
   ngOnInit(): void {
+    
   }
 
   redirectTo(route: string): void {

@@ -1,0 +1,55 @@
+/* add-commision-withdrawal.component.css */
+
+body {
+    padding-top: 65px;
+    background-image: url("/assets/background-image-1.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    margin: 0;
+    padding-bottom: 65px;
+    font-family: 'Quicksand', sans-serif; /* Apply the Quicksand font */
+  }
+  
+  .login-container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-top: 50px; /* Adjust the margin as needed */
+  }
+  
+  .login-container h1 {
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }

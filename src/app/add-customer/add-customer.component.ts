@@ -9,6 +9,7 @@ import { TemporaryDataService } from '../services/temporary-data.service';
 import { Agent } from '../models/agent';
 import { AgentService } from '../services/agent.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-customer',
@@ -23,12 +24,23 @@ export class AddCustomerComponent implements OnInit {
     private fb: FormBuilder,
     private customerService: CustomerService,
     private agentService: AgentService,
+    private router:Router,
     private temporaryData:TemporaryDataService,
   ) { this.userRole=temporaryData.getRole()
     console.log(this.userRole)
     }
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Admin' && role !== 'Agent') {
+      alert('Please Login As Admin or Agent');
+      this.router.navigateByUrl('/login');
+    }
     this.customerForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

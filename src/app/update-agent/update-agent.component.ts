@@ -234,6 +234,16 @@ export class UpdateAgentComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Admin' && role !== 'Employee') {
+      alert('Please Login As Admin');
+      this.router.navigateByUrl('/login');
+    }
     this.initForm();
     this.route.params.subscribe(params => {
       const idParam = +params['id'];

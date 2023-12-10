@@ -24,6 +24,16 @@ export class AddagentComponent implements OnInit {
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Admin' && role !== 'Employee') {
+      alert('Please Login As Admin or Agent');
+      this.router.navigateByUrl('/login');
+    }
     this.agentForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],

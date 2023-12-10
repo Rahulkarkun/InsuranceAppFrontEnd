@@ -24,6 +24,16 @@ export class UpdateEmployeeComponent {
     console.log(this.userRole)}
 
     ngOnInit(): void {
+      var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Admin') {
+      alert('Please Login As Admin');
+      this.router.navigateByUrl('/login');
+    }
       this.initForm();
       this.route.params.subscribe(params => {
         const idParam = +params['id'];

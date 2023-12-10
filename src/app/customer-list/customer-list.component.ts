@@ -30,6 +30,17 @@ export class CustomerListComponent {
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Admin'){
+      alert('Please Login As Admin')
+      this.router.navigateByUrl('/login')
+    }
     this.agentService.getAllAgents().subscribe({
       next:(response)=>{
         this.agentData=response

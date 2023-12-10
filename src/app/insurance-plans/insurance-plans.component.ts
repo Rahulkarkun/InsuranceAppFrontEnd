@@ -54,6 +54,19 @@ export class InsurancePlansComponent {
       console.log(this.insuranceSchemeDetailsData)
     })
   }
+  ngOnInit(): void {
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Customer'){
+      alert('Please Login As Customer')
+      this.router.navigateByUrl('/login')
+    }
+  }
   filterInsuranceSchemeDetails(schemeId:number){
     this.insuranceSchemeDetailsData=this.insuranceSchemeDetailsData.filter(x=>x.schemeId===schemeId)
 

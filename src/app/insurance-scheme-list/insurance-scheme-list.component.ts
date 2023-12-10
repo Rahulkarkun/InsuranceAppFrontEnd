@@ -31,6 +31,16 @@ export class InsuranceSchemeListComponent {
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Admin' && role !== 'Customer') {
+      alert('Please Login As Admin or Customer');
+      this.router.navigateByUrl('/login');
+    }
     this.insurancePlanService.getAllInsurancePlan().subscribe({
       next:(response)=>{
         this.insurancePlan=response

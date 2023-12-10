@@ -18,6 +18,7 @@ export class CommissionWithdrawalComponent {
   addWithdrawal!: FormGroup
   commissionData:any
   commissionDataOfAgent:any
+  userRole: string = '';
   agentData:any
   total:number=0;
   totalWithdrawalAmount:number=0
@@ -38,6 +39,8 @@ export class CommissionWithdrawalComponent {
     private dataService:DataService,
     private agentService: AgentService,
     private fb:FormBuilder){
+      this.userRole = temporaryData.getRole();
+    console.log(this.userRole)
     // debugger
     // this.agentId=dataService.userId
     // console.log(this.agentId)
@@ -57,6 +60,16 @@ export class CommissionWithdrawalComponent {
   }
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Agent') {
+      alert('Please Login As Admin or Agent');
+      this.router.navigateByUrl('/login');
+    }
     this.addWithdrawal = this.fb.group({
       withdrawalDate: ['', Validators.required],
       withdrawalAmount: ['', Validators.required],

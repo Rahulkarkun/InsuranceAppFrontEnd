@@ -68,6 +68,7 @@ import { DocumentService } from '../services/document.service';
 import { Document } from '../models/document';
 //import { DocumentDto } from '../document-dto';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { TemporaryDataService } from '../services/temporary-data.service';
 
 @Component({
    selector: 'app-document-viewer',
@@ -75,6 +76,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrl: './document-viewer.component.css'
 })
 export class DocumentViewerComponent implements OnInit {
+  userRole: string = '';
   @Input() document: Document | undefined;
   documentUrl: SafeResourceUrl | undefined;
 
@@ -82,10 +84,22 @@ export class DocumentViewerComponent implements OnInit {
     private router : Router,
     private documentService: DocumentService,
     private sanitizer: DomSanitizer,
+    protected temporaryData:TemporaryDataService,
     private route: ActivatedRoute
-  ) {}
+  ) {this.userRole = temporaryData.getRole();
+    console.log(this.userRole)}
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Employee') {
+      alert('Please Login As Employee');
+      this.router.navigateByUrl('/login');
+    }
     const idParam = this.route.snapshot.paramMap.get('id');
 
     if (idParam) {

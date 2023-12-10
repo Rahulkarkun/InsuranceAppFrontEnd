@@ -36,6 +36,16 @@ export class DocumentVerificationListComponent {
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Employee') {
+      alert('Please Login As Employee');
+      this.router.navigateByUrl('/login');
+    }
     this.customerService.getAllCustomers().subscribe(
       {
         next:(data)=>{

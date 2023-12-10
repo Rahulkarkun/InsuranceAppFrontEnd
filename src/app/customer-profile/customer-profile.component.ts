@@ -30,6 +30,17 @@ export class CustomerProfileComponent {
     console.log(this.userRole)
   }
   ngOnInit(): void {
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Customer'){
+      alert('Please Login As Customer')
+      this.router.navigateByUrl('/login')
+    }
     this.customerForm = this.fb.group({
       customerId: ['', Validators.required],
       firstName: ['', Validators.required],

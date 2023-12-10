@@ -5,6 +5,7 @@ import { DataService } from '../services/data.service';
 import { CommissionWithdrawalService } from '../services/commission-withdrawal.service';
 import { AgentService } from '../services/agent.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-commission-withdrawal-list',
@@ -25,6 +26,7 @@ export class CommissionWithdrawalListComponent {
     private commissionWithdrawal: CommissionWithdrawalService,
     private temporaryData: TemporaryDataService,
     private data: DataService,
+    private router: Router,
     private agentService: AgentService,
   ) {
     this.agentData=new Array<any>()
@@ -34,6 +36,16 @@ export class CommissionWithdrawalListComponent {
   }
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Admin' && role !== 'Agent') {
+      alert('Please Login As Admin or Agent');
+      this.router.navigateByUrl('/login');
+    }
     //debugger
     this.agentService.getAllAgents().subscribe({
       next:(response)=>{

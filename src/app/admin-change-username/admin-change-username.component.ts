@@ -34,6 +34,9 @@ export class AdminChangeUsernameComponent {
       console.log(this.userRole)
       this.adminId=dataService.userId;
     }
+    ngOnInit():void{
+      
+    }
 
     changeAdminUsername(data:any){
 

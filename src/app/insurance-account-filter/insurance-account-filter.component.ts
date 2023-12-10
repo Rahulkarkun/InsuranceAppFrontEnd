@@ -36,6 +36,17 @@ export class InsuranceAccountFilterComponent {
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Customer'){
+      alert('Please Login As Customer')
+      this.router.navigateByUrl('/login')
+    }
     // this.customerService.getAllCustomers().subscribe({
     //   next:(data)=>{
     //     this.customer=data

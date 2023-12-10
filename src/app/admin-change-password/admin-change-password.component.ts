@@ -36,6 +36,9 @@ export class AdminChangePasswordComponent {
       confirmPassword: new FormControl('', Validators.required),
     }, { validators:(control) => this.passwordMatchValidator(control) });
   }
+  ngOnInit():void{
+    
+  }
 
   changeAdminPassword(data: any) {
     debugger

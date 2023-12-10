@@ -24,6 +24,16 @@ export class UpdateSchemeComponent implements OnInit {
     console.log(this.userRole)}
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Admin') {
+      alert('Please Login As Admin');
+      this.router.navigateByUrl('/login');
+    }
     this.schemeForm = this.fb.group({
       schemeId: ['', Validators.required],
       schemeName: ['', Validators.required],

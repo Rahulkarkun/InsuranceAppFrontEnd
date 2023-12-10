@@ -15,7 +15,7 @@ export class CustomerPaymentComponent {
     console.log(this.userRole)}
   options = {
    "key": "rzp_test_Nc92uzv9z8F89F", // Enter the Key ID generated from the Dashboard
-   "amount": "1000"+"00",
+   "amount": this.temporaryData.installmentAmt+"00",
    "currency": "INR",
    "description": "Acme Corp",
    "image": "https://s3.amazonaws.com/rzp-mobile/images/rzp.jpg",

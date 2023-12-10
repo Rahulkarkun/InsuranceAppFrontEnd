@@ -45,6 +45,7 @@ export class AdminProfileComponent {
   }
 
   ngOnInit(): void {
+    
     this.adminForm = this.fb.group({
       adminId: ['', Validators.required],
       firstName: ['', Validators.required],

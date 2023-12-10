@@ -6,6 +6,8 @@ import { AgentService } from '../services/agent.service';
 import { TemporaryDataService } from '../services/temporary-data.service';
 import { lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
+import { CustomerService } from '../services/customer.service';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-add-claim',
@@ -15,18 +17,34 @@ import { Router } from '@angular/router';
 export class AddClaimComponent implements OnInit {
   claimForm!: FormGroup; // Note the non-null assertion operator here
   userRole:string='';
+  CustomerId: number = 0;
+  customerData: Array<any>;
   agents:any;
   constructor(
     private fb: FormBuilder,
     private claimService: ClaimService,
     private router:Router,
+    private dataService: DataService,
+    private customerService: CustomerService,
     private agentService: AgentService,
     private temporaryData:TemporaryDataService,
-  ) { this.userRole=temporaryData.getRole()
+  ) {this.customerData = new Array<any>() 
+    this.userRole=temporaryData.getRole()
     console.log(this.userRole)
     }
 
   ngOnInit(): void {
+    var token=localStorage.getItem('token')
+    
+    var role = this.userRole
+    if(token==null){
+      alert('Please login')
+      this.router.navigateByUrl('/login')
+    }
+    else if(role!='Customer'){
+      alert('Please Login As Customer')
+      this.router.navigateByUrl('/login')
+    }
     this.claimForm = this.fb.group({
       claimAmount: ['', Validators.required],
       bankAccountNumber: ['', Validators.required],
@@ -41,6 +59,18 @@ export class AddClaimComponent implements OnInit {
       // password:['', Validators.required],
       // agentId: [0, Validators.required],
       // agent:['', Validators.required],
+    });
+    this.customerService.getByuserId(this.dataService.userId).subscribe({
+      next: (customerData) => {
+        console.log('Customer data received:', customerData);
+        this.CustomerId = customerData.customerId;
+        console.log(this.CustomerId)
+        this.claimForm.patchValue({
+          customerId: this.CustomerId})
+      },
+      error: (error) => {
+        console.error('Error fetching customer details:', error);
+      }
     });
   }
 

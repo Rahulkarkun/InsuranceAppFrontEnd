@@ -12,12 +12,15 @@ import { DataService } from '../services/data.service';
 export class AdminDashboardComponent {
   userName:any;
   userId:any;
+  userRole:string=''
   constructor(private router: Router,private temporarydata:TemporaryDataService,private data:DataService) 
   {this.userName=data.userName
     this.userId=data.userId
+    
    }
 
   ngOnInit(): void {
+    
   }
 
   redirectTo(route: string): void {

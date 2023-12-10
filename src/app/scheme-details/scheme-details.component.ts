@@ -32,6 +32,16 @@ export class SchemeDetailsComponent {
     }
 
   ngOnInit(): void {
+    var token = localStorage.getItem('token');
+    var role = this.userRole;
+
+    if (token == null) {
+      alert('Please login');
+      this.router.navigateByUrl('/login');
+    } else if (role !== 'Admin' && role !== 'Customer') {
+      alert('Please Login As Admin or Customer');
+      this.router.navigateByUrl('/login');
+    }
     this.schemeDetailsForm = this.fb.group({
       DetailId: [0,Validators.required],
       SchemeImage: ['', Validators.required],
