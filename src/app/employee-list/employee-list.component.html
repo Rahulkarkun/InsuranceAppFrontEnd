@@ -1,5 +1,5 @@
 <!-- agent-list.component.html -->
-<div *ngIf="userRole=='Admin'">
+<!-- <div *ngIf="userRole=='Admin'">
   <app-admin-navbar></app-admin-navbar>
 </div>
 <div *ngIf="userRole=='Agent'">
@@ -17,9 +17,9 @@
           <th>LastName</th>
           <th>MobileNo</th>
           <th>Email</th>
-          <th>Salary</th>
-          <!-- <th>UserId</th> -->
-          <th>Actions</th>
+          <th>Salary</th> -->
+          <!-- <th>UserId</th> --> <!--already c-->
+          <!-- <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -35,9 +35,9 @@
           <td>{{ employee.lastName }}</td>
           <td>{{ employee.mobileNo }}</td>
           <td>{{ employee.email }}</td>
-          <td>{{ employee.salary }}</td>
-          <!-- <td>{{ employee.userId }}</td> -->
-          <td>
+          <td>{{ employee.salary }}</td> -->
+          <!-- <td>{{ employee.userId }}</td>  already c -->
+          <!-- <td>
             <button class="edit-button" (click)="editEmployee(employee.employeeId)">Edit</button>
             <button  class="delete-button" (click)="deleteEmployee(employee.employeeId)">Delete</button>
           </td>
@@ -50,9 +50,8 @@
         <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
           <option value="5">5</option>
           <option value="10">10</option>
-          <option value="20">20</option>
-          <!-- Add more options as needed -->
-        </select>
+          <option value="20">20</option> -->
+        <!-- </select>
       </div>
     <div align="center">
       <pagination-controls
@@ -65,7 +64,73 @@
     </div>
 </div>
 </div>
+</body> -->
+
+<div *ngIf="userRole=='Admin'">
+  <!-- Your admin navbar component here -->
+</div>
+<div *ngIf="userRole=='Agent'">
+  <!-- Your agent navbar component here -->
+</div>
+
+<body>
+  <div class="employee-list-container">
+    <h2>Employee List</h2>
+    <button class="add-button" (click)="addEmployee()">Add Employee</button>
+    <div class="search-container">
+      <label for="searchTerm">Search:</label>
+      <input type="text" [(ngModel)]="searchTerm" (input)="onSearchChange()" />
+    </div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>MobileNo</th>
+          <th>Email</th>
+          <th>Salary</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of (filteredEmployees || employees)
+        | paginate:{
+          id:'listing_pagination',
+          itemsPerPage:selectedItemsPerPage,
+          currentPage:page,
+          totalItems:totalRecords
+        };index as i">
+          <td>{{ employee.employeeId }}</td>
+          <td>{{ employee.firstName }}</td>
+          <td>{{ employee.lastName }}</td>
+          <td>{{ employee.mobileNo }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.salary }}</td>
+          <td>
+            <button class="edit-button" (click)="editEmployee(employee.employeeId)">Edit</button>
+            <button class="delete-button" (click)="deleteEmployee(employee.employeeId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="employee-list-container">
+      <div class="items-per-page-container">
+        <label for="itemsPerPage">Items per page:</label>
+        <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+        </select>
+      </div>
+      <div align="center">
+        <pagination-controls
+          id="listing_pagination"
+          [maxSize]="5"
+          [directionLinks]="true"
+          (pageChange)="page = $event">
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
 </body>
-
-
-  
