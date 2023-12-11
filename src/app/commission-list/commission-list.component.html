@@ -1,5 +1,5 @@
 <!-- agent-list.component.html -->
-<div *ngIf="userRole=='Admin'">
+<!-- <div *ngIf="userRole=='Admin'">
     <app-admin-navbar></app-admin-navbar>
   </div>
   <div *ngIf="userRole=='Agent'">
@@ -7,24 +7,24 @@
   </div>
   <body>
   <div class="commission-list-container">
-      <h2>Commission List</h2>
-      <!-- <button class="add-button" (click)="addCustomer()">Add Customer</button> -->
-      <table class="table table-bordered">
+      <h2>Commission List</h2> -->
+      <!--  this was commented before      <button class="add-button" (click)="addCustomer()">Add Customer</button> -->
+      <!-- <table class="table table-bordered">
         <thead>
           <tr>
             <th>Commission Id</th>
             <th>Policy No</th>
             <th>Agent Name</th>
             <th>Customer Name</th>
-            <th>Commission Amount</th>
-            <!-- <th>State</th>
+            <th>Commission Amount</th> -->
+            <!-- <th>State</th> // this was commented before
             <th>City</th>
             <th>Nominee</th>
             <th>NomineeRelation</th>
             <th>Agent Name</th> -->
             <!-- <th>UserId</th> -->
-            <!-- <th>Actions</th> -->
-          </tr>
+            <!-- <th>Actions</th> --> <!--till here it was commented-->
+          <!-- </tr>
         </thead>
         <tbody>
           <tr *ngFor="let commission of commissionData
@@ -38,8 +38,8 @@
             <td>{{ commission.policyNo }}</td>
             <td>{{  getAgentName(commission.agentId) }}</td>
             <td>{{  getCustomerName(commission.customerId) }}</td>
-            <td>{{  commission.commissionAmount }}</td>
-            <!-- <td>{{ customer.state}}</td>
+            <td>{{  commission.commissionAmount }}</td> -->
+            <!-- <td>{{ customer.state}}</td> /// this was commented before
             <td>{{ customer.city}}</td>
             <td>{{ customer.nominee}}</td>
             <td>{{ customer.nomineeRelation}}</td> -->
@@ -48,8 +48,8 @@
             <!-- <td>
               <button class="edit-button" (click)="editCustomer(customer.customerId)">Edit</button>
               <button class="delete-button" (click)="deleteCustomer(customer.customerId)">Delete</button>
-            </td> -->
-          </tr>
+            </td>  // till here it was commented-->
+          <!-- </tr>
         </tbody>
       </table>
       <div class="customer-list-container">
@@ -59,7 +59,6 @@
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
-            <!-- Add more options as needed -->
           </select>
         </div>
       <div align="center">
@@ -73,4 +72,70 @@
       </div>
     </div>
   </div>
+  </body> -->
+
+
+  <!-- agent-list.component.html -->
+  <div *ngIf="userRole=='Admin'">
+    <app-admin-navbar></app-admin-navbar>
+  </div>
+  <div *ngIf="userRole=='Agent'">
+    <app-agent-navbar></app-agent-navbar>
+  </div>
+  <body>
+    <div class="commission-list-container">
+        <h2>Commission List</h2>
+        <div class="search-container">
+            <label for="search">Search:</label>
+            <input type="text" id="search" [(ngModel)]="searchTerm" (input)="onSearch()">
+        </div>
+        <!-- <button class="add-button" (click)="addCustomer()">Add Customer</button> -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Commission Id</th>
+                    <th>Policy No</th>
+                    <th>Agent Name</th>
+                    <th>Customer Name</th>
+                    <th>Commission Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let commission of filteredCommissionData
+                | paginate:{
+                    id:'listing_pagination',
+                    itemsPerPage:selectedItemsPerPage,
+                    currentPage:page,
+                    totalItems:totalRecords
+                };index as i">
+                    <td>{{ commission.commissionId }}</td>
+                    <td>{{ commission.policyNo }}</td>
+                    <td>{{ getAgentName(commission.agentId) }}</td>
+                    <td>{{ getCustomerName(commission.customerId) }}</td>
+                    <td>{{ commission.commissionAmount }}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="customer-list-container">
+            <div class="items-per-page-container">
+                <label for="itemsPerPage">Items per page:</label>
+                <select [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div align="center">
+                <pagination-controls
+                id="listing_pagination"
+                [maxSize]="5"
+                [directionLinks]="true"
+                (pageChange)="page =$event">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
   </body>
+  
+    
